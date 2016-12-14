@@ -87,6 +87,7 @@ Pushes the changes in your local repository up to the remote repository you spec
        If you're updating to use SSH, your URL might look like:      
           `git@github.com:USERNAME/OTHERREPOSITORY.git`     
 
+
 9. Delete remote URLs by their names. As a side note, it should be pointed that there is     
 also `git remote rm <name>` that deletes every remotes matching the given name, whatever the URLs.    
 
