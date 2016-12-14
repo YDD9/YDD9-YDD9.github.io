@@ -14,11 +14,11 @@ Now you have git downloaded and ready to start.
 
 ## Git config <a name="gitconfig"></a>
 The first thing you should do when you install Git is to set your user name and email address.   
-This is important because every Git commit uses this information, and it’s immutably baked into the commits you start creating:  
+This is important because every Git commit uses this information, and it’s immutably baked into the commits you start creating:   
 ```
-$ git config --global user.name "John Doe"   
-$ git config --global user.email johndoe@example.com  
-```  
+$ git config --global user.name "John Doe"     
+$ git config --global user.email johndoe@example.com     
+```   
 Again, you need to do this only once if you pass the --global option, because then Git will always use that information for 
 anything you do on that system. If you want to override this with a different name or email address for specific projects, 
 you can run the command without the --global option when you’re in that project.
@@ -26,9 +26,9 @@ you can run the command without the --global option when you’re in that proj
 Checking Your Settings
 If you want to check your settings, you can use the git config --list command to list all the settings Git can find at that point:  
 ```
-$ git config --list   
-user.name=John Doe   
-user.email=johndoe@example.com    
+$ git config --list    
+user.name=John Doe    
+user.email=johndoe@example.com      
 color.status=auto     
 color.branch=auto     
 color.interactive=auto     
@@ -88,10 +88,10 @@ The main tool you use to determine which files are in which state is the git st
 If you run this command directly after a clone, you should see something like this:    
 ```
 $ git status   
-```  
-On branch master    
+On branch master   
 Your branch is up-to-date with 'origin/master'.    
 nothing to commit, working directory clean    
+```   
 This means you have a clean working directory – in other words, there are no tracked and modified files. Git also doesn’t see any untracked files,    
 or they would be listed here. Finally, the command tells you which branch you’re on and informs you that it has not diverged from the same branch     
 on the server. For now, that branch is always “master”, which is the default; you won’t worry about it here. Git Branching will go over branches and references in detail.    
@@ -111,6 +111,7 @@ in the first place, you're less likely to get feedback and have your changed
 +merged in. Also, split your changes into comprehensive chunks if your patch is    
 +longer than a dozen lines.    
 ```      
+
 That command compares what is in your working directory with what is in your staging area. The result tells you the changes you’ve made that you haven’t yet staged.     
 If you want to see what you’ve staged that will go into your next commit, you can use `git diff --staged`. This command compares your staged changes to your last commit:       
 ```
@@ -123,5 +124,6 @@ index 0000000..03902a1
 @@ -0,0 +1 @@    
 +My Project    
 ```    
+
 It’s important to note that git diff by itself doesn’t show all changes made since your last commit – only changes that are still unstaged.      
 This can be confusing, because if you’ve staged all of your changes, git diff will give you no output.    
