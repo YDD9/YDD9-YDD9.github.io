@@ -28,10 +28,10 @@ If you want to check your settings, you can use the git config --list command 
 ```
 $ git config --list   
 user.name=John Doe   
-user.email=johndoe@example.com   
-color.status=auto    
-color.branch=auto    
-color.interactive=auto    
+user.email=johndoe@example.com    
+color.status=auto     
+color.branch=auto     
+color.interactive=auto     
 color.diff=auto   
 ...   
 ```    
