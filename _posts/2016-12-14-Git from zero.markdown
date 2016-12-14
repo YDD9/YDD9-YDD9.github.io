@@ -39,12 +39,13 @@ color.diff=auto
 ...   
 ```    
 
-You may see keys more than once, because Git reads the same key from different files (/etc/gitconfig and ~/.gitconfig, for example). 
-In this case, Git uses the last value for each unique key it sees.
-You can also check what Git thinks a specific key’s value is by typing git config <key>:  
+You may see keys more than once, because Git reads the same key from different files (/etc/gitconfig and ~/.gitconfig, for example).  
+In this case, Git uses the last value for each unique key it sees. You can also check what Git thinks a specific key’s value is by typing git config <key>:   
+
 ```
 $ git config user.name   
 ```  
+
 
 ## Adding an existing project to GitHub using the command line <a name="addproj"></a>
 Create a new repository on GitHub. To avoid errors, do not initialize the new repository with README, license, 
@@ -72,9 +73,11 @@ git remote add origin remote repository URL
 ```    
 Display the added remote `git remote -v`   
 7. Push the changes in your local repository to GitHub.   
+
 ```
 git push origin master   
 ```    
+
 Pushes the changes in your local repository up to the remote repository you specified as the origin    
 8. Changing a remote's URL. The `git remote set-url` command takes two arguments:    
     a). An existing remote name. For example, origin or upstream are two common choices.    
@@ -91,6 +94,7 @@ also `git remote rm <name>` that deletes every remotes matching the given name,
 ## Checking the Status of Your Files <a name="statuscheck"></a>
 The main tool you use to determine which files are in which state is the git status command.    
 If you run this command directly after a clone, you should see something like this:    
+
 ```
 $ git status   
 On branch master   
@@ -103,6 +107,7 @@ or they would be listed here. Finally, the command tells you which branch you’
 on the server. For now, that branch is always “master”, which is the default; you won’t worry about it here. Git Branching will go over branches and references in detail.    
 
 To see what you’ve changed but not yet staged, type git diff with no other arguments:     
+
 ```
 $ git diff   
 diff --git a/CONTRIBUTING.md b/CONTRIBUTING.md    
@@ -120,6 +125,7 @@ in the first place, you're less likely to get feedback and have your changed
 
 That command compares what is in your working directory with what is in your staging area. The result tells you the changes you’ve made that you haven’t yet staged.     
 If you want to see what you’ve staged that will go into your next commit, you can use `git diff --staged`. This command compares your staged changes to your last commit:       
+
 ```
 $ git diff --staged     
 diff --git a/README b/README    
