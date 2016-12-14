@@ -15,16 +15,19 @@ Now you have git downloaded and ready to start.
 ## Git config <a name="gitconfig"></a>
 The first thing you should do when you install Git is to set your user name and email address.   
 This is important because every Git commit uses this information, and it’s immutably baked into the commits you start creating:   
+
 ```
 $ git config --global user.name "John Doe"     
 $ git config --global user.email johndoe@example.com     
 ```   
+
 Again, you need to do this only once if you pass the --global option, because then Git will always use that information for 
 anything you do on that system. If you want to override this with a different name or email address for specific projects, 
 you can run the command without the --global option when you’re in that project.
 
 Checking Your Settings
 If you want to check your settings, you can use the git config --list command to list all the settings Git can find at that point:  
+
 ```
 $ git config --list    
 user.name=John Doe    
@@ -35,6 +38,7 @@ color.interactive=auto
 color.diff=auto   
 ...   
 ```    
+
 You may see keys more than once, because Git reads the same key from different files (/etc/gitconfig and ~/.gitconfig, for example). 
 In this case, Git uses the last value for each unique key it sees.
 You can also check what Git thinks a specific key’s value is by typing git config <key>:  
@@ -73,12 +77,13 @@ git push origin master
 ```    
 Pushes the changes in your local repository up to the remote repository you specified as the origin    
 8. Changing a remote's URL. The `git remote set-url` command takes two arguments:    
-  a). An existing remote name. For example, origin or upstream are two common choices.      
-  b). A new URL for the remote. For example:     
-      + If you're updating to use HTTPS, your URL might look like:     
+    a). An existing remote name. For example, origin or upstream are two common choices.    
+    b). A new URL for the remote. For example:     
+       If you're updating to use HTTPS, your URL might look like:     
           `https://github.com/USERNAME/OTHERREPOSITORY.git`    
-      + If you're updating to use SSH, your URL might look like:      
+       If you're updating to use SSH, your URL might look like:      
           `git@github.com:USERNAME/OTHERREPOSITORY.git`     
+
 9. Delete remote URLs by their names. As a side note, it should be pointed that there is     
 also `git remote rm <name>` that deletes every remotes matching the given name, whatever the URLs.    
 
@@ -92,6 +97,7 @@ On branch master
 Your branch is up-to-date with 'origin/master'.    
 nothing to commit, working directory clean    
 ```   
+
 This means you have a clean working directory – in other words, there are no tracked and modified files. Git also doesn’t see any untracked files,    
 or they would be listed here. Finally, the command tells you which branch you’re on and informs you that it has not diverged from the same branch     
 on the server. For now, that branch is always “master”, which is the default; you won’t worry about it here. Git Branching will go over branches and references in detail.    
