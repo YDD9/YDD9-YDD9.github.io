@@ -73,20 +73,15 @@ git remote add origin remote repository URL
 ```    
 Display the added remote `git remote -v`   
 7. Push the changes in your local repository to GitHub.   
-
 ```
 git push origin master   
 ```    
-
 Pushes the changes in your local repository up to the remote repository you specified as the origin    
-8. Changing a remote's URL. The `git remote set-url` command takes two arguments:    
-    a). An existing remote name. For example, origin or upstream are two common choices.    
-    b). A new URL for the remote. For example:     
-       If you're updating to use HTTPS, your URL might look like:     
-          `https://github.com/USERNAME/OTHERREPOSITORY.git`    
-       If you're updating to use SSH, your URL might look like:      
-          `git@github.com:USERNAME/OTHERREPOSITORY.git`     
-
+8. Changing a remote's URL. The `git remote set-url` command takes two arguments:  
+a). An existing remote name. For example, origin or upstream are two common choices.    
+b). A new URL for the remote. For example:   
+  If you're updating to use HTTPS, your URL might look like: `https://github.com/USERNAME/OTHERREPOSITORY.git`    
+  If you're updating to use SSH, your URL might look like: `git@github.com:USERNAME/OTHERREPOSITORY.git`     
 
 9. Delete remote URLs by their names. As a side note, it should be pointed that there is     
 also `git remote rm <name>` that deletes every remotes matching the given name, whatever the URLs.    
