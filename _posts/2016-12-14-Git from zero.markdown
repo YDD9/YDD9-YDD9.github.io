@@ -140,6 +140,7 @@ This can be confusing, because if you’ve staged all of your changes, git diff
 
 ## Get git repository <a name="gitpull"></a>  
 + Clone the full repository  
+
 You clone a repository with `git clone [url]`. For example, if you want to clone the Git linkable library called libgit2, you can do so like this:  
 ```
 $ git clone https://github.com/libgit2/libgit2
@@ -151,6 +152,7 @@ $ git clone https://github.com/libgit2/libgit2 mylibgit
 That command does the same thing as the previous one, but the target directory is called mylibgit.
 
 + Download only changes from repository  
+
 Incorporates changes from a remote repository into the current branch. In its default mode, `git pull` is shorthand for `git fetch` followed by `git merge FETCH_HEAD`.  
 ```
 git pull <remote name> <remote branch name>
@@ -159,6 +161,7 @@ git pull origin master
 PS: If any of the remote changes overlap with local uncommitted changes, the merge will be automatically cancelled and the work tree untouched. It is generally best to get any local changes in working order before pulling or stash them away with `git-stash`.  
 
 + Working on different branches  
+
 List existing branches, the current branch will be highlighted with an asterisk *
 ```
 git branch --list
@@ -167,6 +170,7 @@ Go to an existing branch
 ```
 git checkout mybranch1
 ```   
-Create a branch `mycranch2` and go to this branch immediately 'git checkout -b mybranch2'.  
+Create a branch `mycranch2` and go to this branch immediately `git checkout -b mybranch2`.   
+
 
 
