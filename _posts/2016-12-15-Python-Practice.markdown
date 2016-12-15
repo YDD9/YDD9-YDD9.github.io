@@ -25,10 +25,25 @@ Run have an idea of computation time, `time.time()` is useful.
 Conversion between epochtime, structure time and string I use below function to avoid issues of daylight saving, timezone.
 ![My helpful screenshot]({{ site.url }}/images/Datetime.jpg)
 
+<style>
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:2px solid #ff0000;
+}
+
+th{
+    border:2px solid #000000;
+}
+
+td{
+    border:1px solid #000000;
+}
+</style>
 
 
-|formatter  | description                           |
-| ----------|---------------------------------------|
+|formatter    | description                           |
+| ------------|---------------------------------------|
 |"%a"		|Locale’s abbreviated weekday name.		| 
 |"%A"		|Locale’s full weekday name.		| 
 |"%b"		|Locale’s abbreviated month name.		| 
@@ -51,6 +66,9 @@ Conversion between epochtime, structure time and string I use below function to 
 |"%Y"		|Year with century as a decimal number.		| 
 |"%Z"		|Time zone name (no characters if no time zone exists).		| 
 |"%%"		|A literal '%' character.		|
+
+HTML example
+http://www.w3schools.com/html/html_tables.asp
 
 Generate a list of timestamp  
 
