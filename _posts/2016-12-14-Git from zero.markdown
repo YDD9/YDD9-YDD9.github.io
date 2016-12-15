@@ -82,7 +82,6 @@ a). An existing remote name. For example, origin or upstream are two common choi
 b). A new URL for the remote. For example:   
   If you're updating to use HTTPS, your URL might look like: `https://github.com/USERNAME/OTHERREPOSITORY.git`    
   If you're updating to use SSH, your URL might look like: `git@github.com:USERNAME/OTHERREPOSITORY.git`     
-
 9. Delete remote URLs by their names. As a side note, it should be pointed that there is     
 also `git remote rm <name>` that deletes every remotes matching the given name, whatever the URLs.    
 
