@@ -50,39 +50,40 @@ $ git config user.name
 ## Adding an existing project to GitHub using the command line <a name="addproj"></a>
 Create a new repository on GitHub. To avoid errors, do not initialize the new repository with README, license, 
 or gitignore files. You can add these files after your project has been pushed to GitHub. 
-1. Open Git Bash.   
-2. Change the current working directory to your local project. (pwd, cd tab, dir)   
-3. Initialize the local directory as a Git repository.   
+
+1.Open Git Bash.   
+2.Change the current working directory to your local project. (pwd, cd tab, dir)   
+3.Initialize the local directory as a Git repository.   
 ```
 git init   
-```    
-4. Add the files in your new local repository. This stages them for the first commit.    
+```
+4.Add the files in your new local repository. This stages them for the first commit.    
 ```
 git add .   
-```    
-5. Adds the files in the local repository and stages them for commit. To unstage a file, use `git reset HEAD YOUR-FILE`.   
+```
+5.Adds the files in the local repository and stages them for commit. To unstage a file, use `git reset HEAD YOUR-FILE`.   
 Commit the files that you've staged in your local repository.   
 ```
 git commit -m "First commit"   
 ```    
 Commits the tracked changes and prepares them to be pushed to a remote repository. To remove this commit and modify the file,   
 use `git reset --soft HEAD~1` and commit and add the file again.   
-6. In the Command prompt, add the URL for the remote repository where your local repository will be pushed. 'orgin' is the name of the remote repo.   
+6.In the Command prompt, add the URL for the remote repository where your local repository will be pushed. 'orgin' is the name of the remote repo.   
 ```
 git remote add origin remote repository URL   
 ```    
 Display the added remote `git remote -v`   
-7. Push the changes in your local repository to GitHub.   
+7.Push the changes in your local repository to GitHub.   
 ```
 git push origin master   
 ```    
 Pushes the changes in your local repository up to the remote repository you specified as the origin    
-8. Changing a remote's URL. The `git remote set-url` command takes two arguments:  
+8.Changing a remote's URL. The `git remote set-url` command takes two arguments:  
 a). An existing remote name. For example, origin or upstream are two common choices.    
 b). A new URL for the remote. For example:   
   If you're updating to use HTTPS, your URL might look like: `https://github.com/USERNAME/OTHERREPOSITORY.git`    
   If you're updating to use SSH, your URL might look like: `git@github.com:USERNAME/OTHERREPOSITORY.git`     
-9. Delete remote URLs by their names. As a side note, it should be pointed that there is     
+9.Delete remote URLs by their names. As a side note, it should be pointed that there is     
 also `git remote rm <name>` that deletes every remotes matching the given name, whatever the URLs.    
 
 
