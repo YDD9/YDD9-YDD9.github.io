@@ -19,6 +19,7 @@ categories: Python
 from datetime import datetime  
 import time  
 import pandas as pd
+import calendar
 ```  
 
 Run have an idea of computation time, `time.time()` is useful.
@@ -81,6 +82,12 @@ array(['2016-08-01', '2016-08-01', '2016-08-02', '2016-08-02',
       dtype='|S10')  
 ```  
  
+Check leap year:  
+
+```
+calendar.isleap(datetime.now().timetuple().tm_year)
+```  
+
 ## Division <a name="division"></a>  
 By default, python2.7 division return only the rounded integer part. To force results into float try below
 
