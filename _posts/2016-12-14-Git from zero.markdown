@@ -11,6 +11,7 @@ Now you have git downloaded and ready to start.
 1. [Git config](#gitconfig)
 2. [Adding an existing project to GitHub using the command line](#addproj)
 3. [Checking the Status of Your Files](#statuscheck)
+4. [Get git repository](#gitpull)
 
 ## Git config <a name="gitconfig"></a>
 The first thing you should do when you install Git is to set your user name and email address.   
@@ -135,3 +136,17 @@ index 0000000..03902a1
 
 It’s important to note that git diff by itself doesn’t show all changes made since your last commit – only changes that are still unstaged.      
 This can be confusing, because if you’ve staged all of your changes, git diff will give you no output.    
+
+
+## Get git repository <a name="gitpull"></a>  
+You clone a repository with `git clone [url]`. For example, if you want to clone the Git linkable library called libgit2, you can do so like this:  
+```
+$ git clone https://github.com/libgit2/libgit2
+```  
+That creates a directory named “libgit2”, initializes a .git directory inside it, pulls down all the data for that repository, and checks out a working copy of the latest version. If you go into the new libgit2 directory, you’ll see the project files in there, ready to be worked on or used. If you want to clone the repository into a directory named something other than “libgit2”, you can specify that as the next command-line option:  
+```
+$ git clone https://github.com/libgit2/libgit2 mylibgit
+```  
+That command does the same thing as the previous one, but the target directory is called mylibgit.
+
+
