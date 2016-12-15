@@ -153,7 +153,7 @@ $ git clone https://github.com/libgit2/libgit2 mylibgit
 
 That command does the same thing as the previous one, but the target directory is called mylibgit.
 
-+ Download only changes from repository  
++ Download code changes from repository  
 
 Incorporates changes from a remote repository into the current branch. In its default mode, `git pull` is shorthand for `git fetch` followed by `git merge FETCH_HEAD`.  
 
