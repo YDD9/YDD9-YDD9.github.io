@@ -36,8 +36,8 @@ Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most ou
 [Building an Image-Heavy Jekyll Site]: http://benwilhelm.com/the-website/nerd-stuff/2014/12/21/building-an-image-heavy-jekyll-site/
 [Gallery Images]: http://stackoverflow.com/questions/36448853/which-folder-should-i-put-my-static-files-in-jekyll  
 
-[Markdown cheatsheet]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+[Markdown cheatsheet]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet  
 [Markdown table of contents]: http://stackoverflow.com/questions/11948245/markdown-to-create-pages-and-table-of-contents
 
-[Image example]({{ site.url }}/images/Datetime.jpg)
+[Image example]({{ site.url }}/images/Datetime.jpg)  
 ![My helpful screenshot]({{ site.url }}/images/Datetime.jpg)
