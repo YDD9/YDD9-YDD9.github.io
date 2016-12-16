@@ -98,3 +98,135 @@ By default, python2.7 division return only the rounded integer part. To force re
 ```  
 
 
+## Function arguments <a name="argparser"></a>  
+two common one  
+
+```
+import argparser
+import getopt
+```  
+
+An example using only Unix style options:  
+
+```
+>>> import getopt
+>>> args = '-a -b -cfoo -d bar a1 a2'.split()
+>>> args
+['-a', '-b', '-cfoo', '-d', 'bar', 'a1', 'a2']
+>>> optlist, args = getopt.getopt(args, 'abc:d:')
+>>> optlist
+[('-a', ''), ('-b', ''), ('-c', 'foo'), ('-d', 'bar')]
+>>> args
+['a1', 'a2']
+```    
+
+Using long option names is equally easy:
+
+```
+>>> s = '--condition=foo --testing --output-file abc.def -x a1 a2'
+>>> args = s.split()
+>>> args
+['--condition=foo', '--testing', '--output-file', 'abc.def', '-x', 'a1', 'a2']
+>>> optlist, args = getopt.getopt(args, [
+...     'condition=', 'output-file=', 'testing'])
+>>> optlist
+[('--condition', 'foo'), ('--testing', ''), ('--output-file', 'abc.def')]
+>>> args
+['a1', 'a2']
+
+# "--help" and "-h" style combined:
+>>> s = '--condition=foo --testing --output-file abc.def -x a1 a2'
+>>> args = s.split()
+>>> args
+['--condition=foo', '--testing', '--output-file', 'abc.def', '-x', 'a1', 'a2']
+>>> optlist, args = getopt.getopt(args, 'x', [
+...     'condition=', 'output-file=', 'testing'])
+>>> optlist
+[('--condition', 'foo'), ('--testing', ''), ('--output-file', 'abc.def'), ('-x', '')]
+>>> args
+['a1', 'a2']
+
+```    
+
+In a script, typical usage is something like this:
+
+```
+import getopt, sys
+
+def main():
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], "ho:v", ["help", "output="])
+    except getopt.GetoptError as err:
+        # print help information and exit:
+        print str(err)  # will print something like "option -a not recognized"
+        usage()
+        sys.exit(2)
+    output = None
+    verbose = False
+    for o, a in opts:
+        if o == "-v":
+            verbose = True
+        elif o in ("-h", "--help"):
+            usage()
+            sys.exit()
+        elif o in ("-o", "--output"):
+            output = a
+        else:
+            assert False, "unhandled option"
+    # ...
+
+if __name__ == "__main__":
+    main()
+```   
+
+Note that an equivalent command line interface could be produced with less code and more informative help and error messages by using the argparse module:
+
+```
+import argparse
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-o', '--output')
+    parser.add_argument('-v', dest='verbose', action='store_true')
+    args = parser.parse_args()
+    # ... do something with args.output ...
+    # ... do something with args.verbose ..    
+```  
+
+Combining Positional and Optional arguments  
+Define firstly all positional arguments then start optional arguments.      
+You can have help / extra information and display them.   
+You can force argument type to int instead of default string.    
+You can provide a default value for the argument.    
+
+```
+import argparse
+parser = argparse.ArgumentParser(description='A foo that bars',
+                                epilog="And that's how you'd foo a bar")  
+parser.print_help()                   
+parser.add_argument("square", type=int,  
+                    help="display a square of a given number")
+parser.add_argument("-v", "--verbose", action="store_true",  
+                    help="increase output verbosity")  
+parser.add_argument('--example', nargs='?',    
+                    const=1, type=int)                     
+args = parser.parse_args()  
+answer = args.square**2  
+if args.verbose:  
+    print "the square of {} equals {}".format(args.square, answer)  
+else:  
+    print answer  
+    
+print args
+print args.example
+print args.info
+```   
+
+nargs='?' means 0-or-1 arguments  
+const=1 sets the default when there are 0 arguments  
+type=int converts the argument to int  
+
+
+
+
+
