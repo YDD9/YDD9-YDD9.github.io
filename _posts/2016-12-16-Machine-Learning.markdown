@@ -1,3 +1,13 @@
+---
+layout: post
+title:  "Python scikit-learn ML"
+date:   2016-12-16 14:58:39 +0100
+categories: Python
+---
+
+
+
+
 # scikit-learn  
 * Simple and efficient tools for data mining and data analysis  
 * Accessible to everybody, and reusable in various contexts  
