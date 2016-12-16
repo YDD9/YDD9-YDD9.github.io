@@ -15,7 +15,9 @@ categories: Python
 * Open source, commercially usable - __BSD license__   
 
 # table of contents
-[Installing the latest release](#install)
+[Installing the latest release](#install)  
+[Data preparation](#dataprepare)   
+
 
 ## Installing the latest release <a name=install></a>
 
@@ -42,5 +44,8 @@ or conda:
 ```
 conda install scikit-learn  
 ```  
+
+
+## Data preparation <a name=dataprepare></a>  
 
 
