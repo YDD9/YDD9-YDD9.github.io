@@ -56,11 +56,11 @@ td{
 |"%j"		|Day of the year as a decimal number [001,366].		| 
 |"%m"		|Month as a decimal number [01,12].		| 
 |"%M"		|Minute as a decimal number [00,59].		| 
-|"%p"		|Locale’s equivalent of either AM or PM.		|(1)
-|"%S"		|Second as a decimal number [00,61].		|(2)
-|"%U"		|Week number of the year (Sunday as the first day of the week) as a decimal number [00,53]. All days in a new year preceding the first Sunday are considered to be in week 0.		|(3)
+|"%p"		|Locale’s equivalent of either AM or PM.		|
+|"%S"		|Second as a decimal number [00,61].		|
+|"%U"		|Week number of the year (Sunday as the first day of the week) as a decimal number [00,53]. All days in a new year preceding the first Sunday are considered to be in week 0.		|
 |"%w"		|Weekday as a decimal number [0(Sunday),6].		| 
-|"%W"		|Week number of the year (Monday as the first day of the week) as a decimal number [00,53]. All days in a new year preceding the first Monday are considered to be in week 0.		|(3)
+|"%W"		|Week number of the year (Monday as the first day of the week) as a decimal number [00,53]. All days in a new year preceding the first Monday are considered to be in week 0.		|
 |"%x"		|Locale’s appropriate date representation.		| 
 |"%X"		|Locale’s appropriate time representation.		| 
 |"%y"		|Year without century as a decimal number [00,99].		| 
