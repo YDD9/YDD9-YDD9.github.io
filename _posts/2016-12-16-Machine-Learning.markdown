@@ -48,6 +48,20 @@ conda install scikit-learn
 
 ## Data preparation <a name=dataprepare></a>  
 
+#### 1. Loading ready to use data from sklearn
+
+```
+from sklearn import datasets
+
+# eg. Boston house price
+boston = datasets.load_boston()
+y = boston.target
+X = bosston.data
+```  
+
+
+
+#### 2. Splitting your data
 Learning the parameters of a prediction function and testing it on the same data is a methodological mistake: a model that would just repeat the labels of the samples that it has just seen would have a perfect score but would fail to predict anything useful on yet-unseen data. This situation is called overfitting. To avoid it, it is common practice when performing a (supervised) machine learning experiment to hold out part of the available data as a test set X_test, y_test  
 
 ```
@@ -97,6 +111,10 @@ array([[2, 3],
 >>> y_test
 [1, 4]
 ```  
+
+#### 3. features normalization or standardization  
+
+
 
 
 
