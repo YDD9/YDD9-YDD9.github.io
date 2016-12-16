@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Python Practice"
-date:   2016-12-15 14:08:39 +0100
+date:   2016-12-16 14:58:39 +0100
 categories: Python
 ---
 
