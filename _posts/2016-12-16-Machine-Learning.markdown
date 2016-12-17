@@ -19,7 +19,7 @@ categories: Python
 [Data preparation](#dataprepare)   
 
 
-## Installing the latest release <a name=install></a>
+## Installing the latest release <a name="install"></a>
 
 Scikit-learn requires:  
 Python (>= 2.6 or >= 3.3),  
@@ -46,7 +46,7 @@ conda install scikit-learn
 ```  
 
 
-## Data preparation <a name=dataprepare></a>  
+## Data preparation <a name="dataprepare"></a>  
 
 #### 1. Loading ready to use data from sklearn
 
