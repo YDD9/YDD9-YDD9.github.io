@@ -230,8 +230,8 @@ type=int converts the argument to int
 
 ## Logs <a name="logs"></a>
 
-Logging cookbook
-https://docs.python.org/2.7/howto/logging-cookbook.html
+Logging cookbook  
+https://docs.python.org/2.7/howto/logging-cookbook.html  
 
 A typical approach is to have something like the following at the top of a file:
 
@@ -248,5 +248,5 @@ def add(x, y):
     return x + y
 ```
 
-Log with decorators
-https://www.freshbooks.com/developers/blog/logging-actions-with-python-decorators-part-i-decorating-logged-functions
+Log with decorators  
+https://www.freshbooks.com/developers/blog/logging-actions-with-python-decorators-part-i-decorating-logged-functions  
