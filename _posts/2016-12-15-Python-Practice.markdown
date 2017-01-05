@@ -12,6 +12,7 @@ categories: Python
 [Python installer](#pythoninstaller)  
 [function \_\_init\_\_](#init)  
 [function lambda](#lambda)  
+[logs](#logs)
 
 ## Date time <a name="datetime"></a>
 
@@ -227,6 +228,25 @@ const=1 sets the default when there are 0 arguments
 type=int converts the argument to int  
 
 
+## Logs <a name="logs"></a>
 
+Logging cookbook
+https://docs.python.org/2.7/howto/logging-cookbook.html
 
+A typical approach is to have something like the following at the top of a file:
 
+```
+import logging
+log = logging.getLogger(__name__)
+```
+
+This makes log global, so it can be used within functions without passing log as an argument:
+
+```
+def add(x, y):
+    log.debug('Adding {} and {}'.format(x, y))
+    return x + y
+```
+
+Log with decorators
+https://www.freshbooks.com/developers/blog/logging-actions-with-python-decorators-part-i-decorating-logged-functions
