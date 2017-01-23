@@ -12,9 +12,10 @@ categories: Python
 [Python installer](#pythoninstaller)  
 [function \_\_init\_\_](#init)  
 [function lambda](#lambda)  
-[logs](#logs)
-[proxy](#proxy)
-[regular expression](#regularexpression)
+[logs](#logs)  
+[proxy](#proxy)  
+[regular expression](#regularexpression)  
+
 
 ## Date time <a name="datetime"></a>
 
@@ -271,6 +272,7 @@ print os.environ['HTTPS_PROXY']
 ## regular expression <a name='regularexpression'></a>
 
 ```
+
 multiline_str = 
 'name                           requested state   instances   memory   disk   urls
 test-data-seed                 started           1/1         512M     1G     test-data-seed.run.aws02-pr.ice.predix.io
@@ -279,6 +281,7 @@ test-rmd-ref-app-ui            started           1/1         64M      1G     tes
 test-websocket-server          started           1/1         512M     1G     test-websocket-server.run.aws02-pr.ice.predix.io
 test-data-exchange             started           2/2         512M     1G     test-data-exchange.run.aws02-pr.ice.predix.io
 test-data-exchange-simulator   stopped           0/1         512M     1G     test-data-exchange-simulator.run.aws02-pr.ice.predix.io'
+
 ```
 
 find out all names with regular expression
@@ -288,7 +291,8 @@ import re
 
 name = re.findall('^\S+', apps, re.M)  # flag re.Multilines search line by line, \S+ anytimes non-white space characters, ^ line starting point
 
-['perf-rabbitmq', 'perf-uaa', 'perf-acs', 'perf-asset', 'perf-time-series', 'perf-redis']
+['name', 'perf-rabbitmq', 'perf-uaa', 'perf-acs', 'perf-asset', 'perf-time-series', 'perf-redis']
+
 ```
 
 
