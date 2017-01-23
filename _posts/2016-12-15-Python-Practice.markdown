@@ -15,6 +15,7 @@ categories: Python
 [logs](#logs)  
 [proxy](#proxy)  
 [regular expression](#regularexpression)  
+[execute cmd command](#subprocess)
 
 
 ## Date time <a name="datetime"></a>
@@ -295,6 +296,31 @@ name = re.findall('^\S+', apps, re.M)  # flag re.Multilines search line by line,
 
 ```
 
+
+## execute cmd command <a name='subprocess'></a> 
+
+To execute cmd command from Python environment, subprocess is the great helper.  
+https://docs.python.org/2/library/subprocess.html
+
+
+```
+import subprocess
+>>> call = subprocess.call(['ls'])
+Lib  Scripts  unicows.dll
+>>> call
+0
+>>> output = subprocess.check_output(['ls'])
+>>> output
+'Lib\nScripts\nunicows.dll\n'
+>>> print output
+Lib
+Scripts
+unicows.dll
+
+# subprocess.call() execute the command and print out the screen and return a status 0 when successful.
+# subprocess.check_output() execute the command and save the screen output as a byte string, you have to print it out. 
+
+```
 
 
 
