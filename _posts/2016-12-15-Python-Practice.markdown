@@ -317,10 +317,10 @@ Lib
 Scripts
 unicows.dll
 
-# subprocess.call() execute the command and print out the screen and return a status 0 when successful.
-# subprocess.check_output() execute the command and save the screen output as a byte string, you have to print it out. 
-
 ```
 
+
+subprocess.call() execute the command and print out the screen and return a status 0 when successful.
+subprocess.check_output() execute the command and save the screen output as a byte string, you have to print it out. 
 
 
