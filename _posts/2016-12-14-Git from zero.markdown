@@ -58,13 +58,15 @@ Of course, you can use your GitHub username/password to authenticate, but there 
 Could be easily revoked from GitHub UI;
 Have a limited scope;
 Can be used as credentials with Git commands (this is what we need).
-Use this GitHub guide for creating access tokens.(https://help.github.com/articles/creating-an-access-token-for-command-line-use/)
+[Use this GitHub guide for creating access tokens.](https://help.github.com/articles/creating-an-access-token-for-command-line-use/)
 
 ### Enabling Git credential store
 
 Git doesn’t preserve entered credentials between calls. However, it provides a mechanism for caching credentials called Credential Store. To enable credential store we use the following command:
 
+```
 git config --global credential.helper store
+```
 
 The git credential cache runs a daemon process which caches your credentials in memory and hands them out on demand. So killing your git-credential-cache--daemon process throws all these away and results in re-prompting you for your password if you continue to use this as the cache.helper option.
 
@@ -75,7 +77,7 @@ On Windows you might be better off using the manager helper `git config --global
 Extract from Windows manual detailing the Windows credential store panel:
 
 Open User Accounts by clicking the Start button Picture of the Start button, clicking Control Panel, clicking User Accounts and Family Safety (or clicking User Accounts, if you are connected to a network domain), and then clicking User Accounts. In the left pane, click Manage your credentials.
-from http://stackoverflow.com/questions/15381198/remove-credentials-from-git
+source from http://stackoverflow.com/questions/15381198/remove-credentials-from-git
 
 
 ## Adding an existing project to GitHub using the command line <a name="addproj"></a>
