@@ -8,8 +8,8 @@ categories: API development
 Download Postman and ready to try.
 
 # Table of contents
-1. [Manage environment](#environment)
-2.
+1. [Manage environment](#environment)  
+2. []
 
 ## Manage environment <a name="environment"></a>
 
