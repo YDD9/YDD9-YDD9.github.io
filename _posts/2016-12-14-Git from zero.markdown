@@ -9,9 +9,10 @@ Now you have git downloaded and ready to start.
 
 # Table of contents
 1. [Git config](#gitconfig)
-2. [Adding an existing project to GitHub using the command line](#addproj)
-3. [Checking the Status of Your Files](#statuscheck)
-4. [Get git repository](#gitpull)
+2. [Git credential](#token)
+3. [Adding an existing project to GitHub using the command line](#addproj)
+4. [Checking the Status of Your Files](#statuscheck)
+5. [Get git repository](#gitpull)
 
 ## Git config <a name="gitconfig"></a>
 The first thing you should do when you install Git is to set your user name and email address.   
@@ -46,6 +47,35 @@ In this case, Git uses the last value for each unique key it sees. You can also 
 ```
 $ git config user.name   
 ```  
+
+
+## Git credential <a name="token"></a>
+
+### Creating GitHub Personal Access Token
+
+Of course, you can use your GitHub username/password to authenticate, but there is a better approach - Personal Access Tokens which:
+
+Could be easily revoked from GitHub UI;
+Have a limited scope;
+Can be used as credentials with Git commands (this is what we need).
+Use this GitHub guide for creating access tokens.(https://help.github.com/articles/creating-an-access-token-for-command-line-use/)
+
+### Enabling Git credential store
+
+Git doesn’t preserve entered credentials between calls. However, it provides a mechanism for caching credentials called Credential Store. To enable credential store we use the following command:
+
+git config --global credential.helper store
+
+The git credential cache runs a daemon process which caches your credentials in memory and hands them out on demand. So killing your git-credential-cache--daemon process throws all these away and results in re-prompting you for your password if you continue to use this as the cache.helper option.
+
+You could also disable use of the git credential cache using `git config --global --unset credential.helper`. Then reset this and you would continue to have the cached credentials available for other repositories (if any). You may also need to do `git config --system --unset credential.helper` if this has been set in the system config file (eg: Git for Windows 2).
+
+On Windows you might be better off using the manager helper `git config --global credential.helper manager`. This stores your credentials in the Windows credential store which has a Control Panel interface where you can delete or edit your stored credentials. With this store, your details are secured by your Windows login and can persist over multiple sessions. The manager helper included in Git for Windows 2.x has replaced the earlier *wincred* helper that was added in Git for Windows 1.8.1.1. A similar helper called winstore is also available online and was used with GitExtensions as it offers a more GUI driven interface. The manager helper offers the same GUI interface as winstore.
+
+Extract from Windows manual detailing the Windows credential store panel:
+
+Open User Accounts by clicking the Start button Picture of the Start button, clicking Control Panel, clicking User Accounts and Family Safety (or clicking User Accounts, if you are connected to a network domain), and then clicking User Accounts. In the left pane, click Manage your credentials.
+from http://stackoverflow.com/questions/15381198/remove-credentials-from-git
 
 
 ## Adding an existing project to GitHub using the command line <a name="addproj"></a>
