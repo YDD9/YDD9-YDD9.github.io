@@ -231,6 +231,8 @@ nargs='?' means 0-or-1 arguments
 const=1 sets the default when there are 0 arguments  
 type=int converts the argument to int  
 
+### When run the python command with arguments use the double quotation " instead of simple quotation'
+
 
 ## Logs <a name="logs"></a>
 
