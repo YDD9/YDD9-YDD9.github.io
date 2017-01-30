@@ -16,6 +16,7 @@ categories: Python
 [proxy](#proxy)  
 [regular expression](#regularexpression)  
 [execute cmd command](#subprocess)
+[HTTP requests](#requests)
 
 
 ## Date time <a name="datetime"></a>
@@ -326,3 +327,5 @@ subprocess.call() execute the command and print out the screen and return a stat
 subprocess.check_output() execute the command and save the screen output as a byte string, you have to print it out. 
 
 
+## HTTP requests <a name='requests'></a>
+import requests
