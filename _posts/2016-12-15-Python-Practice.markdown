@@ -15,8 +15,9 @@ categories: Python
 [logs](#logs)  
 [proxy](#proxy)  
 [regular expression](#regularexpression)  
-[execute cmd command](#subprocess)
-[HTTP requests](#requests)
+[execute cmd command](#subprocess)  
+[HTTP requests](#requests)  
+
 
 
 ## Date time <a name="datetime"></a>
@@ -328,4 +329,9 @@ subprocess.check_output() execute the command and save the screen output as a by
 
 
 ## HTTP requests <a name='requests'></a>
+
+```
 import requests
+```
+
+
