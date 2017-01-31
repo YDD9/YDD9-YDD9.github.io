@@ -332,6 +332,27 @@ subprocess.check_output() execute the command and save the screen output as a by
 
 ```
 import requests
+import base64
+
+# generate your base64 token.
+usrPass = "user:password"
+b64Val = base64.b64encode(usrPass)
+
+# use postman to setup your API query and click code choose Python format
+uaaurl = "https://zoneID.predix-uaa.run.asv-pr.ice.predix.io/oauth/token"
+
+uaapayload = "grant_type=client_credentials"
+uaaheaders = {
+    'content-type': "application/x-www-form-urlencoded",
+    'authorization': "Basic %s" % b64Val,
+    'cache-control': "no-cache",
+    'postman-token': "adcb4c80-f77e-f71c-f5a2-7a04ea187813"
+    }
+
+uaaresponse = requests.request("POST", uaaurl, data=uaapayload, headers=uaaheaders)
+
+print(uaaresponse.text)
 ```
+
 
 
