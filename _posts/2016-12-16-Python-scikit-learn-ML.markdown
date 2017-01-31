@@ -15,8 +15,9 @@ categories: Python
 * Open source, commercially usable - __BSD license__   
 
 # table of contents
-[Installing the latest release](#install)  
-[Data preparation](#dataprepare)   
+1 [Installing the latest release](#install)  
+2 [Data preparation](#dataprepare)   
+3 [Intergration](#intergration)
 
 
 ## Installing the latest release <a name="install"></a>
@@ -115,6 +116,51 @@ array([[2, 3],
 #### 3. features normalization or standardization  
 
 
+## Intergration <a name='intergration></a>
+
+```
+from __future__ import print_function
+import numpy as np
+from scipy.integrate import simps
+from numpy import trapz
+# The y values.  A numpy array is used here,
+# but a python list could also be used.
+y = np.array([5, 20, 4, 18, 19, 18, 7, 4])
+# Compute the area using the composite trapezoidal rule.
+area = trapz(y, dx=5)
+print("area =", area)
+# Compute the area using the composite Simpson's rule.
+area = simps(y, dx=5)
+print("area =", area)
+Output:
+area = 452.5
+area = 460.0
+```
+
+From <http://stackoverflow.com/questions/13320262/calculating-the-area-under-a-curve-given-a-set-of-coordinates-without-knowing-t> 
+
+
+Examples from scipy:
+
+```
+>>>
+>>> np.trapz([1,2,3])
+4.0
+>>> np.trapz([1,2,3], x=[4,6,8])
+8.0
+>>> np.trapz([1,2,3], dx=2)
+8.0
+>>> a = np.arange(6).reshape(2, 3)
+>>> a
+array([[0, 1, 2],
+       [3, 4, 5]])
+>>> np.trapz(a, axis=0)
+array([ 1.5,  2.5,  3.5])
+>>> np.trapz(a, axis=1)
+array([ 2.,  8.])
+```
+
+From <https://docs.scipy.org/doc/numpy/reference/generated/numpy.trapz.html> 
 
 
 
