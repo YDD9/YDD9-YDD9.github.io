@@ -116,7 +116,8 @@ array([[2, 3],
 #### 3. features normalization or standardization  
 
 
-## Intergration <a name='intergration></a>
+## Intergration <a name="intergration"></a>
+
 
 ```
 from __future__ import print_function
@@ -137,7 +138,7 @@ area = 452.5
 area = 460.0
 ```
 
-From http://stackoverflow.com/questions/13320262/calculating-the-area-under-a-curve-given-a-set-of-coordinates-without-knowing-t
+From [http://stackoverflow.com/questions/13320262/calculating-the-area-under-a-curve-given-a-set-of-coordinates-without-knowing-t](stackoverflow)
 
 
 Examples from scipy:
@@ -160,7 +161,7 @@ array([ 1.5,  2.5,  3.5])
 array([ 2.,  8.])
 ```
 
-From https://docs.scipy.org/doc/numpy/reference/generated/numpy.trapz.html
+From [https://docs.scipy.org/doc/numpy/reference/generated/numpy.trapz.html](scipy official site)
 
 
 
