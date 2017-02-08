@@ -6,6 +6,7 @@ categories: Python
 ---
 
 # Table of contents  
+[Vitual Environments](#virtualenv)  
 [Date time](#datetime)  
 [Division](#division)  
 [Function arguments](#argparser)  
@@ -17,6 +18,72 @@ categories: Python
 [regular expression](#regularexpression)  
 [execute cmd command](#subprocess)  
 [HTTP requests](#requests)  
+
+
+## Vitual Environments <a name="virtualenv"></a>  
+[page link](http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvironments-ref)
+A Virtual Environment is a tool to keep the dependencies required by different projects in separate places, by creating virtual Python environments for them. It solves the “Project X depends on version 1.x but, Project Y needs 4.x” dilemma, and keeps your global site-packages directory clean and manageable.
+
+For example, you can work on a project which requires Django 1.10 while also maintaining a project which requires Django 1.8.
+
+virtualenv is a tool to create isolated Python environments. virtualenv creates a folder which contains all the necessary executables to use the packages that a Python project would need.
+
+Install virtualenv via pip:
+
+```
+$ pip install virtualenv
+```
+
+Basic Usage
+
+    Create a virtual environment for a project:
+
+```
+$ cd my_project_folder
+$ virtualenv venv
+```
+
+virtualenv venv will create a folder in the current directory which will contain the Python executable files, and a copy of the pip library which you can use to install other packages. The name of the virtual environment (in this case, it was venv) can be anything; omitting the name will place the files in the current directory instead.
+
+This creates a copy of Python in whichever directory you ran the command in, placing it in a folder named venv.
+
+You can also use the Python interpreter of your choice (like python2.7).
+
+```
+$ virtualenv -p /usr/bin/python2.7 venv
+```
+
+or change the interpreter globally with an env variable in ~/.bashrc:
+
+```
+$ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
+```
+
+    To begin using the virtual environment, it needs to be activated:
+
+```
+$ source venv/bin/activate
+```
+
+The name of the current virtual environment will now appear on the left of the prompt (e.g. (venv)Your-Computer:your_project UserName$) to let you know that it’s active. From now on, any package that you install using pip will be placed in the venv folder, isolated from the global Python installation.
+
+Install packages as usual, for example:
+
+```
+$ pip install requests
+```
+
+    If you are done working in the virtual environment for the moment, you can deactivate it:
+
+```
+$ deactivate
+```
+
+This puts you back to the system’s default Python interpreter with all its installed libraries.
+
+To delete a virtual environment, just delete its folder. (In this case, it would be rm -rf venv.)
+
+After a while, though, you might end up with a lot of virtual environments littered across your system, and its possible you’ll forget their names or where they were placed.
 
 
 
