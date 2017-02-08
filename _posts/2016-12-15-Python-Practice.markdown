@@ -150,7 +150,25 @@ link from /usr/local/Cellar/python/2.7.9/bin/python to /usr/bin/python
 
 ln -s /usr/local/Cellar/python/2.7.9/bin/python /usr/bin/python
 
-This is necessary for all python scripts beginning with #!/usr/bin/python. Especialy easy_install will fail, if link is not there.
+This is necessary for all python scripts beginning with #!/usr/bin/python. Especialy easy_install will fail, if link is not there.  
+
+
+Other Notes
+
+Running virtualenv with the option --no-site-packages will not include the packages that are installed globally. This can be useful for keeping the package list clean in case it needs to be accessed later. [This is the default behavior for virtualenv 1.7 and later.]
+
+In order to keep your environment consistent, it’s a good idea to “freeze” the current state of the environment packages. To do this, run
+
+$ pip freeze > requirements.txt
+
+This will create a requirements.txt file, which contains a simple list of all the packages in the current environment, and their respective versions. You can see the list of installed packages without the requirements format using “pip list”. Later it will be easier for a different developer (or you, if you need to re-create the environment) to install the same packages using the same versions:
+
+$ pip install -r requirements.txt
+
+This can help ensure consistency across installations, across deployments, and across developers.
+
+Lastly, remember to **exclude the virtual environment folder from source control by adding it to the ignore list.**
+
 
 ## Date time <a name="datetime"></a>
 
