@@ -11,8 +11,9 @@ Now you have git downloaded and ready to start.
 1. [Git config](#gitconfig)
 2. [Git credential](#token)
 3. [Adding an existing project to GitHub using the command line](#addproj)
-4. [Checking the Status of Your Files](#statuscheck)
-5. [Get git repository](#gitpull)
+4. [Ignore files or directories](#ignore)
+5. [Checking the Status of Your Files](#statuscheck)
+6. [Get git repository](#gitpull)
 
 ## Git config <a name="gitconfig"></a>
 The first thing you should do when you install Git is to set your user name and email address.   
@@ -118,6 +119,19 @@ b). A new URL for the remote. For example:
   If you're updating to use SSH, your URL might look like: `git@github.com:USERNAME/OTHERREPOSITORY.git`     
 9.Delete remote URLs by their names. As a side note, it should be pointed that there is     
 also `git remote rm <name>` that deletes every remotes matching the given name, whatever the URLs.    
+
+
+## Ignore files or directories <a name="ignore"></a>  
+
+
+Create a file named .gitignore in your projects directory. Ignore directories by entering the directory name into the file (with a slash appended):
+
+```
+dir_to_ignore/
+```
+http://stackoverflow.com/questions/343646/ignoring-directories-in-git-repos-on-windows
+
+https://help.github.com/articles/ignoring-files/
 
 
 ## Checking the Status of Your Files <a name="statuscheck"></a>
