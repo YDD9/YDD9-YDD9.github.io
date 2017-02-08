@@ -7,6 +7,7 @@ categories: Python
 
 # Table of contents  
 [Vitual Environments](#virtualenv)  
+[Python brew mac](#Python brew)
 [Date time](#datetime)  
 [Division](#division)  
 [Function arguments](#argparser)  
@@ -20,8 +21,8 @@ categories: Python
 [HTTP requests](#requests)  
 
 
-## Vitual Environments <a name="virtualenv"></a>  
-[page link](http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvironments-ref)
+## Vitual Environments <a name="virtualenv"></a>    
+[page link](http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvironments-ref)   
 A Virtual Environment is a tool to keep the dependencies required by different projects in separate places, by creating virtual Python environments for them. It solves the “Project X depends on version 1.x but, Project Y needs 4.x” dilemma, and keeps your global site-packages directory clean and manageable.
 
 For example, you can work on a project which requires Django 1.10 while also maintaining a project which requires Django 1.8.
@@ -85,7 +86,71 @@ To delete a virtual environment, just delete its folder. (In this case, it would
 
 After a while, though, you might end up with a lot of virtual environments littered across your system, and its possible you’ll forget their names or where they were placed.
 
+## Python brew mac <a name="Python brew"></a>
 
+[page link](http://superuser.com/questions/915810/pip-not-working-on-hombrew-python-2-7-install)  
+Generally, homebrew will install a formula into /usr/local/Cellar/formula and then place a link at /usr/local/bin/formula.
+
+To make use of your installed formulae, make sure /usr/local/bin is in your $PATH. Show your $PATH by typing
+
+echo $PATH
+
+If /usr/local/bin is not in your $PATH, put this line at the end of your ~/.profile file.
+
+export PATH="/usr/local/bin:$Path"
+
+Now, check what pythons are found on your OSX by typing:
+
+which -a python
+
+There should be one python found at /usr/bin/ (the Apple python) and one at /usr/local/bin/ which is the Homebrew python.
+
+which python
+
+will show you, which python is found first in your $PATH and will be executed when you invoke python.
+
+If you want to know, where the executable is, show it by typing
+
+ls -l $(which python)
+
+This could look like this: lrwxr-xr-x 1 root wheel 68 7 Mai 13:22 python -> /usr/local/bin/python
+
+This will work for pip as well.
+
+If you show the results of this steps, we can probably help you much easier.
+
+-- UPDATE --
+
+You have /usr/local/bin/python linked to /usr/local/Cellar/python/2.7.9/bin/python. -> brew install python worked.
+
+show, if pip is installed by typing
+
+brew list python | grep pip
+
+You should see
+
+/usr/local/Cellar/python/2.7.9/bin/pip
+
+If not, check, if there are links, which are not done with brew install. Told you something like this:
+
+"Error: The `brew link` step did not complete successfully
+The formula built, but is not symlinked into /usr/local"
+
+To force the link and overwrite all conflicting files:
+
+brew link --overwrite python
+
+To list all files that would be deleted:
+
+brew link --overwrite --dry-run python
+
+** NO standard Apple /usr/bin/python **
+
+link from /usr/local/Cellar/python/2.7.9/bin/python to /usr/bin/python
+
+ln -s /usr/local/Cellar/python/2.7.9/bin/python /usr/bin/python
+
+This is necessary for all python scripts beginning with #!/usr/bin/python. Especialy easy_install will fail, if link is not there.
 
 ## Date time <a name="datetime"></a>
 
