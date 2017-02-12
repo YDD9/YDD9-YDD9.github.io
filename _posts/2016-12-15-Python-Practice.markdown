@@ -7,7 +7,7 @@ categories: Python
 
 # Table of contents  
 [Vitual Environments](#virtualenv)  
-[Python brew mac](#Python brew)
+[Python brew mac](#Python brew)  
 [Date time](#datetime)  
 [Division](#division)  
 [Function arguments](#argparser)  
