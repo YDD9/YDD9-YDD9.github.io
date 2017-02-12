@@ -8,6 +8,7 @@ categories: Python
 # Table of contents  
 [Vitual Environments](#virtualenv)  
 [Python brew mac](#Python brew)  
+[Pycharm use virtualenv](#Pycharm virtual)  
 [Date time](#datetime)  
 [Division](#division)  
 [Function arguments](#argparser)  
@@ -168,6 +169,17 @@ $ pip install -r requirements.txt
 This can help ensure consistency across installations, across deployments, and across developers.
 
 Lastly, remember to **exclude the virtual environment folder from source control by adding it to the ignore list.**
+
+
+## Pycharm use virtualenv <a name="Pycharm virtual"> </a>
+
+Configure PyCharm
+Select File, click Settings.
+In the left pane, enter Project Interpreter in the search box, then click Project Interpreter.
+In the right pane, click the gear icon, click More….
+In the Project Interpreters dialog box, click the plus sign +, click Add Local.
+Enter ~/virtualenvs/<your virtualenv name>/bin/python in the path. If you followed the earlier post to setup a virtual environment for Python then enter ~/virtualenvs/api/bin/python.
+Click OK.
 
 
 ## Date time <a name="datetime"></a>
