@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "Python openCV"
+date:   2017-2-12 23:48:39 +0100
+categories: Python
+---
+
 
 #Table of contents
 [openCV installation](#installation)  
