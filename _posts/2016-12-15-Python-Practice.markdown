@@ -8,6 +8,7 @@ categories: Python
 # Table of contents  
 [Vitual Environments](#virtualenv)  
 [Python brew mac](#Python brew)  
+[conda & Anaconda distribution](#conda)  
 [Pycharm use virtualenv](#Pycharm virtual)  
 [Date time](#datetime)  
 [Division](#division)  
@@ -86,6 +87,8 @@ This puts you back to the system’s default Python interpreter with all its ins
 To delete a virtual environment, just delete its folder. (In this case, it would be rm -rf venv.)
 
 After a while, though, you might end up with a lot of virtual environments littered across your system, and its possible you’ll forget their names or where they were placed.
+
+
 
 ## Python brew mac <a name="Python brew"></a>
 
@@ -169,6 +172,8 @@ $ pip install -r requirements.txt
 This can help ensure consistency across installations, across deployments, and across developers.
 
 Lastly, remember to **exclude the virtual environment folder from source control by adding it to the ignore list.**
+
+
 
 ## conda & Anaconda distribution <a name="conda"></a>
 
