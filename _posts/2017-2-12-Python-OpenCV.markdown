@@ -18,4 +18,6 @@ with Homebrew, virtualenv, virtualenvwrapper.
 Honestly, above installation is complicated and fail easily. I failed at cmake steps and decided to re-use conda to manage libs. At the beginning I didn't choose conda is because homebrew - conda gives warnings, although I didn't notice anything wrong. To overcome possible conflict, just temporarily disable the conda path in your file /.bash-profile when brew doesn't work.  
 
 After I read this article [Conda: Myths and Misconceptions](https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/) I believe that I should not bother myself and I should use Anaconda distribution and Conda manages vitual env as well as all in/external libs.  
+
+conda can also manage environments, [see details](https://conda.io/docs/using/envs.html).
  
