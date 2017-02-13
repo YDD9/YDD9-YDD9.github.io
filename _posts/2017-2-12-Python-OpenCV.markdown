@@ -19,5 +19,48 @@ Honestly, above installation is complicated and fail easily. I failed at cmake s
 
 After I read this article [Conda: Myths and Misconceptions](https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/) I believe that I should not bother myself and I should use Anaconda distribution and Conda manages vitual env as well as all in/external libs.  
 
-conda can also manage environments, [see details](https://conda.io/docs/using/envs.html).
- 
+conda can also manage environments, [see conda documents](https://conda.io/docs/using/envs.html).
+
+[an example guide through](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/)
+### check current using env and all available envs
+
+```
+conda info --envs
+```
+
+### create an environment
+
+```
+conda create --name bunnies python=3 astroid babel
+conda create --name snowflakes biopython
+
+```
+
+### clone an env
+
+```
+conda create --name flowers --clone snowflakes
+```
+
+### remove an env
+
+```
+conda remove --name flowers --all
+```
+
+### change env de/activate
+
+```
+Linux, OS X: source activate snowflakes
+Linux, OS X: source deactivate
+
+Windows: activate snowflakes
+Windows: deactivate
+```
+
+### export env file and create env based on yml
+
+```
+conda env export > environment.yml
+conda env create -f environment.yml
+```
