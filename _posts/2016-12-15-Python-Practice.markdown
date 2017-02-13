@@ -170,6 +170,60 @@ This can help ensure consistency across installations, across deployments, and a
 
 Lastly, remember to **exclude the virtual environment folder from source control by adding it to the ignore list.**
 
+## conda & Anaconda distribution <a name="conda"></a>
+
+Honestly, above installation is complicated and fails easily. At the beginning I didn't choose conda is because homebrew - conda together gives warnings, although I didn't notice anything wrong. To overcome possible conflicts, just temporarily disable the conda path in your file ~/.bash-profile when brew doesn't work.  
+
+After I read this article [Conda: Myths and Misconceptions](https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/) I'm certain that I should use Anaconda distribution and Conda to manage env as well as all in/external libs.  
+
+[conda env manage doc.](https://conda.io/docs/using/envs.html).
+
+[an example guide through](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/)  
+
+### check current using env and all available envs
+
+```
+conda info --envs
+```
+
+### create an environment
+
+```
+conda create --name bunnies python=3 astroid babel
+conda create --name snowflakes biopython
+
+```
+
+### clone an env
+
+```
+conda create --name flowers --clone snowflakes
+```
+
+### remove an env
+
+```
+conda remove --name flowers --all
+```
+
+### change env de/activate
+
+```
+Linux, OS X: source activate snowflakes
+Linux, OS X: source deactivate
+
+Windows: activate snowflakes
+Windows: deactivate
+```
+
+### export env file and create env based on yml
+
+```
+conda env export > environment.yml
+conda env create -f environment.yml
+```
+
+
 
 ## Pycharm use virtualenv <a name="Pycharm virtual"> </a>
 
