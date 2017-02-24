@@ -124,14 +124,29 @@ also `git remote rm <name>` that deletes every remotes matching the given name,
 ## Ignore files or directories <a name="ignore"></a>  
 
 
-Create a file named .gitignore in your projects directory. Ignore directories by entering the directory name into the file (with a slash appended):
+Create a file named .gitignore in your projects directory. Ignore directories by entering the directory name into the file dir_to_ignore/ (with a slash appended) or by cmd:
 
 ```
-dir_to_ignore/
-```
-http://stackoverflow.com/questions/343646/ignoring-directories-in-git-repos-on-windows
+echo filename ignore.sqlite3 >> .gitignore
+echo filename.log >> .gitignore
 
-https://help.github.com/articles/ignoring-files/
+# check status, remove .pyc files and add .pyc in ignore list
+git status
+
+git rm -r --cached superlists/superlists/__pycache__
+
+echo __pycache__ >> .gitignore
+echo *.pyc >> .gitignore
+```
+PS: 
+
+.gitignore will only ignore files that you haven't already added to your repository.
+
+If you did a `git add .`, and the file got added to the index, .gitignore won't help you. You'll need to do `git rm -r -cached sites/default/settings.php` to remove it, and then it will be ignored. You can have a dry run `git add -n .`
+
+
+
+
 
 
 ## Checking the Status of Your Files <a name="statuscheck"></a>
