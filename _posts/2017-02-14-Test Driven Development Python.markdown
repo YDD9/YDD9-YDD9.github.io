@@ -18,3 +18,12 @@ use conda to install django
 [extracted the executable to python3.5 path](http://stackoverflow.com/questions/40208051/selenium-using-python-geckodriver-executable-needs-to-be-in-path)  
 ex:   
 [...]\AppData\Local\Continuum\Anaconda2\envs\python35  this path already exists as environment path if not add it to Path.  
+
+create a django server `django-admin.py startproject superlists`  
+bring up the server `python3 manage.py runserver`
+
+open another cmd to run tes.py
+ready to go!
+
+
+
