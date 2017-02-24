@@ -192,6 +192,7 @@ conda info --envs
 ```
 
 ### create an environment
+[This is also a way that you manage multi python versions installed on your PC](http://stackoverflow.com/questions/24405561/how-to-install-2-anacondas-python-2-7-and-3-4-on-mac-os-10-9)
 
 ```
 conda create --name bunnies python=3 astroid babel
