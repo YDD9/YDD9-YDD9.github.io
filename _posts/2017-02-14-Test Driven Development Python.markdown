@@ -22,7 +22,21 @@ ex:
 create a django server `django-admin.py startproject superlists`  
 bring up the server `python3 manage.py runserver`
 
-open another cmd to run tes.py
+open another cmd to run functional_test.py
+
+```
+from selenium import webdriver
+
+browser = webdriver.Firefox()
+browser.get('http://localhost:8000')
+assert 'Welcome to Django' in browser.title
+
+# browser.get('https://www.google.com/')
+# assert 'Welcome To Zscaler Directory Authentication' in browser.title
+
+print(browser.title)
+```
+
 ready to go!
 
 
