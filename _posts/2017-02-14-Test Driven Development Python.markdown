@@ -18,6 +18,28 @@ use conda to install django
 [extracted the executable to python3.5 path](http://stackoverflow.com/questions/40208051/selenium-using-python-geckodriver-executable-needs-to-be-in-path)  
 ex:   
 [...]\AppData\Local\Continuum\Anaconda2\envs\python35  this path already exists as environment path if not add it to Path.  
+install VScode and Python extension by Don Jayamanne, change to your pythonPath from launch.json when debug.
+
+```
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": true,
+            "pythonPath": "[...]/AppData/Local/Continuum/Anaconda2/envs/python35/python",
+            "program": "${file}",
+            "cwd": "${workspaceRoot}",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ]
+        },
+        [...]
+```
 
 create a django server `django-admin.py startproject superlists`  
 bring up the server `python3 manage.py runserver`
