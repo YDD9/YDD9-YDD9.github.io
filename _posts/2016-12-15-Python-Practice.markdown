@@ -457,6 +457,53 @@ type=int converts the argument to int
 
 #### When run the python command with arguments use the double quotation " instead of simple quotation'
 
+## function \_\_init\_\_ <a name="init"></a>  
+
+__init__.py can be added into any directory that you want python to search your defined modules.
+Contents of the file can be either `from modules import class` or empty.
+[question link](http://stackoverflow.com/questions/33862963/python-cant-find-my-module)
+
+```
+Project
+├───.git
+├───venv
+└───src
+    ├───__init__.py
+    ├───mymodules
+    │   ├───__init__.py
+    │   ├───module1.py
+    │   └───module2.py
+    └───scripts
+        ├───__init__.py
+        └───script.py
+```
+
+script.py
+
+```
+import src.mymodules.module1
+[...]
+```
+
+```
+(venv)$ python src/scripts/script.py
+
+Traceback (most recent call last):
+  File "src/scripts/script.py", line 1, in <module>
+    import src.mymodules.module1
+ImportError: No module named src.mymodules.module1
+```
+
+anyfolder with __init.py inside can be considered as package in python.
+anymodule.py file can be considered as a module in python.
+
+```
+from myPackages import myModule
+import myPackages.myModule
+```  
+
+although __init__.py exists for each packages, but when run script.py directly, python doesn't know the existance of mymodules nor src. We can move script.py under Project. Or we can specify in the script.py that [...]/Project (where src located) is also `sys.path.insert(0, [...]/Project)`. Alternativly You could add the /Project path as PYTHONPATH in the advanced system settings or .bash_profile, but it's not a good practice especially you copy the current project and work with its copy, the copy could still import modules from original project and confuses you as module names are identical.
+
 
 ## Logs <a name="logs"></a>
 
