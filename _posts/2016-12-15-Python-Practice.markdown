@@ -21,7 +21,7 @@ categories: Python
 [regular expression](#regularexpression)  
 [execute cmd command](#subprocess)  
 [HTTP requests](#requests)  
-
+[ignore exception and run next](#runnext)
 
 ## Vitual Environments <a name="virtualenv"></a>    
 [page link](http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvironments-ref)   
@@ -575,6 +575,11 @@ uaaresponse = requests.request("POST", uaaurl, data=uaapayload, headers=uaaheade
 
 print(uaaresponse.text)
 ```
+
+
+## ignore exception and run next <a name="runnext"></a>
+
+try/except will let you catch specific exceptions and ignore to continue to run. If you need to do_thing1, do_thing2 in an order but don't care of previous exceptions, you can have try/except for each do_thing. [link](http://stackoverflow.com/questions/3817748/python-ignore-exception-and-go-back-to-where-i-was)   
 
 
 
