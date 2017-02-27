@@ -1,13 +1,13 @@
 ---  
 layout: post  
-title:  "Test Driven Development Python"  
+title:  "Test Driven Development Python notes"  
 date:   2017-02-14 11:49:39 +0100  
 categories: Python backend and web test automation  
 ---  
 
 # Table of contents  
 1. [Environment setup](#setup)  
-
+2. [Django app](#firstDjangoApp)
 
 
 ## Environment setup <a name=setup></a>
@@ -42,7 +42,8 @@ install VScode and Python extension by Don Jayamanne, change to your pythonPath 
 ```
 
 create a django server `django-admin.py startproject superlists`  
-bring up the server `python3 manage.py runserver`
+activate python35 `activate python35`
+bring up the server `python manage.py runserver`
 
 open another cmd to run functional_test.py
 
@@ -60,6 +61,13 @@ print(browser.title)
 ```
 
 ready to go!
+
+## Django app <a name="firstDjangoApp"></a>  
+start APP lists `python manage.py startapp lists`
+
+Django encourages you to structure your code into apps: the theory is that one project can have many apps, you can use third-party apps developed by other people, and you might even reuse one of your own apps in a different project.  
+[book link](http://chimera.labs.oreilly.com/books/1234000000754/ch03.html#_unit_tests_and_how_they_differ_from_functional_tests)
+
 
 
 
