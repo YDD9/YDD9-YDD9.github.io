@@ -13,7 +13,9 @@ Now you have git downloaded and ready to start.
 3. [Adding an existing project to GitHub using the command line](#addproj)
 4. [Ignore files or directories](#ignore)
 5. [Checking the Status of Your Files](#statuscheck)
-6. [Get git repository](#gitpull)
+6. [Get git repository](#gitpull)  
+7. [Go back to specific commit](#goback)  
+
 
 ## Git config <a name="gitconfig"></a>
 The first thing you should do when you install Git is to set your user name and email address.   
@@ -279,4 +281,11 @@ $ git log FETCH_HEAD
 ```  
 
 The first command fetches the maint branch from the repository at git://git.kernel.org/pub/scm/git/git.git and the second command uses FETCH_HEAD to examine the branch with git-log. The fetched objects will eventually be removed by git’s built-in housekeeping (see git-gc).
+
+
+## Go back to specific commit<a name="goback"></a>
+
+`git log` to find out guid number of your desired commit
+`git checkout <guid>` to go back to that specific commit
+
 
