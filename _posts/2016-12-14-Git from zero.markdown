@@ -140,6 +140,25 @@ git rm -r --cached superlists/superlists/__pycache__
 echo __pycache__ >> .gitignore
 echo *.pyc >> .gitignore
 ```
+
+below sample ignore: folders, A type of files, Single file, A filename with space and dash
+
+```
+Datafiles/1/
+.git
+.vscode
+
+*.pyc
+
+env.json
+exe_cmd.bat
+rundeploy.txt
+log.txt
+
+Datafiles/cf\ commands\ -\ sps\ perf.txt
+```
+
+
 PS: 
 
 .gitignore will only ignore files that you haven't already added to your repository.
