@@ -15,7 +15,7 @@ Now you have git downloaded and ready to start.
 5. [Checking the Status of Your Files](#statuscheck)
 6. [Get git repository](#gitpull)  
 7. [Go back to specific commit](#goback)  
-8. [Git push succeed, www.github.com/project.git not updating](missupdates)  
+8. [Git push succeed, remote not updating](missupdates)  
 
 
 
@@ -310,7 +310,7 @@ The first command fetches the maint branch from the repository at git://git.kern
 `git checkout <guid>` to go back to that specific commit
 
 
-## Git push succeed, www.github.com/project.git not updating <a name='missupdates></a>
+## Git push succeed, remote not updating <a name='missupdates'></a>
 
 Here's setup case, simple and everything setup by default. Locally only one default branch: master, on the github remote origin only one branch master as well.   
 After committing changes locally and `git push origin master` failed due to remote version was newer(I changed one filename on github.com), so `git pull origin master` and enter your merge commit message. Pushed again the same error.   
