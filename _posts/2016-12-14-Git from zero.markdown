@@ -15,6 +15,8 @@ Now you have git downloaded and ready to start.
 5. [Checking the Status of Your Files](#statuscheck)
 6. [Get git repository](#gitpull)  
 7. [Go back to specific commit](#goback)  
+8. [Git push succeed, www.github.com/project.git not updating](missupdates)  
+
 
 
 ## Git config <a name="gitconfig"></a>
@@ -306,5 +308,29 @@ The first command fetches the maint branch from the repository at git://git.kern
 
 `git log` to find out guid number of your desired commit
 `git checkout <guid>` to go back to that specific commit
+
+
+## Git push succeed, www.github.com/project.git not updating <a name='missupdates></a>
+
+Here's setup case, simple and everything setup by default. Locally only one default branch: master, on the github remote origin only one branch master as well.   
+After committing changes locally and `git push origin master` failed due to remote version was newer(I changed one filename on github.com), so `git pull origin master` and enter your merge commit message. Pushed again the same error.   
+Nightmare began, to FORCE a push `cf push -f origin master` on github.com I lost one file(the filename changed one) and newly committed local files were not pushed. Specify with `git add newfile` and committ and push, nothing added into github.com/project.git Newly local files were always not pushed to remote github.com/project.git.
+
+solution: `git push origin HEAD:master`
+[doc link](https://git-scm.com/docs/git-push)  
+`git push [remoterepo] [src]:[dst]` HEAD used in git to prepresent [your last commit snapshot](https://git-scm.com/blog/2011/07/11/reset.html), master is the branch name of your remote origin.
+
+Normally this error happens when you are not in local master branch when push and git can not solve which master you meant.
+
+
+
+
+
+
+
+
+
+
+
 
 
