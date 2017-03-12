@@ -310,6 +310,7 @@ The first command fetches the maint branch from the repository at git://git.kern
 `git checkout <guid>` to go back to that specific commit
 
 
+
 ## Git push succeed, remote not updating <a name='missupdates'></a>
 
 Here's setup case, simple and everything setup by default. Locally only one default branch: master, on the github remote origin only one branch master as well.   
