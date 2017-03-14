@@ -16,12 +16,13 @@ categories: Python
 [Python installer](#pythoninstaller)  
 [function \_\_init\_\_](#init)  
 [function lambda](#lambda)  
-[logs](#logs)  
-[proxy](#proxy)  
-[regular expression](#regularexpression)  
-[execute cmd command](#subprocess)  
+[Logs](#logs)  
+[Proxy](#proxy)  
+[import error](#importerror)    
+[Regular expression](#regularexpression)  
+[Execute cmd command](#subprocess)  
 [HTTP requests](#requests)  
-[ignore exception and run next](#runnext)
+[Ignore exception and run next](#runnext)
 
 ## Vitual Environments <a name="virtualenv"></a>    
 [page link](http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvironments-ref)   
@@ -529,7 +530,7 @@ Log with decorators
 https://www.freshbooks.com/developers/blog/logging-actions-with-python-decorators-part-i-decorating-logged-functions  
 
 
-## proxy <a name='proxy'></a> 
+## Proxy <a name='proxy'></a> 
 
 ```
 import os
@@ -543,7 +544,28 @@ print os.environ['HTTP_PROXY']
 print os.environ['HTTPS_PROXY']
 ```
 
-## regular expression <a name='regularexpression'></a>
+## import error <a name='importerror'></a>  
+
+It's headache when you first run into the Python import error: No module named does exist.
+You can simply add your project into PYTHONPATH on Windows, for Mac you can play with $PYTHONPATH. But it's not a good way.
+Suppose you clone this project locally and work on the copy, when you run test on the copy, no import error this time, because python still import from the origin, and that is not what you meant to do. It's hard to discover it untill you remember that a similar project with same module name exists in your PYTHONPATH. 
+
+PYTHONPATH is key to installing and importing third-party packages. When an import command is passed, python looks for the module/package in a list of places.
+
+An alternative is to add search path temporarily only when project runs, and check the output of path, if Python finds your modules/packages
+
+```
+import sys
+import os
+
+sys.path.append(os.path.join(os.path.dirname(_file_), ".."))
+print sys.path
+```
+
+
+
+
+## Regular expression <a name='regularexpression'></a>
 
 ```
 
@@ -570,7 +592,7 @@ name = re.findall('^\S+', apps, re.M)  # flag re.Multilines search line by line,
 ```
 
 
-## execute cmd command <a name='subprocess'></a> 
+## Execute cmd command <a name='subprocess'></a> 
 
 To execute cmd command from Python environment, subprocess is the great helper.  
 https://docs.python.org/2/library/subprocess.html
@@ -624,7 +646,7 @@ print(uaaresponse.text)
 ```
 
 
-## ignore exception and run next <a name="runnext"></a>
+## Ignore exception and run next <a name="runnext"></a>
 
 try/except will let you catch specific exceptions and ignore to continue to run. If you need to do_thing1, do_thing2 in an order but don't care of previous exceptions, you can have try/except for each do_thing. [link](http://stackoverflow.com/questions/3817748/python-ignore-exception-and-go-back-to-where-i-was)   
 
