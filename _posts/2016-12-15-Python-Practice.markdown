@@ -7,9 +7,9 @@ categories: Python
 
 # Table of contents  
 [Vitual Environments](#virtualenv)  
-[Python brew mac](#Python brew)  
+[Python brew mac](#Pythonbrew)  
 [conda & Anaconda distribution](#conda)  
-[Pycharm use virtualenv](#Pycharm virtual)  
+[Pycharm use virtualenv](#Pycharmvirtual)  
 [Date time](#datetime)  
 [Division](#division)  
 [Function arguments](#argparser)  
@@ -91,7 +91,7 @@ After a while, though, you might end up with a lot of virtual environments litte
 
 
 
-## Python brew mac <a name="Python brew"></a>
+## Python brew mac <a name="Pythonbrew"></a>
 
 [page link](http://superuser.com/questions/915810/pip-not-working-on-hombrew-python-2-7-install)  
 Generally, homebrew will install a formula into /usr/local/Cellar/formula and then place a link at /usr/local/bin/formula.
@@ -232,7 +232,7 @@ conda env create -f environment.yml
 
 
 
-## Pycharm use virtualenv <a name="Pycharm virtual"> </a>
+## Pycharm use virtualenv <a name="Pycharmvirtual"> </a>
 
 Configure PyCharm
 Select File, click Settings.
