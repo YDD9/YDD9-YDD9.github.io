@@ -15,6 +15,7 @@ categories: Python
 [Function arguments](#argparser)  
 [Python installer](#pythoninstaller)  
 [function \_\_init\_\_](#init)  
+[Python objects and values](#objectsvalues)
 [function lambda](#lambda)  
 [Logs](#logs)  
 [Proxy](#proxy)  
@@ -505,6 +506,45 @@ import myPackages.myModule
 
 although __init__.py exists for each packages, but when run script.py directly, python doesn't know the existance of mymodules nor src. We can move script.py under Project. Or we can specify in the script.py that [...]/Project (where src located) is also `sys.path.insert(0, [...]/Project)`. Alternativly You could add the /Project path as PYTHONPATH in the advanced system settings or .bash_profile, but it's not a good practice especially you copy the current project and work with its copy, the copy could still import modules from original project and confuses you as module names are identical.
 
+
+## Python objects and values <a name="objectsvalues"></a>
+[link](https://wizardforcel.gitbooks.io/think-python-2e/content/11.html) Think Python 2e
+
+Object:
+```
+>>> a = 'banana'
+>>> b = 'banana'
+>>> a is b
+True
+```
+
+Value:
+```
+>>> a = [1, 2, 3]
+>>> b = [1, 2, 3]
+>>> a is b
+False
+>>> a == b
+True
+```
+
+```
+>>> a = [1, 2, 3]
+>>> b = a
+>>> a is b 
+True
+>>> b[0] = 42
+>>> a
+[42, 2, 3]
+# b change values, a change as well
+# avoid using in the above way!!!
+
+>>> c = a[:]
+>>> c[0] =  200
+# a is not affected!!!
+>>> a
+[42, 2, 3]
+```
 
 ## Logs <a name="logs"></a>
 
