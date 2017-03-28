@@ -15,7 +15,8 @@ Now you have git downloaded and ready to start.
 5. [Checking the Status of Your Files](#statuscheck)
 6. [Get git repository](#gitpull)  
 7. [Go back to specific commit](#goback)  
-8. [Git push succeed, remote not updating](missupdates)  
+8. [Git push succeed, remote not updating](#missupdates)  
+9. [Create a local branch and force push to a remote branch](#forceLocalbranchtoRemotebranch)
 
 
 
@@ -321,7 +322,58 @@ solution: `git push origin HEAD:master`
 [doc link](https://git-scm.com/docs/git-push)  
 `git push [remoterepo] [src]:[dst]` HEAD used in git to prepresent [your last commit snapshot](https://git-scm.com/blog/2011/07/11/reset.html), master is the branch name of your remote origin.
 
-Normally this error happens when you are not in local master branch when push and git can not solve which master you meant.
+Normally this error happens when you are not in local master branch when push and git can not solve which master you meant.   
+
+## Create a local branch and force push to a remote branch <a name="forceLocalbranchtoRemotebranch"></a>
+First, you create your branch locally:   
+
+``` 
+git checkout -b <branch-name>  
+```
+
+The remote branch is automatically created when you push it to the remote server. So when you feel ready for it, you can just do:  
+
+```  
+git push <remote-name> <branch-name>  
+```
+
+Where <remote-name> is typically origin, the name which git gives to the remote you cloned from. Your colleagues would then just pull that branch, and it's automatically created locally.  
+  
+Note however that formally, the format is:    
+
+```  
+git push <remote-name> <local-branch-name>:<remote-branch-name>  
+
+# In case you have to force local branch to overwrite remote because remote branch already exists
+git push -f <remote-name> <local-branch-name>:<remote-branch-name> 
+
+# or using below syntax. + instead of -f, also for safety reason
+git push <remote-name> +<local-branch-name>:<remote-branch-name>
+
+# Force pushing more safely with --force-with-lease
+git push <remote> <branch> --force-with-lease
+
+# To delete a branch on the remote side, push an "empty branch" like so:
+git push origin :deleteMe 
+```
+[notation +](http://stackoverflow.com/questions/39389380/how-to-overwrite-remote-branch-with-different-local-branch-with-git)
+
+But when you omit one, *it assumes both branch names are the same*. Having said this, as a word of caution, do not make the critical mistake of specifying only :<remote-branch-name> (with the colon), or the remote branch will be deleted!  
+  
+So that *a subsequent git pull will know what to do*, you might instead want to use:  
+  
+git push -u <remote-name> <local-branch-name>  
+As described below, the -u option sets up an upstream branch:  
+  
+For every branch that is up to date or successfully pushed, add upstream (tracking) reference, used by argument-less git-pull(1) and other commands.
+
+Force pushing more safely with --force-with-lease
+
+Force pushing with a "lease" allows the force push to fail if there are new commits on the remote that you didn't expect (technically, if you haven't fetched them into your remote-tracking branch yet), which is useful if you don't want to accidentally overwrite someone else's commits that you didn't even know about yet, and you just want to overwrite your own: [details](http://stackoverflow.com/questions/10510462/force-git-push-to-overwrite-remote-files)
+
+
+
+
 
 
 
