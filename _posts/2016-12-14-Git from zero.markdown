@@ -17,6 +17,7 @@ Now you have git downloaded and ready to start.
 7. [Go back to specific commit](#goback)  
 8. [Git push succeed, remote not updating](#missupdates)  
 9. [Create a local branch and force push to a remote branch](#forceLocalbranchtoRemotebranch)
+10. [Checkout a remote branch](#remotebranch)
 
 
 
@@ -372,8 +373,27 @@ Force pushing more safely with --force-with-lease
 Force pushing with a "lease" allows the force push to fail if there are new commits on the remote that you didn't expect (technically, if you haven't fetched them into your remote-tracking branch yet), which is useful if you don't want to accidentally overwrite someone else's commits that you didn't even know about yet, and you just want to overwrite your own: [details](http://stackoverflow.com/questions/10510462/force-git-push-to-overwrite-remote-files)
 
 
+## Checkout a remote branch <a name="remotebranch"></a>
+[link](http://stackoverflow.com/questions/9537392/git-fetch-remote-branch)
 
-
+```
+git checkout -b serverfix origin/serverfix
+```  
+This is a common enough operation that git provides the --track shorthand:  
+```
+git checkout --track origin/serverfix
+```  
+In fact, this is so common that there’s even a shortcut for that shortcut. If the branch name you’re trying to checkout (a) doesn’t exist and (b) exactly matches a name on only one remote, Git will create a tracking branch for you:  
+```
+git checkout serverfix
+```  
+To set up a local branch with a different name than the remote branch, you can easily use the first version with a different local branch name:  
+```
+git checkout -b sf origin/serverfix
+```  
+Now, your local branch sf will automatically pull from origin/serverfix.  
+  
+Source: Pro Git, written by Scott Chacon and Ben Straub (cut for readability)  
 
 
 
