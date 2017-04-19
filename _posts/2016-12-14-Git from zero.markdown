@@ -424,7 +424,7 @@ git mergetool --tool=bc3
 git mergetool --tool=sourcetree
 ```
 
-
+And you need to solve the issues one by one manually [another tutorial](https://gist.github.com/karenyyng/f19ff75c60f18b4b8149)
 
 
 
