@@ -18,6 +18,7 @@ Now you have git downloaded and ready to start.
 8. [Git push succeed, remote not updating](#missupdates)  
 9. [Create a local branch and force push to a remote branch](#forceLocalbranchtoRemotebranch)
 10. [Checkout a remote branch](#remotebranch)
+11. [git diff merge tool](#diffmergetool)
 
 
 
@@ -55,6 +56,10 @@ In this case, Git uses the last value for each unique key it sees. You can also 
 $ git config user.name   
 ```  
 
+You can always edit the config file by
+```
+git config --global --edit
+```
 
 ## Git credential <a name="token"></a>
 
@@ -394,6 +399,30 @@ git checkout -b sf origin/serverfix
 Now, your local branch sf will automatically pull from origin/serverfix.  
   
 Source: Pro Git, written by Scott Chacon and Ben Straub (cut for readability)  
+
+
+## git diff merge tool <a name="diffmergetool"></a>
+
+[Beyond compare 4 with git for windows](https://www.scootersoftware.com/support.php?zz=kb_vcs)
+Use bc3 or Beyond compare 4
+Path of BComp.exe depends on your Windows version
+
+In case you like to use SourceTree, there's already a GUI config you can link it to the git merge, diff.
+
+```
+git config --global diff.tool bc3
+git config --global difftool.bc3.path "C:\Program Files\Beyond Compare 4/BComp.exe"
+
+git config --global merge.tool bc3
+git config --global mergetool.bc3.cmd "C:\Program Files\Beyond Compare 4/BComp.exe"
+```
+
+when you need to use the tool:
+
+```
+git mergetool --tool=bc3
+git mergetool --tool=sourcetree
+```
 
 
 
