@@ -582,6 +582,10 @@ os.environ['httpS_proxy'] = "http://xxx.com:80"
 
 print os.environ['HTTP_PROXY']
 print os.environ['HTTPS_PROXY']
+
+## github and google will not use proxy settings
+os.environ['NO_PROXY'] = 'github.com, google.com'
+os.environ['no_proxy'] = 'github.com, google.com'
 ```
 
 ## import error <a name='importerror'></a>  
