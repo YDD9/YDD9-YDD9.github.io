@@ -10,12 +10,13 @@ categories: Python
 [Python brew mac](#Pythonbrew)  
 [conda & Anaconda distribution](#conda)  
 [Pycharm use virtualenv](#Pycharmvirtual)  
+[PythonVScode](#VScode)  
 [Date time](#datetime)  
 [Division](#division)  
 [Function arguments](#argparser)  
 [Python installer](#pythoninstaller)  
 [function \_\_init\_\_](#init)  
-[Python objects and values](#objectsvalues)
+[Python objects and values](#objectsvalues)  
 [function lambda](#lambda)  
 [Logs](#logs)  
 [Proxy](#proxy)  
@@ -231,7 +232,7 @@ conda env export > environment.yml
 conda env create -f environment.yml
 ```
 
-
+[PYTHON PACKAGES AND ENVIRONMENTS WITH CONDA](https://www.continuum.io/blog/developer-blog/python-packages-and-environments-conda)   
 
 ## Pycharm use virtualenv <a name="Pycharmvirtual"> </a>
 
@@ -242,6 +243,31 @@ In the right pane, click the gear icon, click More….
 In the Project Interpreters dialog box, click the plus sign +, click Add Local.
 Enter ~/virtualenvs/<your virtualenv name>/bin/python in the path. If you followed the earlier post to setup a virtual environment for Python then enter ~/virtualenvs/api/bin/python.
 Click OK.
+
+
+## PythonVScode<a name="VScode"></a>  
+Using a light weight text editor with extension of Python debug is very pleasant.
+DonJayamanne Python extension is very good, it has autocomplete function as well, but you need to config it correctly.
+Here's a sample entry in the User Settings file that will enable Google App Engine autocomplete and intellisense:
+[doc link](https://github.com/DonJayamanne/pythonVSCode/wiki/Autocomplete-Intellisense)  
+```
+# go to file->settings and type below in user settings, never touch the Master settings!!!
+"python.autoComplete.extraPaths": [
+    "C:/Program Files (x86)/Google/google_appengine",
+    "C:/Program Files (x86)/Google/google_appengine/lib" ]
+    
+# to locate your anaconda
+where anaconda 
+conda info
+
+# to locate your specific pandas inside python
+import pandas
+import numpy
+
+pandas.__path__
+numpy.__path__
+# ~\\AppData\\Local\\Continuum\\Anaconda2\\lib\\site-packages\\numpy
+```
 
 
 ## Date time <a name="datetime"></a>
@@ -318,6 +344,7 @@ Check leap year:
 ```
 calendar.isleap(datetime.now().timetuple().tm_year)
 ```  
+
 
 ## Division <a name="division"></a>  
 By default, python2.7 division return only the rounded integer part. To force results into float try below
