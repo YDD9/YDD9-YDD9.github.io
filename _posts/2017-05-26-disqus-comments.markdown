@@ -41,12 +41,12 @@ s.setAttribute('data-timestamp', +new Date());
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                                 
-![step3]({{ site.url }}/images/disqusOnGithub_UniEmbeded.jp2)
+![step3]({{ site.url }}/images/disqusOnGithub_UniEmbeded.jpg)
 
 
 extra: Example to add comments counts on my page
 
 <script id="dsq-count-scr" src="//https-ydd9-github-io.disqus.com/count.js" async></script>
 
-![step extra]({{ site.url }}/images/disqusOnGithub_Counts.jp2)
+![step extra]({{ site.url }}/images/disqusOnGithub_Counts.jpg)
 
