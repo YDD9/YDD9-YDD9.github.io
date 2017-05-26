@@ -12,8 +12,8 @@ It's cool function to have reader comments on your posts in github. So I decided
 First I need to register a disqus account and then follow get started section to add my github url into disqus and complete the 2 steps setup.
 
 
-![step1]({{ site.url }}/images/disqusOnGithub1.jpg)
+![step1]({{ site.url }}/images/disqusOnGithub_1.jpg)
 
 
-![step2]({{ site.url }}/images/disqusOnGithub1.jpg)
+![step2]({{ site.url }}/images/disqusOnGithub_2.jpg)
 
