@@ -3,6 +3,7 @@ layout: post
 title:  "Python openCV"
 date:   2017-2-12 23:48:39 +0100
 categories: Python
+comments: true
 ---
 
 
@@ -19,3 +20,24 @@ Honestly, I can't believe the steps are so complicated. I failed at cmake steps 
 
 
 
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function () {
+this.page.url = {{page.url}};  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = {{page.id}}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-ydd9-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+
+<script id="dsq-count-scr" src="//https-ydd9-github-io.disqus.com/count.js" async></script>
