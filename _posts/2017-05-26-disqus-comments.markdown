@@ -33,8 +33,8 @@ Example of universal embeded code:
 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 /*
 var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+this.page.url = {{page.url}};  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = {{page.id}}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 */
 (function() { // DON'T EDIT BELOW THIS LINE
@@ -73,7 +73,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 ## [Variables defined by Jekyll and used in configuration](http://jekyllrb.com/docs/variables/)
 ## [Disqus required variables](https://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables)
-## [Variables declairation rules] (http://downtothewire.io/2015/08/15/configuring-jekyll-for-user-and-project-github-pages/)
+## [Variables declairation rules](http://downtothewire.io/2015/08/15/configuring-jekyll-for-user-and-project-github-pages)
 
 
 # extra: Example to add comments counts on my page  
