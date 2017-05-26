@@ -11,26 +11,52 @@ It's cool function to have reader comments on your posts in github. So I decided
 
 First I need to register a disqus account and then follow get started section to add my github url into disqus and complete the 3 steps setup.
 
+step1   
 
 ![step1]({{ site.url }}/images/disqusOnGithub_1.jpg)
 
 
+step2  
 ![step2]({{ site.url }}/images/disqusOnGithub_2.jpg)
 
 
+step3  
+![step3]({{ site.url }}/images/disqusOnGithub_UniEmbeded.jpg)  
+
+Example of universal embeded code:  
+```
 <div id="disqus_thread"></div>
 <script>
 
-Example of universal embeded code
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://https-ydd9-github-io.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+```
+
+<div id="disqus_thread"></div>
+<script>
 
 /**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
-
 var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+this.page.url = {{page.url}};  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = {{page.id}}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 
 (function() { // DON'T EDIT BELOW THIS LINE
@@ -42,8 +68,9 @@ s.setAttribute('data-timestamp', +new Date());
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-![step3]({{ site.url }}/images/disqusOnGithub_UniEmbeded.jpg)
-
+## Jekyll's Doc about variables for above config  
+http://jekyllrb.com/docs/variables/
+## [disqus explainations about its required variables](https://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables)
 
 extra: Example to add comments counts on my page
 
