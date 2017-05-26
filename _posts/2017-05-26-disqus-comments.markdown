@@ -11,16 +11,16 @@ It's cool function to have reader comments on your posts in github. So I decided
 
 First I need to register a disqus account and then follow get started section to add my github url into disqus and complete the 3 steps setup.
 
-step1   
+# step1   
 
 ![step1]({{ site.url }}/images/disqusOnGithub_1.jpg)
 
 
-step2  
+# step2  
 ![step2]({{ site.url }}/images/disqusOnGithub_2.jpg)
 
 
-step3  
+# step3  
 ![step3]({{ site.url }}/images/disqusOnGithub_UniEmbeded.jpg)  
 
 Example of universal embeded code:  
@@ -68,13 +68,19 @@ s.setAttribute('data-timestamp', +new Date());
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-## Jekyll's Doc about variables for above config  
-http://jekyllrb.com/docs/variables/
+
+
+
+## [Jekyll's Doc about variables for above config](http://jekyllrb.com/docs/variables/)
 ## [disqus explainations about its required variables](https://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables)
 
-extra: Example to add comments counts on my page
 
+
+# extra: Example to add comments counts on my page  
+
+```  
 <script id="dsq-count-scr" src="//https-ydd9-github-io.disqus.com/count.js" async></script>
-
+```  
 ![step extra]({{ site.url }}/images/disqusOnGithub_Counts.jpg)
 
+<script id="dsq-count-scr" src="//https-ydd9-github-io.disqus.com/count.js" async></script>
