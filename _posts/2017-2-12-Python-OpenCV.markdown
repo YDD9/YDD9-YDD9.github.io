@@ -16,8 +16,23 @@ comments: true
 Install OpenCV 3.0 and Python 2.7+ on OSX  
 with Homebrew, virtualenv, virtualenvwrapper.  
 
-Honestly, I can't believe the steps are so complicated. I failed at cmake steps and decided to use conda to manage packages. Since pip is by design only for python, choose it to manage other packages is just not using the right tool to do the work. If you're using both conda and brew on your mac, just remember to disable conda in your $PATH when using brew.
+Honestly, I can't believe the steps are so complicated. I failed at cmake steps and decided to use conda to manage packages. Since pip is by design only for python, choose it to manage other packages is just not using the right tool to do the work. 
 
+If you're using both conda and brew on your mac, just remember to disable conda in your $PATH when using brew:
+
+```
+cd ~
+open .bash_profile
+```
+
+Your .bash_profile is open with below info inside, just comment the anaconda2 path line.  
+```
+# homebrew
+export PATH="/usr/local/bin:$PATH"
+
+# added by Anaconda2 4.3.0 installer
+export PATH="/Users/Chris/anaconda2/bin:$PATH"
+```
 
 
 <div id="disqus_thread"></div>
