@@ -71,9 +71,9 @@ s.setAttribute('data-timestamp', +new Date());
 
 
 
-## [Jekyll's Doc about variables for above config](http://jekyllrb.com/docs/variables/)
-## [disqus explainations about its required variables](https://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables)
-
+## [Variables defined by Jekyll and used in configuration](http://jekyllrb.com/docs/variables/)
+## [Disqus required variables](https://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables)
+## [Variables declairation rules] (http://downtothewire.io/2015/08/15/configuring-jekyll-for-user-and-project-github-pages/)
 
 
 # extra: Example to add comments counts on my page  
