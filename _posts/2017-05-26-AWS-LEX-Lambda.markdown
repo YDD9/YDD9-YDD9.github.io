@@ -1,10 +1,12 @@
 ---
 layout: default
-title:  "AWS Lex and Lambda"
+title:  "AWS Lex and Lambda for Facebook Messenger chat bot"
 date:   2017-05-26 22:49:39 +0100
 categories: AWS Lex Lambda
 comments: true
 ---
+
+
 
 
 *AWS Lex* is a Amazon Cloud chat AI service. It gets user inputs via text(or voice), then form a json containing info user provided, now comes the Lambda service(Python2.7 case) which can process the data as json according to your coded business logic. i.e. Pizza order, flower order, take appointments...
@@ -59,6 +61,18 @@ Normally smart phone can convert speach to text, but the Bot can't answer in voi
 
 
 to be continued...
+
+
+
+Similar deployment on different platform:
+
+[Google chat](https://www.raizlabs.com/dev/2017/01/build-ai-assistant-api-ai-amazon-lambda/)
+
+[slack chat](https://nicholasjackson.io/2017/04/25/slack-bot-aws-lambda/)
+
+
+[Twilio chat](https://www.twilio.com/blog/2015/09/build-your-own-ivr-with-aws-lambda-amazon-api-gateway-and-twilio.html)
+
 
 
 
