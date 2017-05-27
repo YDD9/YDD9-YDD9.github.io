@@ -1,9 +1,8 @@
 ---
-layout: default
+layout: post
 title:  "disque-comments"
 date:   2017-05-26 14:49:39 +0100
 categories: jekyll disqus
-comments: true
 ---
 
 
