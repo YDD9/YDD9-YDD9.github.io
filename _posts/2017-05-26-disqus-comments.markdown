@@ -55,8 +55,8 @@ s.setAttribute('data-timestamp', +new Date());
 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
 var disqus_config = function () {
-this.page.url = {{page.url}};  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = {{page.id}}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+this.page.url = {{page.url}};  // PAGE_URL replaced with your page's canonical URL variable
+this.page.identifier = {{page.id}}; //  PAGE_IDENTIFIER replaced with your page's unique identifier variable
 };
 
 (function() { // DON'T EDIT BELOW THIS LINE
