@@ -55,7 +55,7 @@ Facebook API kit could also helpful, I didn't use much, but guess it's a must wh
 When you're ready and pass test, you need to submit your app to Facebook review and then it will go public, before that it's admin, tester, developer access only. Install Facebook messenger on your Iphone or Android, login it and search your Bot, let's talk.  
 ![FP_CHAT]({{ site.url }}/images/FP_CHAT.jpg)
 
-As normally mobile phone can convert the speach to text then send to Bot, but the cool feature is still missing, the real talking communication needs bot to answer, so how the text to speach is done ???
+Normally smart phone can convert speach to text, but the Bot didn't answer back in voice, the real talking communication needs the text to speach AWS Polly service, how this is done ???
 
 
 to be continued...
