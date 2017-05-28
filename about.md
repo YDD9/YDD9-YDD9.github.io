@@ -4,7 +4,19 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+
+Python Analytics Implementations, Cloud App DevOps, self-trained SW developer.
+The blog is used to keep notes for my open or closed issues together with solutions.
+
+
+
+
+
+
+
+
+
+This is my github blog base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
 
 You can find the source code for the Jekyll new theme at:
 {% include icon-github.html username="jekyll" %} /
