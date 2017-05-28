@@ -9,7 +9,7 @@ categories: jekyll disqus
 
 
 
-It's cool function to have reader comments on your posts in github. So I decided to have this function from disqus in my page as well. I searched on the tutorial about how to add but actually they're all out dated, new way to setup is much easier.
+It's cool function to have reader comments on your posts in github. So I decided to have this function from disqus in my page as well. I searched on the tutorial about how to add but actually they're not all giving the same script, I first follow the official way to setup which is well documented, then I checked another github blog how he uses, it's better in my opinion.
 
 First I need to register a disqus account and then follow get started section to add my github url into disqus and complete the 3 steps setup.
 
@@ -61,3 +61,10 @@ s.setAttribute('data-timestamp', +new Date());
 <script id="dsq-count-scr" src="//https-ydd9-github-io.disqus.com/count.js" async></script>
 ```  
 ![step extra]({{ site.url }}/images/disqusOnGithub_Counts.jpg)
+
+
+[Other user's way I think it's better](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html)
+
+You defined a default layout for your web, then create a post layout based on default, this post layout should have a header, i.e. about, title, date, comments count, ... and after contents, it should have a disqus comments. When you add a new post, just specify "comments: true" in the YAML Front Formatter.
+
+For disqus comments, you need to specify it inside _includes/disqus.html its "config"
