@@ -3,7 +3,7 @@ layout: post
 title:  "Welcome to Jekyll!"
 date:   2016-12-07 14:51:39 +0100
 comments: true  
-categories: jekyll update
+categories: jekyll static blog
 ---
 
 

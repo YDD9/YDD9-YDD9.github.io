@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "disque-comments"
+title:  "Disque-comments"
 date:   2017-05-26 14:49:39 +0100
 comments: true
-categories: jekyll disqus
+categories: jekyll disqus comments layout
 ---
 
 
@@ -63,7 +63,7 @@ s.setAttribute('data-timestamp', +new Date());
 ![step extra]({{ site.url }}/images/disqusOnGithub_Counts.jpg)
 
 
-[Other user's way I think it's better](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html)
+# [Other user's way I think it's better](http://sgeos.github.io/jekyll/disqus/2016/02/14/adding-disqus-to-a-jekyll-blog.html)
 
 You defined a default layout for your web, then create a post layout based on default, this post layout should have a header, i.e. about, title, date, comments count, ... and after contents, it should have a disqus comments. When you add a new post, just specify "comments: true" in the YAML Front Formatter.
 

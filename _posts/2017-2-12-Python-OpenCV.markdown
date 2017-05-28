@@ -3,7 +3,7 @@ layout: post
 title:  "Python openCV"
 date:   2017-2-12 23:48:39 +0100
 comments: true  
-categories: Python
+categories: Python openCV image
 ---
 
 
