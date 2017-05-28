@@ -2,6 +2,7 @@
 layout: post
 title:  "Postman API client"
 date:   2017-01-24 16:49:39 +0100
+comments: true  
 categories: API development
 ---
 

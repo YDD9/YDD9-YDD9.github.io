@@ -2,8 +2,8 @@
 layout: post
 title:  "AWS Lex and Lambda for Facebook Messenger chat bot"
 date:   2017-05-26 22:49:39 +0100
+comments: true  
 categories: AWS Lex Lambda
-comments: true
 ---
 
 

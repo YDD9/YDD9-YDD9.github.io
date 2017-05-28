@@ -2,6 +2,7 @@
 layout: post
 title:  "Git from zero!"
 date:   2016-12-14 14:49:39 +0100
+comments: true  
 categories: jekyll update
 ---
 

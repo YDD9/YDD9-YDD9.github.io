@@ -2,6 +2,7 @@
 layout: post
 title:  "Python scikit-learn ML"
 date:   2016-12-16 14:58:39 +0100
+comments: true  
 categories: Python
 ---
 

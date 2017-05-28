@@ -2,6 +2,7 @@
 layout: post  
 title:  "Test Driven Development Python notes"  
 date:   2017-02-14 11:49:39 +0100  
+comments: true  
 categories: Python backend and web test automation  
 ---  
 

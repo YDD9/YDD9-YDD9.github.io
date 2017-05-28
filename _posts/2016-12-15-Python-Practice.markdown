@@ -2,11 +2,11 @@
 layout: post
 title:  "Python Practice"
 date:   2016-12-16 14:58:39 +0100
-comments: true
+comments: true  
 categories: Python
 ---
 
-# Table of contents  
+# Table of contents   
 [Vitual Environments](#virtualenv)  
 [Python brew mac](#Pythonbrew)  
 [conda & Anaconda distribution](#conda)  
