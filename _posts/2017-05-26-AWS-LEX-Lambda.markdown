@@ -57,20 +57,20 @@ Facebook API kit could also helpful, I didn't use much, but guess it's a must wh
 When you're ready and pass test, you need to submit your app to Facebook review and then it will go public, before that it's admin, tester, developer access only. Install Facebook messenger on your Iphone or Android, login it and search your Bot, let's talk.  
 ![FP_CHAT]({{ site.url }}/images/FP_CHAT.jpg)
 
+Similar deployment on different platform:  
+[Google chat tutorial](https://www.raizlabs.com/dev/2017/01/build-ai-assistant-api-ai-amazon-lambda/)
+
+[slack chat tutorial](https://nicholasjackson.io/2017/04/25/slack-bot-aws-lambda/)
+
+[Twilio chat tutorial](https://www.twilio.com/blog/2015/09/build-your-own-ivr-with-aws-lambda-amazon-api-gateway-and-twilio.html)  
+
+[Only AWS Lambda and Facebook Messenger withouts LEX](https://tutorials.botsfloor.com/run-facebook-messenger-chat-bot-on-aws-lambda-2fa800a67d76)
+
 Normally smart phone can convert speach to text, but the Bot can't answer in voice, the real talking communication needs the text to speach which means an AWS Polly service on top, how this is done in lamba or what ???
 
 
 to be continued...
 
+[Deploy on a website enable voice chat function](http://www.siili.com/news/creating-voice-recognition-bot-web-app-amazon-aws-lex)
+[voice chat website audio API and issues](http://ljn.io/posts/amazon-lex-with-html5-audio/)
 
-
-Similar deployment on different platform:
-
-[Google chat](https://www.raizlabs.com/dev/2017/01/build-ai-assistant-api-ai-amazon-lambda/)
-
-[slack chat](https://nicholasjackson.io/2017/04/25/slack-bot-aws-lambda/)
-
-[Twilio chat](https://www.twilio.com/blog/2015/09/build-your-own-ivr-with-aws-lambda-amazon-api-gateway-and-twilio.html)
-
-[Only AWS Lambda and Facebook Messenger, no LEX](https://tutorials.botsfloor.com/run-facebook-messenger-chat-bot-on-aws-lambda-2fa800a67d76
-)
