@@ -74,3 +74,4 @@ to be continued...
 [Deploy on a website enable voice chat function](http://www.siili.com/news/creating-voice-recognition-bot-web-app-amazon-aws-lex)
 [voice chat website audio API and issues](http://ljn.io/posts/amazon-lex-with-html5-audio/)
 
+[javascript sample](http://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/getting-started-browser.html)
