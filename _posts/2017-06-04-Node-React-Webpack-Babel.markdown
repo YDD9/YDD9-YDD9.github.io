@@ -2,12 +2,16 @@
 layout: post
 title:  "Node-React-Webpack-Babel"
 date:   2017-06-04 11:49:39 +0100
-comments: true  
+comments: true
 categories: Node Javascript React webpack Babel
 ---
 
 
-Following the React tutorial on [tutorialpoints](https://www.tutorialspoint.com/reactjs/reactjs_environment_setup.htm)
+
+
+Following the React tutorial on tutorialpoints.com
+
+[link](https://www.tutorialspoint.com/reactjs/reactjs_environment_setup.htm)
 
 Issues in the tutorial:
 
