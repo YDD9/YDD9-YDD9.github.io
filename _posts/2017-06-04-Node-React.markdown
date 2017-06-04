@@ -9,7 +9,7 @@ categories: Node Javascript React webpack Babel
 
 Following the React tutorial on [tutorialpoints](https://www.tutorialspoint.com/reactjs/reactjs_environment_setup.htm)
 
-issues in the tutorial:
+Issues in the tutorial:
 
 webpack.config.js should not use './' relative path, as it may give build errors. loaders must be specified as 'babel-loader' instead of 'babel'.  [further materials](https://stackoverflow.com/questions/43049748/invalid-configuration-object-in-webpack)
 
