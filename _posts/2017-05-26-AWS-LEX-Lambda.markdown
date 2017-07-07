@@ -71,7 +71,14 @@ Normally smart phone can convert speach to text, but the Bot can't answer in voi
 
 to be continued...
 
-[Deploy on a website enable voice chat function](http://www.siili.com/news/creating-voice-recognition-bot-web-app-amazon-aws-lex)
-[voice chat website audio API and issues](http://ljn.io/posts/amazon-lex-with-html5-audio/)
+[Deploy on a website enable voice chat function from users](http://www.siili.com/news/creating-voice-recognition-bot-web-app-amazon-aws-lex)  
+reactjs nodejs aws-sdk-js aws-cognito aws-iam aws-lexruntime
+
+[Build your website with voice enabled Lex from AWS blog](https://aws.amazon.com/blogs/ai/capturing-voice-input-in-a-browser/)  
+aws-sdk aws-lexruntime  
+
+
+[voice chat website audio API and issues](http://ljn.io/posts/amazon-lex-with-html5-audio/)  
+
 
 [javascript sample](http://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/getting-started-browser.html)

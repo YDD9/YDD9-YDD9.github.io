@@ -62,3 +62,5 @@ rm -rf node_modules
 npm install -g npm@latest
 npm install
 ```
+
+[what is mount in react ?](https://stackoverflow.com/questions/31556450/what-is-mounting-in-react-js)
