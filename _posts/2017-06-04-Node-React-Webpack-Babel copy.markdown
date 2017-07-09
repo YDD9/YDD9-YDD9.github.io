@@ -13,17 +13,19 @@ Following the React tutorial on [tutorialpoints.com](https://www.tutorialspoint.
 
 Issues you may run into while following the tutorial:
 
-webpack.config.js './' relative path somehow has build error.   
+webpack.config.js configuration.output.path: The provided value "./" is not an absolute path! './' relative path somehow has build error, needs to be __dirname  
 module.loaders.loader must be specified as 'babel-loader' instead of 'babel'.  [further materials](https://stackoverflow.com/questions/43049748/invalid-configuration-object-in-webpack)
 
 ```
+// concate path
 // const path = require('path')
+// path.resolve(__dirname,'folder1','file.txt')
 
 var config = {
    entry: './main.js',
 	
    output: {
-      path: __dirname,  // path.resolve(__dirname,'',''),
+      path: __dirname,  // current path,
       filename: 'index.js',
    },
 	
@@ -124,3 +126,17 @@ Note that not all of the directories listed here may exist on your system depend
 This list should include just about all the references to Node on your system. Keep in mind there may be more. Please let me know if you find any others (and how you installed Node originally)!
 
 Generally, don't recommand install node via homebrew, then you can avoid [error](https://gist.github.com/DanHerbert/9520689)
+
+
+[Debug reactApp with VScode Steps](https://medium.com/@auchenberg/live-edit-and-debug-your-react-apps-directly-from-vs-code-without-leaving-the-editor-3da489ed905f)  
+1. [download](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome) VScode extension debugger for Chrome  
+2. config the VScode launch.json   
+            {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch index.html",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceRoot}"
+            }   
+3. `npm start` start the reactApp from BASH   
+4. F5 in VScode to start live debug   
