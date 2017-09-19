@@ -630,7 +630,7 @@ An alternative is to add search path temporarily only when project runs, and che
 import sys
 import os
 
-sys.path.append(os.path.join(os.path.dirname(_file_), ".."))
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 print sys.path
 ```
 
