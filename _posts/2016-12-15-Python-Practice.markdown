@@ -703,6 +703,9 @@ p = subprocess.Popen(["ls","-a"], stdout=subprocess.PIPE, stderr=subprocess.PIPE
 for c in iter(lambda: p.stdout.read(1), ''):
     sys.stdout.write(c)
     
+# seperate standard output and error output
+stdout, stderr = p.communicate()
+
 # output in one go
 print p.stdout.read()
 ```
