@@ -18,6 +18,7 @@ categories: Python
 [Python installer](#pythoninstaller)  
 [function \_\_init\_\_](#init)  
 [Python objects and values](#objectsvalues)  
+[Python string encoding](#enconding)  
 [function lambda](#lambda)  
 [Logs](#logs)  
 [Proxy](#proxy)  
@@ -573,6 +574,16 @@ True
 >>> a
 [42, 2, 3]
 ```
+
+## Python string encoding <a name="enconding"></a>  
+
+
+when using json.dump or yaml.dump the text in file contains extra char such as !!Python/unicode or u, to eliminate them, using encoding option when dumping.
+```
+import yaml
+yaml.dump(manifestSample, f, default_flow_style=False, allow_unicode=True, encoding='utf8')
+```
+
 
 ## Logs <a name="logs"></a>
 
