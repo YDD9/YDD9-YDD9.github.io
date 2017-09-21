@@ -578,7 +578,7 @@ True
 ## Python string encoding <a name="enconding"></a>  
 
 
-when using json.dump or yaml.dump the text in file contains extra char such as !!Python/unicode or u, to eliminate them, using encoding option when dumping.
+when using json.dump or yaml.dump the text in file contains extra char such as !!Python/unicode or u, to eliminate them, using encoding option when dumping. [possible solution](https://stackoverflow.com/questions/39612778/suppress-python-unicode-in-yaml-output)
 ```
 import yaml
 yaml.dump(manifestSample, f, default_flow_style=False, allow_unicode=True, encoding='utf8')
