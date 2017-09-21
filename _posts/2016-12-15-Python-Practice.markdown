@@ -23,7 +23,7 @@ categories: Python
 [Proxy](#proxy)  
 [import error](#importerror)    
 [Regular expression](#regularexpression)  
-[Execute cmd command](#subprocess)  
+[Execute cmd command with subprocess](#subprocess)  
 [HTTP requests](#requests)  
 [Ignore exception and run next](#runnext)
 
@@ -664,7 +664,7 @@ name = re.findall('^\S+', apps, re.M)  # flag re.Multilines search line by line,
 ```
 
 
-## Execute cmd command <a name='subprocess'></a> 
+## Execute cmd command with subprocess <a name='subprocess'></a> 
 
 To execute cmd command from Python environment, subprocess is the great helper.  
 https://docs.python.org/2/library/subprocess.html
@@ -686,10 +686,26 @@ unicows.dll
 
 ```
 
-
 subprocess.call() execute the command and print out the screen and return a status 0 when successful.
 subprocess.check_output() execute the command and save the screen output as a byte string, you have to print it out. 
+###### PS: args must be put inside the list [] 
 
+
+if you like to live output message on screen, follow [steps](https://stackoverflow.com/questions/18421757/live-output-from-subprocess-command)   
+
+```
+import subprocess
+import sys
+
+p = subprocess.Popen(["ls","-a"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+# output one char by char
+for c in iter(lambda: p.stdout.read(1), ''):
+    sys.stdout.write(c)
+    
+# output in one go
+print p.stdout.read()
+```
 
 ## HTTP requests <a name='requests'></a>
 
