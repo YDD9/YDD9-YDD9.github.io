@@ -19,7 +19,7 @@ categories: Python
 [function \_\_init\_\_](#init)  
 [Python objects and values](#objectsvalues)  
 [Python string encoding](#enconding)  
-[function lambda](#lambda)  
+[function lambda filter map reduce](#lambda)  
 [Logs](#logs)  
 [Proxy](#proxy)  
 [import error](#importerror)    
@@ -586,13 +586,18 @@ yaml.dump(manifestSample, f, default_flow_style=False, allow_unicode=True, encod
 
 
 ## function lambda filter reduce map <a name="lambda"></a>
-general lambda http://www.secnetix.de/olli/Python/lambda_functions.hawk
+
+filter map reduce definitions by book [pythontips](http://book.pythontips.com/en/latest/map_filter.html)
+combined usage with lambda function [examples](https://www.python-course.eu/lambda.php)
+
+general reading for lambda    
+http://www.secnetix.de/olli/Python/lambda_functions.hawk
 https://stackoverflow.com/questions/890128/why-are-python-lambdas-useful
 https://pythonconquerstheuniverse.wordpress.com/2011/08/29/lambda_tutorial/
 
-lambda filter map reduce https://www.python-course.eu/lambda.php
+for people don't like them, [list comprehension](https://www.python-course.eu/list_comprehension.php) is a good alternative
 
-book https://mitpress.mit.edu/sicp/full-text/book/book.html
+[MIT book](https://mitpress.mit.edu/sicp/full-text/book/book.html) to understand deeper about structure
 
 
 ## Logs <a name="logs"></a>
