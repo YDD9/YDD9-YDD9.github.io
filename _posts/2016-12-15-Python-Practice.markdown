@@ -585,6 +585,16 @@ yaml.dump(manifestSample, f, default_flow_style=False, allow_unicode=True, encod
 ```
 
 
+## function lambda filter reduce map <a name="lambda"></a>
+general lambda http://www.secnetix.de/olli/Python/lambda_functions.hawk
+https://stackoverflow.com/questions/890128/why-are-python-lambdas-useful
+https://pythonconquerstheuniverse.wordpress.com/2011/08/29/lambda_tutorial/
+
+lambda filter map reduce https://www.python-course.eu/lambda.php
+
+book https://mitpress.mit.edu/sicp/full-text/book/book.html
+
+
 ## Logs <a name="logs"></a>
 
 Logging cookbook  
