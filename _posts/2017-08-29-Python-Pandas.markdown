@@ -15,6 +15,7 @@ categories: Python
 - [Populate DataFrame with data](#populate-dataframe-with-data)
 - [Merge DataFrames into one](#merge-dataframes-into-one)
 - [write DataFrame into csv file](#write-dataframe-into-csv-file)
+- [change nan to None](#change-nan-to-None)
 
 
 
@@ -66,4 +67,16 @@ categories: Python
         df.to_csv('filename.csv',header ='column_names')
     else: # else it exists so append without writing the header
         df.to_csv('filename.csv',mode = 'a',header=False)
+    ```
+
+
+# change nan to None
+    [links](https://stackoverflow.com/questions/14162723/replacing-pandas-or-numpy-nan-with-a-none-to-use-with-mysqldb)
+    ```
+    >>> x = np.array([1, np.nan, 3])
+    >>> y = np.where(np.isnan(x), None, x)
+    >>> print y
+    [1.0 None 3.0]
+    >>> print type(y[1])
+    <type 'NoneType'>
     ```
