@@ -597,6 +597,9 @@ https://pythonconquerstheuniverse.wordpress.com/2011/08/29/lambda_tutorial/
 
 for people don't like them, [list comprehension](https://www.python-course.eu/list_comprehension.php) is a good alternative
 
+tricky part of `filter(None, [None, 1,2,3,0, None, 4,5])` will ignore not only None, but also 0 in the list.
+[solution is to write your own list comprehension or Python3](https://stackoverflow.com/questions/16096754/remove-none-value-from-a-list-without-removing-the-0-value)
+
 [MIT book](https://mitpress.mit.edu/sicp/full-text/book/book.html) to understand deeper about structure
 
 
