@@ -18,6 +18,16 @@ categories: Conda Python
 # Conda Config<a name="Conda-Config"></a>
 The [conda configuration](https://conda.io/docs/user-guide/configuration/sample-condarc.html) file, _.condarc_, is an **optional** runtime configuration file that allows advanced users to configure various aspects of conda, such as which channels it searches for packages, proxy settings and environment directories.
 
+[proxy settings](https://conda.io/docs/user-guide/configuration/use-winxp-with-proxy.html):
+```
+proxy_servers:
+  http: http://user:pass@corp.com:8080
+  https: https://user:pass@corp.com:8080
+
+ssl_verify: False
+```
+
+
 To check the where is your _.condarc_ file, `config info` and look for config file. If it's None, you can then create one with YAML syntax under your home path `echo %USERPROFILE%` or `echo $HOME` . A sample _.condarc_ file you can find [link](https://conda.io/docs/user-guide/configuration/sample-condarc.html)
 
 Config priority where to look for packages:  
@@ -44,6 +54,66 @@ conda config --set channel_priority false
 ```
 
 # Create a virtual environment for development<a name="Create-a-virtual-environment-for-development"></a>
-The most common ways are to either use `conda create --name <env_name> <packages to install optional>` syntax or create from a file using `conda env create -f environment.yml` syntax.
-To clone an env `conda create --name flowers --clone snowflakes` or `conda env create --name flowers snowflakes`  
-To create with specific python version or multiple packages, [link](https://conda.io/docs/user-guide/tasks/manage-environments.html)
+The most common ways are to either use 
+```
+conda create --name <env_name> <packages to install optional>
+# or 
+conda env create -f environment.yml
+```   
+
+To clone an env 
+```
+conda create --name flowers --clone snowflakes
+```  
+
+To create an env from an env saved in [Anaconda repository](https://docs.anaconda.com/anaconda-cloud/user-guide/tasks/work-with-environments) 
+```
+conda env create --name flowers snowflakes
+```
+
+You must have an Anaconda account and have `anaconda -h` installed, `anaconda login` then upload your env.yml then later you can load it from anywhere.   
+To export yml of myenv to current path:
+```
+conda env export -n myenv -f myenv.yml
+# or
+activate myenv
+conda env export > environment.yml
+```
+
+To remove an environment:  
+```
+conda remove --name myenv --all
+```
+
+To see a list of all packages installed in a specific environment:
+```
+# to know your env names
+conda info --env
+```
+
+If the environment is not activated:
+```
+conda list -n myenv
+```
+
+If the environment is activated:
+```
+conda list
+```
+
+To see if a specific package is installed in an environment:
+```
+conda list -n myenv scipy
+```
+
+
+To create with specific python version or multiple packages, [link](https://conda.io/docs/user-guide/tasks/manage-environments.html)    
+
+Then setup development folder and initialize with git and now activate the virtual env    
+Linux, OS X: source activate snowflakes   
+Linux, OS X: source deactivate   
+
+Windows: activate snowflakes    
+Windows: deactivate   
+
+
