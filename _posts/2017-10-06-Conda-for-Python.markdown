@@ -11,6 +11,7 @@ categories: Conda Python
 # Table of contents
 
 - [Conda Config](#Conda-Config)  
+- [Create a virtual environment for development](#Create-a-virtual-environment-for-development)
 
 
 
@@ -42,3 +43,7 @@ To make conda only consider version number and ignore channell priority:
 conda config --set channel_priority false
 ```
 
+# Create a virtual environment for development 
+The most common ways are to either use `conda create --name <env_name> <packages to install optional>` syntax or create from a file using `conda env create -f environment.yml` syntax.
+To clone an env `conda create --name flowers --clone snowflakes` or `conda env create --name flowers snowflakes`  
+To create with specific python version or multiple packages, [link](https://conda.io/docs/user-guide/tasks/manage-environments.html)
