@@ -7,7 +7,11 @@ categories: Conda Python
 ---
 
 
-#Table of contents
-[Conda Config](#Conda Config)  
 
-#Conda Config<a name="Conda Config"></a>
+# Table of contents
+
+- [Conda Config](#Conda-Config)  
+
+
+
+# Conda Config
