@@ -1,4 +1,24 @@
-## cf-uaac installation
+---
+layout: post
+title:  "Cloud Foundry Predix"
+date:   2017-08-06 14:48:39 +0100
+comments: true  
+categories: Cloud Foundry Predix
+---
+
+
+- [Table of Contents](#table-of-contents)
+- [cf-uaac installation](#cf-uaac-installation)
+- [cf-uaac troubleshoot](#cf-uaac-troubleshoot)
+- [push Python app in cloud with specific buildpack and Python version](#push-python-app-in-cloud-with-specific-buildpack-and-python-version)
+- [Python app in cloud with Flask](#python-app-in-cloud-with-flask)
+- [Python app with own libraries](#python-app-with-own-libraries)
+- [Python app with multiple .py files but only one as entry point](#python-app-with-multiple-py-files-but-only-one-as-entry-point)
+- [Python app in cloud for different space](#python-app-in-cloud-for-different-space)
+- [Push Python app in Predix-Analytics-Framework CI/CD](#push-python-app-in-predix-analytics-framework-cicd)
+
+
+# cf-uaac installation
 
 install cf-uaac on win10 is not forward straight, especially when there's certain version of Ruby that doesn't work well.
 
@@ -29,13 +49,115 @@ To uninstall `gem uninstall cf-uaac`, to install specific version `gem install c
 
 
 
-## cf-uaac troubleshoot
+# cf-uaac troubleshoot
 
 When executing command `uaac target https://*.predix-uaa.run.asv-pr.ice.predix.io`, error "Use '--skip-ssl-validation' to continue with an insecure target displays" occurs, the work around is set certificate before running scripts 
-`set CERT_FILE_PATH="C:\Users\YDD9\Downloads\cmder\vendor\git-for-windows\usr\ssl\certs\ca-bundle.crt"`   
-or `export SSL_CERT_FILE="/Users/YDD9/Downloads/cmder/vendor/git-for-windows/usr/ssl/certs/ca-bundle.crt"` for mac users   
+```
+set CERT_FILE_PATH="C:\Users\YDD9\Downloads\cmder\vendor\git-for-windows\usr\ssl\certs\ca-bundle.crt"
+
+# For Mac users
+export SSL_CERT_FILE="/Users/YDD9/Downloads/cmder/vendor/git-for-windows/usr/ssl/certs/ca-bundle.crt"
+
+```   
+
 Further reading materials [Predix forum solution](https://forum.predix.io/questions/11900/solution-uaac-target-failed-to-access-invalid-ssl.html) and [Predix advice for java](https://forum.predix.io/articles/11434/ssl-certificate-problem-1.html)  
 
-The best workaround I found is proposed by [cloudfoundry doc](https://discuss.pivotal.io/hc/en-us/articles/115009446348-Deploying-Spring-Cloud-Services-Broker-fails-with-UAAC-target-error) is `uaac target --ca-cert "C:\Users\YDD9\Downloads\cmder\vendor\git-for-windows\usr\ssl\certs\ca-bundle.crt" https://*.predix-uaa.run.asv-pr.ice.predix.io`  
+The best workaround I found is proposed by [cloudfoundry doc](https://discuss.pivotal.io/hc/en-us/articles/115009446348-Deploying-Spring-Cloud-Services-Broker-fails-with-UAAC-target-error):
+```
+uaac target --ca-cert "C:\Users\YDD9\Downloads\cmder\vendor\git-for-windows\usr\ssl\certs\ca-bundle.crt" https://*.predix-uaa.run.asv-pr.ice.predix.io
+```
+  
 The idea is to find the path of your ca-bundle.crt file(normally in your gitbash path or similar bash path) and force UAAC command to use it.  
   
+
+# push Python app in cloud with specific buildpack and Python version
+ 1. Check available buildpacks `cf buildpacks`  
+    ```
+    λ cf buildpacks
+    Getting buildpacks...
+
+    buildpack                    position   enabled   locked   filename
+    custom_node_buildpack        1          true      false
+    java_buildpack               2          true      false    java-buildpack-v3.6.zip
+    ruby_buildpack               3          true      false    ruby_buildpack-cached-v1.6.34.zip
+    nodejs_buildpack             4          true      false    nodejs_buildpack-cached-v1.5.29.zip
+    python_buildpack             5          true      false    python_buildpack-cached-v1.5.15.zip
+    predix_openresty_buildpack   6          true      false    staticfile_buildpack-cached-v1.2.1.zip
+    php_buildpack                7          true      false    php_buildpack-cached-v4.3.27.zip
+    staticfile_buildpack         8          true      false    staticfile_buildpack-cached-v1.3.17.zip
+    go_buildpack                 9          true      false    go_buildpack-cached-v1.7.18.zip
+    java_buildpack_large_heap    10         true      false    java_buildpack_large_heap.zip
+    matlab_buildpack_r2011b      11         true      false    matlab-buildpack-r2011b.zip
+    matlab_buildpack_r2012a      12         true      false    matlab-buildpack-r2012a.zip
+    matlab_buildpack_r2015a      13         true      false    matlab-buildpack-r2015a.zip
+    binary_buildpack             14         true      false    binary_buildpack-cached-v1.0.9.zip
+    java-buildpack               15         true      false    java-buildpack-v3.13.zip
+    java-offline-buildpack       16         true      false    java-buildpack-offline-v3.13.zip
+    python_minconda_buildpack    17         false     false    python_minconda_buildpack.zip
+    dotnet_core_buildpack        18         true      false    dotnet-core_buildpack-cached-v1.0.11.zip
+    ```
+ 2. Push app with available python_buildpack or a specific buildpack in github https://forum.predix.io/articles/24714/how-to-specify-a-python-buildpack.html
+    ```
+    cf push -b python_buildpack
+    
+    # or specific version of buildpack
+    cf push -b https://github.com/cloudfoundry/python-buildpack.git#v1.5.20
+
+    # or specify buildpack in your manifest.yml
+    ---
+    applications:
+    - name: latest-buildpack-demo
+    buildpack: https://github.com/cloudfoundry/buildpack-python.git#v1.5.20
+    ```
+3. Using specific Python version https://forum.predix.io/articles/24718/how-to-specify-a-python-version-for-your-app.html   
+   To avoid surprise, you should use the same version of Python in development and in cloud. You need to have the corresponding buildpack then create a `runtime.txt` file in the same directory as `manifest.yml`.  
+   Examples of runtime.txt
+   ```
+    python-3.6.1
+
+   ```
+   Examples of runtime.txt
+   ```
+    python-2.7.13
+   ```
+
+# Python app in cloud with Flask
+http://codehandbook.org/python-flask-web-application-on-ge-predix/  
+https://forum.predix.io/articles/24970/how-to-deploy-a-python-app-on-predix-in-under-10-m.html
+
+# Python app with own libraries
+https://forum.predix.io/articles/24733/how-to-include-your-own-private-python-libraries-i.html
+
+# Python app with multiple .py files but only one as entry point
+https://forum.predix.io/articles/28026/how-to-deploy-a-python-app-on-predix-consisting-of.html  
+```
+|-- analytics
+  |-- main.py
+  |-- commonHelper.py
+  |-- historyCalc.py
+  |-- futureCalc.py
+  |-- manifest.yml
+  |-- requirements.txt
+  |-- run.sh
+```
+If your analytics contains multiple .py files and only main.py is the entry point, you can create a __run.sh__ file specify the entry.
+```
+echo "----------start of analytics----------"
+python main.py
+```
+For requirements.txt you specify all modules used:
+```
+Flask
+requests
+pandas
+```
+
+
+# Python app in cloud for different space
+https://forum.predix.io/articles/27281/-how-to-deploy-application-on-multiple-spaces-deve.html
+```
+cf target -s <myspace>
+cf push -f <manifest.yml for myspace> -p <dist for myspace>
+```
+# Push Python app in Predix-Analytics-Framework CI/CD
+https://forum.predix.io/articles/25018/how-to-analytics-framework-workflow-automation-usi.html
