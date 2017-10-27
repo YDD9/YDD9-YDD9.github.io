@@ -2,5 +2,7 @@ https://www.ibm.com/developerworks/community/blogs/jfp/entry/Elementary_Matrix_O
 
 numpy 
 2D array and np.dot() to do outer product as matrix.
-+ - * / are element wise for python np.array in general
+In Python,  `+ - * /` are element wise for python np.array in general
 But not the case np.matrix
+
+https://docs.scipy.org/doc/numpy-dev/user/numpy-for-matlab-users.html
