@@ -9,7 +9,7 @@ A\B   ---> linalg.solve(A,B) when A is square matrix; linalg.lstsq(A,y) A is not
 A'    ---> transpose(A) or A.T
 A./B  ---> A / B
 
-diag(A)   ---> diagflat(A)
+diag(A)   ---> diagflat(A) when A is single column; A.diagonal() when A is Matrix
 A .^2     ---> A **2
 sqrt(A)   ---> sqrt(A)
 
