@@ -4,7 +4,7 @@ One to One correspondance function between Matlab/Octave V.S. Numpy in Python
 # A, B are Matrix
 
 A\B   ---> linalg.solve(A,B)
-A'    ---> transpose(A)
+A'    ---> transpose(A) or A.T
 A./B  ---> A / B
 
 diag(A)   ---> diagflat(A)
