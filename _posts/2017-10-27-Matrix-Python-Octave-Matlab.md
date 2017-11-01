@@ -12,7 +12,7 @@ A./B  ---> A / B
 diag(A)   ---> diagflat(A) when A is single column; A.diagonal() when A is Matrix
 A .^2     ---> A **2
 sqrt(A)   ---> sqrt(A)
-
+max(A,B)  ---> maximum(A, B) Element-wise maximum of two arrays, propagating any NaNs.
 ```
 
 https://www.ibm.com/developerworks/community/blogs/jfp/entry/Elementary_Matrix_Operations_In_Python?lang=en
