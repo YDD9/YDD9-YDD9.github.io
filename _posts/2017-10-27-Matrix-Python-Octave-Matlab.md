@@ -1,4 +1,4 @@
-http://mathesaurus.sourceforge.net/matlab-numpy.html
+http://mathesaurus.sourceforge.net/matlab-numpy.html   
 One to One correspondance function between Matlab/Octave V.S. Numpy in Python
 ```
 # A, B are Matrix
