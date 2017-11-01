@@ -4,6 +4,8 @@ One to One correspondance function between Matlab/Octave V.S. Numpy in Python
 # A, B are Matrix
 
 A\B   ---> linalg.solve(A,B) when A is square matrix; linalg.lstsq(A,y) A is not square matrix
+# https://stackoverflow.com/questions/7160162/left-matrix-division-and-numpy-solve
+
 A'    ---> transpose(A) or A.T
 A./B  ---> A / B
 
