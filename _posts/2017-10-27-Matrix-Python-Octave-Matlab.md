@@ -1,3 +1,18 @@
+http://mathesaurus.sourceforge.net/matlab-numpy.html
+One to One correspondance function between Matlab/Octave V.S. Numpy in Python
+```
+# A, B are Matrix
+
+A\B   ---> linalg.solve(A,B)
+A'    ---> transpose(A)
+A./B  ---> A / B
+
+diag(A)   ---> diagflat(A)
+A .^2     ---> A **2
+sqrt(A)   ---> sqrt(A)
+
+```
+
 https://www.ibm.com/developerworks/community/blogs/jfp/entry/Elementary_Matrix_Operations_In_Python?lang=en
 
 numpy 
