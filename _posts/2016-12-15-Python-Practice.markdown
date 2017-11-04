@@ -26,7 +26,9 @@ categories: Python
 [Regular expression](#regularexpression)  
 [Execute cmd command with subprocess](#subprocess)  
 [HTTP requests](#requests)  
-[Ignore exception and run next](#runnext)
+[Ignore exception and run next](#runnext)   
+[List comprehension](#listcomprehension)   
+
 
 ## Vitual Environments <a name="virtualenv"></a>    
 [page link](http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvironments-ref)   
@@ -770,5 +772,14 @@ print(uaaresponse.text)
 
 try/except will let you catch specific exceptions and ignore to continue to run. If you need to do_thing1, do_thing2 in an order but don't care of previous exceptions, you can have try/except for each do_thing. [link](http://stackoverflow.com/questions/3817748/python-ignore-exception-and-go-back-to-where-i-was)   
 
+
+## List comprehension <a name="listcomprehension"></a>
+```
+row = [1,2,3,4,5,None]
+# only output not None element, if must after 'for'
+[x for x in row if x is not None]
+# output None as xx, if else must before 'for'
+[x if x is not None else '__' for x in row]
+```
 
 
