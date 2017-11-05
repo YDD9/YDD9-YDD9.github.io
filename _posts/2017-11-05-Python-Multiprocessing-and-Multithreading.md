@@ -29,3 +29,4 @@ Using lib Python RedisQueue or Celery to queue in redis or other DB, then execut
 Working with Cloud, this solution should be nature. 
 
 
+inside the example code, there is an interesting function functools.partial. It re-define your original function with another name by changing the orig function input variable. example is **[here](https://www.pydanny.com/python-partials-are-fun.html)**
