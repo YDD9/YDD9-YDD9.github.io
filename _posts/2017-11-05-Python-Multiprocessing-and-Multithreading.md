@@ -29,4 +29,4 @@ Using lib Python RedisQueue or Celery to queue in redis or other DB, then execut
 Working with Cloud, this solution should be nature. 
 
 
-inside the example code, there is an interesting function functools.partial. It is used to re-define your original function to a bew function by changing the orig function input variable. example is **[here](https://www.pydanny.com/python-partials-are-fun.html)**
+inside the example code, there is an interesting function functools.partial. It is used to re-define your original function to a bew function by changing input variable of the original function. example is **[here](https://www.pydanny.com/python-partials-are-fun.html)**
