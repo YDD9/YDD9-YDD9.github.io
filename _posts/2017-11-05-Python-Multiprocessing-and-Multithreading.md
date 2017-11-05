@@ -21,7 +21,7 @@ Using lib multiprocessing, make usage of several CPUs to run the downloading in 
 Implementation is simple, but cost of creating a new process is not cheap and can have overhead load issues.
 
 ### Use IronPython or Jython
-Python has GIL issues is implemented by CPython. Python implementaion with .ent or java don't have GIL issue,
+Python with GIL issues is implemented by CPython. Python implementaion with .net or java don't have GIL issue,
 so you can carefully choose to work with IronPython or Jython, but be aware of compability issues with Django, etc...
 
 ### Cached queue and download executed on multiple PCs 
