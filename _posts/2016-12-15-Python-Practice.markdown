@@ -650,8 +650,8 @@ os.environ['no_proxy'] = 'github.com, google.com'
 ## import error <a name='importerror'></a>  
 
 It's headache when you first run into the Python import error: No module named does exist.
-You can simply add your project into PYTHONPATH on Windows, for Mac you can play with $PYTHONPATH. But it's not a good way.
-Suppose you clone this project locally and work on the copy, when you run test on the copy, no import error this time, because python still import from the origin, and that is not what you meant to do. It's hard to discover it untill you remember that a similar project with same module name exists in your PYTHONPATH. 
+**First make sure all your python paths do not contain whitespace.** Then You can simply add your project into PYTHONPATH on Windows, for Mac you can play with $PYTHONPATH.  
+But adding too many paths into PYTHONPATH is not good, you increase the chances to have the same function name in different paths. Suppose you clone this project locally and work on the copy, only original path is added. When you run test on the copy, no import error occurs, because python still import functions from the origin, and that is not what you expect. It's hard to discover it untill you remember that a similar project with same module name exists in your PYTHONPATH. 
 
 PYTHONPATH is key to installing and importing third-party packages. When an import command is passed, python looks for the module/package in a list of places.
 
