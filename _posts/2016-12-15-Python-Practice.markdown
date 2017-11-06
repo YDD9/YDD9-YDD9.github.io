@@ -496,7 +496,10 @@ $ python setup.py sdist
 ```
 This will create a dist sub-directory in your project, and will wrap-up all of your project’s source code files into a distribution file, a compressed archive file in the form of: `TowelStuff-0.1.tar.gz`
 
-The compressed archive format defaults to **.tar.gz** files on POSIX systems, and **.zip** files on Windows systems. [Link Page](http://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/quickstart.html) To change package format, you can add `--format=zip` in your cmd command, [available format](https://docs.python.org/2/distutils/builtdist.html).
+The compressed archive format defaults to **.tar.gz** files on POSIX systems, and **.zip** files on Windows systems.  
+[Quick start](http://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/quickstart.html). 
+To change package format, you can add `--format=zip` in your cmd command, [available format](https://docs.python.org/2/distutils/builtdist.html).  
+[Detailed tutorial](https://wiki.python.org/moin/Distutils/Tutorial) to run with adding more files.
 
 ### But now the dist should use new format wheel, .egg or .zip or .tar are all old way to package.  
 .whl file can be directly upload to PyPI and easily installed by any user, just run `pip install <your package>` Here is the [link](https://docs.python.org/2/distutils/builtdist.html) shows you how.
