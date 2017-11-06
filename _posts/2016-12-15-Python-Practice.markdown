@@ -490,6 +490,23 @@ type=int converts the argument to int
 
 #### When run the python command with arguments use the double quotation " instead of simple quotation'
 
+## Python installer <a name="pythoninstaller"></a>
+```
+$ python setup.py sdist
+```
+This will create a dist sub-directory in your project, and will wrap-up all of your project’s source code files into a distribution file, a compressed archive file in the form of: `TowelStuff-0.1.tar.gz`
+
+The compressed archive format defaults to **.tar.gz** files on POSIX systems, and **.zip** files on Windows systems. [Link Page](http://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/quickstart.html) To change package format, you can add `--format=zip` in your cmd command, [available format](https://docs.python.org/2/distutils/builtdist.html).
+
+### But now the dist should use new format wheel, .egg or .zip or .tar are all old way to package.  
+.whl file can be directly upload to PyPI and easily installed by any user, just run `pip install <your package>` Here is the [link](https://docs.python.org/2/distutils/builtdist.html) shows you how.
+```
+$ python setup.py bdist_wheel
+```
+
+
+
+
 ## function \_\_init\_\_ <a name="init"></a>  
 
 __init__.py can be added into any directory that you want python to search your defined modules.
@@ -781,5 +798,7 @@ row = [1,2,3,4,5,None]
 # output None as xx, if else must before 'for'
 [x if x is not None else '__' for x in row]
 ```
+
+
 
 
