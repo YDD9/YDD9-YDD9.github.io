@@ -431,8 +431,14 @@ And you need to solve the issues one by one manually [another tutorial](https://
 
 ## git submodules <a name=gitsubmodules></a> 
 You want to use codes in another repo in your main project. You can create normally your own project and add other modules as submodules, here is [the steps explained](https://stackoverflow.com/questions/2140985/how-to-set-up-a-git-project-to-use-an-external-repo-submodule) 
-
-
+```
+cd MyWebApp
+git submodule add git://github.com/jquery/jquery.git externals/jquery
+```   
+This will create a directory named externals/jquery* and link it to the github jquery repository. Now we just need to init the submodule and clone the code to it:
+```
+git submodule update --init --recursive
+```
 
 
 
