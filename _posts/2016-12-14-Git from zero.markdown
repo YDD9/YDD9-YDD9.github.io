@@ -20,6 +20,7 @@ Now you have git downloaded and ready to start.
 9. [Create a local branch and force push to a remote branch](#forceLocalbranchtoRemotebranch)
 10. [Checkout a remote branch](#remotebranch)
 11. [git diff merge tool](#diffmergetool)
+12. [git submodules](#gitsubmodules)
 
 
 
@@ -428,7 +429,8 @@ git mergetool --tool=sourcetree
 And you need to solve the issues one by one manually [another tutorial](https://gist.github.com/karenyyng/f19ff75c60f18b4b8149)
 
 
-
+## git submodules <a name=gitsubmodules></a> 
+You want to use codes in another repo in your main project. You can create normally your own project and add other modules as submodules, here is [the steps explained](https://stackoverflow.com/questions/2140985/how-to-set-up-a-git-project-to-use-an-external-repo-submodule) 
 
 
 
