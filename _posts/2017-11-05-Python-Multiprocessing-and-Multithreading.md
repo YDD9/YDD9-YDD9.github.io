@@ -32,3 +32,6 @@ Working with Cloud, this solution should be nature.
 
 
 inside the example code, there is an interesting function functools.partial. It is used to re-define your original function to a bew function by changing input variable of the original function. example is **[here](https://www.pydanny.com/python-partials-are-fun.html)**
+
+
+Python 3.5+ has a new lib **acyncio**, it's the new asynchrous module for python, here is comparison [article](http://masnun.rocks/2016/10/06/async-python-the-different-forms-of-concurrency/)
