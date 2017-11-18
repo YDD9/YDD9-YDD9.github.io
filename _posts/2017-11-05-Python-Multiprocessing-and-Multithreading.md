@@ -16,9 +16,11 @@ Using lib threading, you can release the GIL and continues to the next download 
 It's not real parallele download 100 pictures at the same time, but it's much better than sequencial downloading.
 Implementation is a little bit tricky compared to multiprocessing methode.
 
-### Multiprocessing queue pool
-Using lib multiprocessing, make usage of several CPUs to run the downloading in the processing que pool.
-Implementation is simple, but cost of creating a new process is not cheap and can have overhead load issues.
+### Multiprocessing queue pool or process
+Using lib multiprocessing, make usage of several CPUs to run the downloading in the processing queue **pool**.
+Implementation is simple, but cost of creating a new process is not cheap and can have overhead load issues.   
+[**process**](https://pymotw.com/2/multiprocessing/basics.html)
+
 
 ### Use IronPython or Jython
 Python with GIL issues is implemented by CPython. Python implementaion with .net or java don't have GIL issue,
