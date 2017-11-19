@@ -743,7 +743,11 @@ This example looks for a word following a hyphen:
 `(?<!...)`  
 Matches if the current position in the string is not preceded by a match for .... This is called a negative lookbehind assertion. Similar to positive lookbehind assertions, the contained pattern must only match strings of some fixed length and shouldn’t contain group references. Patterns which start with negative lookbehind assertions may match at the beginning of the string being searched.
 
-[Tutorial](http://www.rexegg.com/regex-disambiguation.html) of lookahead, lookbehind (? )
+[Tutorial](http://www.rexegg.com/regex-disambiguation.html) of lookahead, lookbehind 
+
+(?=USD) place your start point at the beginning of |USD, the search pattern put before or after itself, behavior is different.                 
+(?<=USD) place your start point at the end of USD|, and then start to match, the search pattern put before or after itself, behavior is different              
+check this 101regex.com with example 'USD100'
 
 
 ## Execute cmd command with subprocess <a name='subprocess'></a> 
