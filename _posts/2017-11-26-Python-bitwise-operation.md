@@ -68,9 +68,17 @@ def subtractor(A, B)
     comlement += 1
     return A + complement
     
-# this is fake one, because you still use '+'
+# this is a fake solution, because operator '+' is still used!
+# Make it work like a computer does adder first, just as CPU circuit was designed https://www.youtube.com/watch?v=VBDoT8o4q00
+# First A&B to find carry number, then the last bit of carry was passed to one bit higher as the carry number << 1
+# the higher bit is calculated with carry ^ A ^ B gives the current bit
     
 ```
+0011  (carry = 3&5)
+ 0011 (3)
++0101 (5)
+--------------
+ 1000 (8)
 
 Correct solution based on the electronics circuit which subtractor really does as such: http://www.geeksforgeeks.org/subtract-two-numbers-without-using-arithmetic-operators/   
 
