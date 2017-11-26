@@ -41,3 +41,40 @@ x ^ y
 Does a "bitwise exclusive or". Each bit of the output is the same as the corresponding bit in x if that bit in y is 0, and it's the complement of the bit in x if that bit in y is 1.
 
 [Usefull examples with bitwise operators](https://discuss.leetcode.com/topic/50315/a-summary-how-to-use-bit-manipulation-to-solve-problems-easily-and-efficiently)
+
+
+# [Subtractor](http://www.cprogrammingcode.com/2014/06/write-program-to-add-two-numbers.html)   
+To subtract two numbers here we are using 2's complement. To understand the logic let's take two number 4 and 3.
+
+First calculate the 2's Complement of 3.
+
+Binary representation of 3 is 0011
+
+Now 1's complement can be obtained by inverting all the bits of binary representation of 3. And by adding 1 in 1's complement we get 2's complement.
+
+1's complement of 3 is 1100.
+2's complement of 3 is 1101. ( By adding 1 in 1's complement we get 2's complement).
+
+Let's add 4 and 2's complement of 3.
+
+0100 + 1101 = 0001 ( This is the binary representation of 1).
+
+```
+def subtractor(A, B)
+    # A - B
+    # 1\'s complement
+    complement = ~B
+    @ 2\'s complement
+    comlement += 1
+    return A + complement
+    
+# this is fake one, because you still use '+'
+    
+```
+
+Correct solution based on the electronics circuit which subtractor really does as such: http://www.geeksforgeeks.org/subtract-two-numbers-without-using-arithmetic-operators/   
+
+https://stackoverflow.com/questions/3430651/subtracting-two-numbers-without-using-operator
+
+
+
