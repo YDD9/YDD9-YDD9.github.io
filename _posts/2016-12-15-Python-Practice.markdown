@@ -747,7 +747,7 @@ Matches if the current position in the string is not preceded by a match for ...
 
 (?=USD) place your start point at the beginning of |USD, the search pattern put before or after itself, behavior is different.                 
 (?<=USD) place your start point at the end of USD|, and then start to match, the search pattern put before or after itself, behavior is different              
-check this https://regex101.com/ with example 'USD100'
+check this https://regex101.com/ with example '100USD10' with r'100(?=USD)' get the number 100 before dollar; with r'(?<=USD)10' get the number 10 after USD.
 
 
 ## Execute cmd command with subprocess <a name='subprocess'></a> 
