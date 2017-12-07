@@ -93,6 +93,9 @@ WARN NativeCodeLoader: Unable to load native-hadoop library for your platform...
    
 https://stackoverflow.com/questions/40015416/spark-unable-to-load-native-hadoop-library-for-your-platform
 
-set HADOOP_HOME to point to that directory.
-add $HADOOP_HOME/lib/native to LD_LIBRARY_PATH
+set HADOOP_HOME to point to that directory.          
+add $HADOOP_HOME/lib/native to LD_LIBRARY_PATH      
+
+Simple APP tutorial   
+https://www.dezyre.com/apache-spark-tutorial/pyspark-tutorial     
    
