@@ -56,6 +56,13 @@ then activate this file `source ~/.bashrc`
    
 # Spark in Jupyter   
 Method 2 — FindSpark package https://blog.sicara.com/get-started-pyspark-jupyter-guide-tutorial-ae2fe84f594f   
+https://github.com/adrienlina/jupyter-silent-import/blob/master/results_presentation.ipynb
+
+Approximation of Pi explained.
+The area of the $[-1, +1]^2$ square is $2^2 = 4$. The area of the unitary circle is $\pi * 1^2 = \pi$.
+This means that we have a chance of $\frac{\pi}{4}$ of choosing a point that is inside the circle.
+The Monte Carlo part is about taking many samples to approximate that chance.
+
 ```   
 pip install findspark   
 jupyter notebook   
