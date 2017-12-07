@@ -76,10 +76,12 @@ or just indicate clearly the path `findspark.init('/path/to/spark_home')`
    
 # Solve pyspark ip loopback issue   
 If you run your env in a virtualbox linux, you don't have localhost as ip for pyspark   
-To change IP: add the SPARK_LOCAL_IP in the /usr/local/spark/spark-env.sh file `SPARK_LOCAL_IP="<IP address>"`   
+To change IP: add the SPARK_LOCAL_IP in the /usr/local/spark/spark-env.sh file `export SPARK_LOCAL_IP="<IP address>"`   
 This file is located at $SPARK_HOME/conf/, where $SPARK_HOME is the location of your Apache Spark installation.    
 https://support.datastax.com/hc/en-us/articles/204675669-Spark-hostname-resolving-to-loopback-address-warning-in-spark-worker-logs   
-   
+
+example file  https://gist.github.com/berngp/10793284   
+
 You will find a template spark-env.sh.template and use it.   
 ```   
 WARN Utils: Your hostname, Linuxdevbox resolves to a loopback address: 127.0.0.1; using 10.0.2.15 instead (on interface enp0s3)   
@@ -89,5 +91,8 @@ WARN Utils: Your hostname, Linuxdevbox resolves to a loopback address: 127.0.0.1
 # Further troubleshoot   
 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable   
    
-   
+https://stackoverflow.com/questions/40015416/spark-unable-to-load-native-hadoop-library-for-your-platform
+
+set HADOOP_HOME to point to that directory.
+add $HADOOP_HOME/lib/native to LD_LIBRARY_PATH
    
