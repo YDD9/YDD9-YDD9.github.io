@@ -100,4 +100,4 @@ Although those warning message displayed, calculation of program finishes in 10 
 
 # Simple APP tutorial   
 https://www.dezyre.com/apache-spark-tutorial/pyspark-tutorial     
-   
+https://spark.apache.org/docs/2.2.0/rdd-programming-guide.html#parallelized-collections    
