@@ -92,10 +92,12 @@ WARN Utils: Your hostname, Linuxdevbox resolves to a loopback address: 127.0.0.1
 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable   
    
 https://stackoverflow.com/questions/40015416/spark-unable-to-load-native-hadoop-library-for-your-platform
-
 set HADOOP_HOME to point to that directory.          
 add $HADOOP_HOME/lib/native to LD_LIBRARY_PATH      
+https://discuss.pivotal.io/hc/en-us/articles/219403388-How-to-eliminate-error-message-WARN-util-NativeCodeLoader-Unable-to-load-native-hadoop-library-for-your-platform-with-gphdfs   
 
-Simple APP tutorial   
+Although those warning message displayed, calculation of program finishes in 10 -15 mins.
+
+# Simple APP tutorial   
 https://www.dezyre.com/apache-spark-tutorial/pyspark-tutorial     
    
