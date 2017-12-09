@@ -105,6 +105,13 @@ https://unix.stackexchange.com/questions/145997/trying-to-ssh-to-local-vm-ubuntu
 VirtualBox will create a private network (10.0.2.x) which will be connected to your host network using NAT. (Unless configured otherwise.)
 This means that you cannot directly access any host of the private network from the host network. To do so, you need some port forwarding. In the network preferences of your VM you can for example configure that VirtualBox should open port 22 on 127.0.1.1 (a loopback address of your host) and forward any traffic to port 22 of 10.0.2.1 (given that is the internal address of your VM)
 This way you can point putty to Port 22 of 127.0.1.1 and VirtualBox will redirect this connection to your VM where its ssh deamon will answer it, allowing you to log in.
+```
+$ ssh predix@127.0.1.1
+predix@127.0.1.1$ jupyter notebook --no-browser --port=8889
+# open a new terminal
+$ ssh -N -L 8888:localhost:8889 predix@127.0.1.1
+# open a new browser to use localhost:8888
+```
 
 # Solve pyspark ip loopback issue   
 If you run your env in a virtualbox linux, you don't have localhost as ip for pyspark   
