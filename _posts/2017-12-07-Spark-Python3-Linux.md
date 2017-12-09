@@ -80,7 +80,32 @@ def fn():
 ```   
 or just indicate clearly the path `findspark.init('/path/to/spark_home')`   
    
-   
+# jupyter notebook remote server
+If you need to access a remote server via jupyter notebook
+https://hsaghir.github.io/data_science/jupyter-notebook-on-a-remote-machine-linux/   
+https://coderwall.com/p/y1rwfw/jupyter-notebook-on-remote-server    
+
+SSH login to remote
+`me@local_host$ ssh user@remote_host`   
+
+start jupyter on remote   
+`user@remote_host$ jupyter notebook --no-browser --port=8889`   
+
+In a new terminal window   
+`me@local_host$ ssh -N -L localhost:8888:localhost:8889 user@remote_host`   
+-N options tells SSH that no commands will be run and it’s useful for port forwarding, and -L lists the port forwarding configuration that we setup.   
+
+Open a browser on your local_host, then type url localhost:8888, you are ready to go.
+
+ 
+# In case of remote server is in VirtualBox   
+https://unix.stackexchange.com/questions/145997/trying-to-ssh-to-local-vm-ubuntu-with-putty   
+![alt text](https://github.com/YDD9/YDD9.github.io/edit/master/images/VirtualBoxPortForward.png "VirtualBox Port Forward")
+
+VirtualBox will create a private network (10.0.2.x) which will be connected to your host network using NAT. (Unless configured otherwise.)
+This means that you cannot directly access any host of the private network from the host network. To do so, you need some port forwarding. In the network preferences of your VM you can for example configure that VirtualBox should open port 22 on 127.0.1.1 (a loopback address of your host) and forward any traffic to port 22 of 10.0.2.1 (given that is the internal address of your VM)
+This way you can point putty to Port 22 of 127.0.1.1 and VirtualBox will redirect this connection to your VM where its ssh deamon will answer it, allowing you to log in.
+
 # Solve pyspark ip loopback issue   
 If you run your env in a virtualbox linux, you don't have localhost as ip for pyspark   
 To change IP: add the SPARK_LOCAL_IP in the /usr/local/spark/spark-env.sh file `export SPARK_LOCAL_IP="<IP address>"`   
