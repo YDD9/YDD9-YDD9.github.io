@@ -20,6 +20,9 @@ https://www.postgresql.org/docs/9.1/static/app-pgdump.html
 To dump a single table named mytab:   
 `$ pg_dump -t mytab mydb > db.sql`    
 
+https://stackoverflow.com/questions/42567030/psql-errors-when-importing-from-a-pg-dump   
+without owner `--no-owner --no-acl`
+
 **To dump all schemas whose names start with east or west and end in gsm, excluding any schemas whose names contain the word test:  
 `$ pg_dump -n 'east*gsm' -n 'west*gsm' -N '*test*' mydb > db.sql`   **
 
