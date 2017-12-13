@@ -34,6 +34,8 @@ download DB postgres_sh, with only schema task_controller_testing, with user pos
 https://www.postgresql.org/docs/8.1/static/backup.html#BACKUP-DUMP-RESTORE   
 https://stackoverflow.com/questions/6842393/import-sql-dump-into-postgresql-database   
 `psql databasename < data_base_dump`  databasename DB must be created before you import your dump.sql   
+` psql -h 10.16.187.100 -U postgres postgres_sh < back.sql`   
+
   
 # Auth issues  
 https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge  
