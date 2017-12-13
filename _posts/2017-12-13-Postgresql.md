@@ -27,15 +27,19 @@ without owner `--no-owner --no-acl`
 `$ pg_dump -n 'east*gsm' -n 'west*gsm' -N '*test*' mydb > db.sql`   **
 
 **PS**:  mydb should always be the end of command:
-download DB postgres_sh, with only schema task_controller_testing, with user postgres, with server IP 10.16.187.100 into file.   
-`pg_dump -U postgres -h 10.16.187.100 -n task_controller_testing postgres_sh> back.sql`
+download DB postgres_sh, with only schema mydb_testing, with user postgres, with server IP 10.16.187.100 into file.   
+`pg_dump -U postgres -h 10.16.187.100 -n mydb_schema postgres_sh> back.sql`
 
-# import from dump
+# import from dump via cmd
 https://www.postgresql.org/docs/8.1/static/backup.html#BACKUP-DUMP-RESTORE   
 https://stackoverflow.com/questions/6842393/import-sql-dump-into-postgresql-database   
 `psql databasename < data_base_dump`  databasename DB must be created before you import your dump.sql   
 ` psql -h 10.16.187.100 -U postgres postgres_sh < back.sql`   
 
+# import from dump via pgAdmin SQL
+https://stackoverflow.com/questions/32271378/in-postgresql-how-to-insert-data-with-copy-command   
+if you want to use your dump.sql from pgAdmin, when you dump, you need add --inserts, this way you won't get a sql plain text file with copy table from stdin;     
+`pg_dump -U postgres -h 10.16.187.100 --inserts -n mydbschema postgres_sh> back.sql`    
   
 # Auth issues  
 https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge  
