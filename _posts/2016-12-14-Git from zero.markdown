@@ -18,6 +18,7 @@ Now you have git downloaded and ready to start.
 7. [Go back to specific commit](#goback)  
 8. [Git push succeed, remote not updating](#missupdates)  
 9. [Create a local branch and force push to a remote branch](#forceLocalbranchtoRemotebranch)
+10.[Branch create and merge](#BranchMerge)  
 10. [Checkout a remote branch](#remotebranch)
 11. [git diff merge tool](#diffmergetool)
 12. [git submodules](#gitsubmodules)
@@ -379,6 +380,20 @@ Force pushing more safely with --force-with-lease
 
 Force pushing with a "lease" allows the force push to fail if there are new commits on the remote that you didn't expect (technically, if you haven't fetched them into your remote-tracking branch yet), which is useful if you don't want to accidentally overwrite someone else's commits that you didn't even know about yet, and you just want to overwrite your own: [details](http://stackoverflow.com/questions/10510462/force-git-push-to-overwrite-remote-files)
 
+
+## [Branch create and merge]<a name="BranchMerge"></a>
+`$ git checkout -b amend-my-name` http://dont-be-afraid-to-commit.readthedocs.io/en/latest/git/commandlinegit.html#create-a-new-branch  
+You can also choose what to base the new branch on. A quite common thing to do is, just for example:
+`git checkout -b new-branch existing-branch`  
+
+Master merge into Branch and solve all conflicts then merge Branch back into master. Safe practice.  
+https://stackoverflow.com/questions/14168677/merge-development-branch-with-master   
+```
+(on branch development)$ git merge master
+(resolve any merge conflicts if there are any)
+git checkout master
+git merge development (there won't be any conflicts now)
+```  
 
 ## Checkout a remote branch <a name="remotebranch"></a>
 [link](http://stackoverflow.com/questions/9537392/git-fetch-remote-branch)
