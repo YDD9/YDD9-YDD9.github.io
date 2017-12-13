@@ -29,6 +29,11 @@ without owner `--no-owner --no-acl`
 **PS**:  mydb should always be the end of command:
 download DB postgres_sh, with only schema task_controller_testing, with user postgres, with server IP 10.16.187.100 into file.   
 `pg_dump -U postgres -h 10.16.187.100 -n task_controller_testing postgres_sh> back.sql`
+
+# import from dump
+https://www.postgresql.org/docs/8.1/static/backup.html#BACKUP-DUMP-RESTORE   
+https://stackoverflow.com/questions/6842393/import-sql-dump-into-postgresql-database   
+`psql databasename < data_base_dump`  databasename DB must be created before you import your dump.sql   
   
 # Auth issues  
 https://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge  
