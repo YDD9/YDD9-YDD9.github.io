@@ -7,7 +7,7 @@ grep 'word1\|word2\|word3' /path/to/file
 grep '^redis*'
 ```
 
-awk can be used to filter as well
+awk can be used to filter as well  
 https://www.cyberciti.biz/faq/bash-scripting-using-awk/   
 ```
 awk '{ print }' /etc/passwd
