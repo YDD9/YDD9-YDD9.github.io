@@ -25,10 +25,10 @@ categories: Python
 
 
 
-`import pandas as pd`  
+import pandas as pd  
 
 # Initialate an empty DataFrame
-    `df = pd.DataFrame()`  
+    df = pd.DataFrame()  
 
 # Populate DataFrame with data
 1. column name is a variable, df is modified
@@ -43,6 +43,13 @@ categories: Python
     ```
     df = pd.DataFrame({'A':[1,2,3], 'B':[4,5,6]})  
     df2 = pd.DataFrame([1,2,3,4,5], columns=['C'])
+    
+    # if value is not list but a single scalar or a string, above won't work
+    # ValueError: If using all scalar values, you must pass an index
+    # add index=[0]
+    
+    pd.DataFrame({'tag':50}, index=[0])
+    pd.DataFrame({'tag':'single'}, index=[0])
     ```
 4. assign several columns  
     `df = df.assign(C=df['A']**2, D=df.B*2)`   
