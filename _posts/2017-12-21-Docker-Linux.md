@@ -49,3 +49,17 @@
   Restart Docker:
   `$ sudo systemctl restart docker`
 
+4. [How to mount host directory in docker container?](https://stackoverflow.com/questions/23439126/how-to-mount-host-directory-in-docker-container)   
+to mount the the current directory (source) with /test_container (target) we are going to use:
+```
+  docker run -it --mount src="$(pwd)",target=/test_container,type=bind k3_s3
+```
+
+5. Dockerfile to create your own image
+  ```
+  $ FROM python COPY . /src CMD [“python”, “/src/birthday.py”]
+  FROM requires either one or three arguments
+  ```
+
+Simple example using Docker to run Python
+https://www.civisanalytics.com/blog/using-docker-to-run-python/
