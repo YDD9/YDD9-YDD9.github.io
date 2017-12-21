@@ -61,5 +61,24 @@ to mount the the current directory (source) with /test_container (target) we are
   FROM requires either one or three arguments
   ```
 
-Simple example using Docker to run Python
-https://www.civisanalytics.com/blog/using-docker-to-run-python/
+# Simple example using Docker to run Python  
+https://www.civisanalytics.com/blog/using-docker-to-run-python/  
+change the Dockerfile based on the help https://codefresh.io/docker-guides/build-docker-image-dockerfiles/
+Dockerfile
+a file without extension
+```
+FROM python 
+ADD "./Birthday-Problem/birthday.py" "./src/birthday.py"
+CMD ["python", "/src/birthday.py"]
+```
+To build from current dir ./ and specify a name
+```
+$ sudo docker build ./ -t ydd9/python-birthday
+Successfully built ydd9/python-birthday:latest
+$ sudo docker build ./
+Successfully built da3bf65a40da
+
+```
+
+
+
