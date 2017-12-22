@@ -17,6 +17,8 @@ categories: Python
 - [Drop duplicates](#drop-duplicates)  
 - [write DataFrame into csv file](#write-dataframe-into-csv-file)
 - [change nan to None](#change-nan-to-None)
+- [select row](#select-row)
+
 
 
 
@@ -123,3 +125,68 @@ pd.concat([df_data, df_new_data], axis=1)
   ```
   
     
+# select row
+To select rows whose column value equals a scalar, some_value, use ==:
+```
+df.loc[df['column_name'] == some_value]
+```
+To select rows whose column value is in an iterable, some_values, use isin:
+```
+df.loc[df['column_name'].isin(some_values)]
+```
+Combine multiple conditions with &:
+```
+df.loc[(df['column_name'] == some_value) & df['other_column'].isin(some_values)]
+```
+https://stackoverflow.com/questions/17071871/select-rows-from-a-dataframe-based-on-values-in-a-column-in-pandas
+
+example:
+```
+import pandas as pd
+import numpy as np
+df = pd.DataFrame({'A': 'foo bar foo bar foo bar foo foo'.split(),
+                   'B': 'one one two three two two one three'.split(),
+                   'C': np.arange(8), 'D': np.arange(8) * 2})
+print(df)
+#      A      B  C   D
+# 0  foo    one  0   0
+# 1  bar    one  1   2
+# 2  foo    two  2   4
+# 3  bar  three  3   6
+# 4  foo    two  4   8
+# 5  bar    two  5  10
+# 6  foo    one  6  12
+# 7  foo  three  7  14
+
+print(df.loc[df['A'] == 'foo'])
+```
+Note, however, that if you wish to do this many times, it is more efficient to make an index first, and then use df.loc:
+```
+df = df.set_index(['B'])
+print(df.loc['one'])
+```
+yields
+```
+       A  C   D
+B              
+one  foo  0   0
+one  bar  1   2
+one  foo  6  12
+```
+or, to include multiple values from the index use df.index.isin:
+```
+df.loc[df.index.isin(['one','two'])]
+```
+yields
+```
+       A  C   D
+B              
+one  foo  0   0
+one  bar  1   2
+two  foo  2   4
+two  foo  4   8
+two  bar  5  10
+one  foo  6  12
+```
+	
+In fact, df[df['colume_name']==some_value] also works
