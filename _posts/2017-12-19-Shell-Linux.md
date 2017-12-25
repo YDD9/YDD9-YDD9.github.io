@@ -22,3 +22,23 @@ For e.g. display all lines from Apache log file if HTTP error code is 500
 (9th field logs status error code for each http request):
 awk '$9 == 500 { print $0}' /var/log/httpd/access.log
 ```
+
+# centOS yum install conflicts
+yum update or yum install fails with package conflict:
+Install the yum-utils package:
+`yum install yum-utils`    
+
+The package-cleanup --dupes lists all duplicate packages:
+`package-cleanup --dupes`  
+
+The package-cleanup --cleandupes removes the duplicates (it asks for a confirmation to remove all duplicates unless the -y switch is given):
+`package-cleanup --cleandupes`   
+
+Edit /etc/yum.conf, set the following line:
+`exactarch=1`    
+
+Run yum command:
+```
+yum clean all
+yum update
+```  
