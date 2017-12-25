@@ -24,7 +24,7 @@ awk '$9 == 500 { print $0}' /var/log/httpd/access.log
 ```
 
 # centOS yum install conflicts
-yum update or yum install fails with package conflict:
+[yum update or yum install fails with package conflict:](https://access.redhat.com/solutions/158883)
 Install the yum-utils package:
 `yum install yum-utils`    
 
