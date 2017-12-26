@@ -85,7 +85,27 @@ open a cmd in your Host win10
 Last login: Thu Apr 23 15:50:31 2015 from 192.168.59.3
 CoreOS stable (633.1.0)
 core@localhost ~ $
+
+
+# https://www.cyberciti.biz/faq/force-ssh-client-to-use-given-private-key-identity-file/
+>> ssh -p 2222 -i 'user\ydd9\.ssh\id_rsa' core@ip
 ```
+
+# CoreOS add user   
+https://coreos.com/os/docs/latest/adding-users.html   be carefull about the Container Linux Config file you see, its format is not the same as cloud-config.yml  
+1. add user when create the VM  
+
+2. add user by command  
+The "*" creates a user that cannot login with a password but can log in via SSH key. -U creates a group for the user, -G adds the user to the existing sudo group and -m creates a home directory. If you'd like to add a password for the user, run:
+```
+$ sudo useradd -p "*" -U -m user1 -G sudo
+
+$ sudo passwd user1
+New password:
+Re-enter new password:
+passwd: password changed.
+```
+
 
 
 
