@@ -71,6 +71,7 @@ users:
   ssh_authorized_keys:
     - "ssh_rsa AAAAB3NzaC1...snip"
 ```
+Valide this cloud-config.yml in website https://coreos.com/validate/
 
 Reboot and install CoreOS into the harddisk /dev/sda  https://coreos.com/os/docs/latest/installing-to-disk.html    
 ```
