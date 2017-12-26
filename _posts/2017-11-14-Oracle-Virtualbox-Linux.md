@@ -69,7 +69,7 @@ sudo coreos-install -d /dev/sda -C stable -c ~/cloud-config.yaml
 ```
 Then you can unmount ISO and continu further test.   
 
-Connecting the CoreOS with ssh, you need config ![port forwarding]({{sute.url}}/images/VirtualBoxPortForwarding.png)
+Connecting the CoreOS with ssh, you need config ![port forwarding]({{sute.url}}/images/VirtualBoxPortForward.png)
 open a cmd in your Host win10
 ```
 >> ssh -p 22022 core@127.0.0.1
