@@ -107,7 +107,12 @@ Re-enter new password:
 passwd: password changed.
 ```
 
+# Debian OS
+http://www.brianlinkletter.com/installing-debian-linux-in-a-virtualbox-virtual-machine/  
+Debian OS full CD ISO(not the small version netinst) is very easy to install with graphical user interface.  
 
+During installation steps, it always failed to install standard system utilities, but it seems not a big issue, just not convenient to use later.  
+https://unix.stackexchange.com/questions/307600/whats-the-consequences-if-i-dont-install-the-standard-system-utilities-of-de
 
 
 
