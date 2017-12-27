@@ -83,7 +83,7 @@ sudo coreos-install -d /dev/sda -C stable -c ~/cloud-config.yml
 ```
 Run `sudo fdisk -l`. You should have a /dev/sda device. 
 
-Then you can unmount ISO and continu further test.   
+Then you can poweroff `sudo shutdown -h now` and unmount ISO in CD and continu further test.   
 
 Connecting the CoreOS with ssh, you need config ![port forwarding]({{ site.url }}/images/VirtualBoxPortForwarding.png)
 open a cmd in your Host win10
