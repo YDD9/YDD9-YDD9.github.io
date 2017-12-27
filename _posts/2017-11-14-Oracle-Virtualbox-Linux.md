@@ -92,24 +92,24 @@ core@localhost ~ $
 >> ssh -p 2222 -i 'user\ydd9\.ssh\id_rsa' core@ip
 ```
 
-# SSH explained
-https://wiki.debian.org/SSH  
-In addition this directory contains the private/public key pairs identifying your host :
+# SSH explained   
+https://wiki.debian.org/SSH    
+In addition this directory contains the private/public key pairs identifying your host :   
 
-ssh_host_dsa_key
-ssh_host_dsa_key.pub
-ssh_host_rsa_key
-ssh_host_rsa_key.pub
+ssh_host_dsa_key   
+ssh_host_dsa_key.pub    
+ssh_host_rsa_key   
+ssh_host_rsa_key.pub   
 
-Since OpenSSH 5.73, a new private/public key pair is available:
+Since OpenSSH 5.73, a new private/public key pair is available:    
+  
+ssh_host_ecdsa_key   
+ssh_host_ecdsa_key.pub    
 
-ssh_host_ecdsa_key
-ssh_host_ecdsa_key.pub
+Since OpenSSH 6.54, a new private/public key pair is available:   
 
-Since OpenSSH 6.54, a new private/public key pair is available:
-
-ssh_host_ed25519_key
-ssh_host_ed25519_key.pub
+ssh_host_ed25519_key   
+ssh_host_ed25519_key.pub   
 
 
 # CoreOS add user   
