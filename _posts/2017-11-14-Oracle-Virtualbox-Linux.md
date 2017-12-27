@@ -155,5 +155,17 @@ Debian OS full CD ISO(not the small version netinst) is very easy to install wit
 During installation steps, it always failed to install standard system utilities, but it seems not a big issue, just not convenient to use later.  
 https://unix.stackexchange.com/questions/307600/whats-the-consequences-if-i-dont-install-the-standard-system-utilities-of-de
 
+Fix the apt-get install error: “Media change: please insert the disc labeled ...” on your Linux VPS   
+https://www.velocihost.net/clients/knowledgebase/29/Fix-the-apt-get-install-error-Media-change-please-insert-the-disc-labeled--on-your-Linux-VPS.html   
+```
+Media change: please insert the disc labeled
+ 'Debian GNU/Linux 7.0.0 _Wheezy_ - Official amd64 CD Binary-1 20130504-14:44'
+in the drive '/media/cdrom/' and press enter
+
+$ vi /etc/apt/sources.list
+
+You might find a deb cdrom:[Debian GNU/Linux 7.0.0 _Wheezy_ - Official amd64 CD Binary-1 20130504-14:44]/ wheezy main line indicating a local CDROM as a package source. Comment it out by placing a # symbol at the beginning of the line and save the file.
+
+```
 
 
