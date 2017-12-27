@@ -89,7 +89,7 @@ core@localhost ~ $
 
 
 # https://www.cyberciti.biz/faq/force-ssh-client-to-use-given-private-key-identity-file/
->> ssh -p 2222 -i 'user\ydd9\.ssh\id_rsa' core@ip
+>> ssh -p 2222 -i 'c:\user\ydd9\.ssh\id_rsa' core@ip
 ```
 
 # SSH explained   
@@ -111,6 +111,21 @@ Since OpenSSH 6.54, a new private/public key pair is available:
 ssh_host_ed25519_key   
 ssh_host_ed25519_key.pub   
 
+check ssh server    
+https://linuxconfig.org/how-to-install-start-and-connect-to-ssh-server-on-fedora-linux   
+```
+$ systemctl start sshd
+$ netstat -ant | grep 22
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN 
+tcp6       0      0 :::22                   :::*                    LISTEN
+```
+
+if ssh core@ip always asks password https://www.digitalocean.com/community/questions/coreos-ssh-asks-for-password  
+always doesn't connnect, you will see problem and a cloud-config.yaml https://github.com/coreos/bugs/issues/791:   
+Make sure that your keys are present in ~/.ssh/authorized_keys and try running your SSH client in verbose mode. 
+```
+ssh -p 2222 -A -v -i 'c:\user\ydd9\.ssh\id_rsa' core@10.255.100.167
+```
 
 # CoreOS add user   
 https://coreos.com/os/docs/latest/adding-users.html   be carefull about the Container Linux Config file you see, its format is not the same as cloud-config.yml  
