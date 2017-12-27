@@ -166,6 +166,8 @@ $ vi /etc/apt/sources.list
 
 You might find a deb cdrom:[Debian GNU/Linux 7.0.0 _Wheezy_ - Official amd64 CD Binary-1 20130504-14:44]/ wheezy main line indicating a local CDROM as a package source. Comment it out by placing a # symbol at the beginning of the line and save the file.
 
+# to update the sources.list
+apt-get update
 ```
 
 
