@@ -80,5 +80,19 @@ Successfully built da3bf65a40da
 
 ```
 
+# minikube install on CoreOS
+Install minikube on CoreOS https://github.com/kubernetes/minikube#using-rkt-container-engine
+```
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /opt/bin/
+
+curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl
+```
+
+https://stackoverflow.com/questions/37810293/coreos-read-only-file-system  
+In CoreOS the /usr partition is read-only by design, so /usr/local/bin/ will be read-only too.  use /opt/ for this purpose. 
+Do `mkdir -p /opt/bin; mv ./kubectl /opt/bin/kubectl`, minikube still can't run as it always goes to /usr path to write.
+
+
+
 
 
