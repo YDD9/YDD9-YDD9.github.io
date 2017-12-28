@@ -152,7 +152,7 @@ passwd: password changed.
 http://www.brianlinkletter.com/installing-debian-linux-in-a-virtualbox-virtual-machine/  
 Debian OS full CD ISO(not the small version netinst) is very easy to install with graphical user interface.  
 
-During installation steps, it always failed to install standard system utilities, but it seems not a big issue, just not convenient to use later.  
+During installation steps, it always failed to install standard system utilities, but it seems not a big issue for a functional Debian, just not convenient to use if some moduels you will need later.  
 https://unix.stackexchange.com/questions/307600/whats-the-consequences-if-i-dont-install-the-standard-system-utilities-of-de
 
 Fix the apt-get install error: “Media change: please insert the disc labeled ...” on your Linux VPS   
@@ -165,31 +165,54 @@ in the drive '/media/cdrom/' and press enter
 $ vi /etc/apt/sources.list
 
 You might find a deb cdrom:[Debian GNU/Linux 7.0.0 _Wheezy_ - Official amd64 CD Binary-1 20130504-14:44]/ wheezy main line indicating a local CDROM as a package source. Comment it out by placing a # symbol at the beginning of the line and save the file.
-
-# to update the sources.list and add extra
-apt-get update
-# https://packages.debian.org/jessie/amd64/libqt5opengl5/download
-deb http://ftp.de.debian.org/debian jessie main
 ```
 
-install Virtualbox
+To update the sources.list and config it as your own Debian distribution, here mine is stretch https://wiki.debian.org/SourcesList  
+PS: Wheezy, jessie, stretch are different debian distributions, be consistent everywhere with your case!!!   
+Example sources.list for Debian stretch
+```
+deb  http://deb.debian.org/debian stretch main contrib non-free
+deb-src  http://deb.debian.org/debian stretch main contrib non-free
+
+deb  http://deb.debian.org/debian stretch-updates main contrib non-free
+deb-src  http://deb.debian.org/debian stretch-updates main contrib non-free
+
+deb http://security.debian.org/ stretch/updates main contrib non-free
+deb-src http://security.debian.org/ stretch/updates main contrib non-free
+```
+
+Then you can update Debian stretch
+```
+apt-get update
+apt update
+```
+
+install Virtualbox in Debian stretch
 ```
 sudo apt-get install virtualbox
 ```
-if it doesn't work, wget or manually download the installer virtualbox.deb. You can install it using sudo apt install ./name.deb (or /path/to/package/name.deb).   
+if apt-get doesn't find package, then carefully choose virtualbox.deb installer for your Debian stretch. Download manually or via wget. You can install it using sudo apt install /path/to/package/name.deb. Normally it install dependencies as well, if not do installation in two steps:
+```
+dpkg -i /path/to/pakcage/virtualbox-5.2_5.2.4-119785~Debian~stretch_amd64.deb
+# -f fix the dependencies
+apt-get -f install
+```
 
-With old apt-get versions you must first move your deb file to /var/cache/apt/archives/ directory. For both, after executing this command, it will automatically download its dependencies.  
-
-https://forums.virtualbox.org/viewtopic.php?f=7&t=82317  
- 
-https://unix.stackexchange.com/questions/159094/how-to-install-a-deb-file-by-dpkg-i-or-by-apt   
-
-When you really have package conflicts issues, you can google debian packages <conflict package>,
-then downloads them and install one by one with dpkg -i <path of deb>   
-  
+Once you run virtualbox `/sbin/vboxconfig` to check installation, you will be asked to have a correct version of header as said below link, you can `apt-get install linux-headers-4.9.0-4-amd64`, always be concious about the versions.
+https://askubuntu.com/questions/873374/virtualbox-on-ubuntu-16-04-lts-system-is-not-currently-set-up-to-build-kernel
+```
 error  
 Please install the gcc make perl packages from your distribution.
-
 Please install the Linux kernel "header" files matching the current kernel
+```
+
+https://forums.virtualbox.org/viewtopic.php?f=7&t=82317    
+
+package conflicts is not good to search and install one by one, because you will face issues like avalanche.   
+NOT A GOOD PRATICE IN MY POINT OF VIEW   
+When you really have package conflicts issues, you can google debian packages <conflict package>,  
+then downloads them and install one by one with dpkg -i <path of deb>     
+
+
 
 
