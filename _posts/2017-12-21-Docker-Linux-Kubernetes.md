@@ -79,8 +79,10 @@ $ sudo docker build ./
 Successfully built da3bf65a40da
 ```
 
-To run the app in docker, just use command `docker run <built image> python <python script>`  
+To run the app in docker, just use command `docker run <built image>`  
 ```
+sudo docker run ydd9/python-birthday
+# but below works as well
 sudo docker run ydd9/python-birthday python /src/birthday.py
 ```
 
