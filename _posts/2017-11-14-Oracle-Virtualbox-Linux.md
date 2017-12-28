@@ -187,11 +187,21 @@ apt-get update
 apt update
 ```
 
-install Virtualbox in Debian stretch
+install Virtualbox in Debian stretch, command `sudo apt-get install virtualbox` won't work as https://wiki.debian.org/VirtualBox explains, you must do following ofr virtualbox 5.1
 ```
-sudo apt-get install virtualbox
+# Add virtualbox.list to /etc/apt/sources.list.d
+deb http://download.virtualbox.org/virtualbox/debian stretch contrib
+
+# Add Oracle VirtualBox public key:
+wget https://www.virtualbox.org/download/oracle_vbox_2016.asc
+sudo apt-key add oracle_vbox_2016.asc
+
+# Install virtualbox-5.1
+sudo apt-get update
+sudo apt-get install virtualbox-5.1
 ```
-if apt-get doesn't find package, then carefully choose virtualbox.deb installer for your Debian stretch. Download manually or via wget. You can install it using sudo apt install /path/to/package/name.deb. Normally it install dependencies as well, if not do installation in two steps:
+
+If you go for latest version, carefully choose virtualbox.deb installer for your Debian stretch. Download manually or via wget. You can install it using sudo apt install /path/to/package/name.deb. Normally it install dependencies as well, if not do installation in two steps:
 ```
 dpkg -i /path/to/pakcage/virtualbox-5.2_5.2.4-119785~Debian~stretch_amd64.deb
 # -f fix the dependencies
