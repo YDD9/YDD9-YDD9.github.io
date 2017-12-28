@@ -166,8 +166,30 @@ $ vi /etc/apt/sources.list
 
 You might find a deb cdrom:[Debian GNU/Linux 7.0.0 _Wheezy_ - Official amd64 CD Binary-1 20130504-14:44]/ wheezy main line indicating a local CDROM as a package source. Comment it out by placing a # symbol at the beginning of the line and save the file.
 
-# to update the sources.list
+# to update the sources.list and add extra
 apt-get update
+# https://packages.debian.org/jessie/amd64/libqt5opengl5/download
+deb http://ftp.de.debian.org/debian jessie main
 ```
+
+install Virtualbox
+```
+sudo apt-get install virtualbox
+```
+if it doesn't work, wget or manually download the installer virtualbox.deb. You can install it using sudo apt install ./name.deb (or /path/to/package/name.deb).   
+
+With old apt-get versions you must first move your deb file to /var/cache/apt/archives/ directory. For both, after executing this command, it will automatically download its dependencies.  
+
+https://forums.virtualbox.org/viewtopic.php?f=7&t=82317  
+ 
+https://unix.stackexchange.com/questions/159094/how-to-install-a-deb-file-by-dpkg-i-or-by-apt   
+
+When you really have package conflicts issues, you can google debian packages <conflict package>,
+then downloads them and install one by one with dpkg -i <path of deb>   
+  
+error  
+Please install the gcc make perl packages from your distribution.
+
+Please install the Linux kernel "header" files matching the current kernel
 
 
