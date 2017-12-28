@@ -223,6 +223,14 @@ NOT A GOOD PRATICE IN MY POINT OF VIEW
 When you really have package conflicts issues, you can google debian packages <conflict package>,  
 then downloads them and install one by one with dpkg -i <path of deb>     
 
+Nested Virtualization  
+If you see error in your Guest OS Debian an error like   
+```
+This computer doesn't have VT-X/AMD-v enabled. Enabling it in the BIOS is mandatory
+```
+
+You mostly have activate VT-x/AMD-v in your virtualbox settings, but it does not work, most because similar issue https://github.com/docker/machine/issues/4271 and http://wiki.osdev.org/VirtualBox
+
 
 
 
