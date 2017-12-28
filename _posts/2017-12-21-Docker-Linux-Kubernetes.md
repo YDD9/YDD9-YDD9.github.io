@@ -77,7 +77,11 @@ $ sudo docker build ./ -t ydd9/python-birthday
 Successfully built ydd9/python-birthday:latest
 $ sudo docker build ./
 Successfully built da3bf65a40da
+```
 
+To run the app in docker, just use command `docker run <built image> python <python script>`  
+```
+sudo docker run ydd9/python-birthday python /src/birthday.py
 ```
 
 # minikube install on CoreOS
