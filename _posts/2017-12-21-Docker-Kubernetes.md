@@ -86,8 +86,9 @@ sudo docker run ydd9/python-birthday
 sudo docker run ydd9/python-birthday python /src/birthday.py
 ```
 
-# minikube install on CoreOS
-Install minikube on CoreOS https://github.com/kubernetes/minikube#using-rkt-container-engine
+# minikube install
+minikube will start a Kubernetes cluster on your local or VM environment and you can use it for learning kubernetes commands.   
+Install minikube https://github.com/kubernetes/minikube#using-rkt-container-engine
 ```
 curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /opt/bin/
 
@@ -99,6 +100,80 @@ In CoreOS the /usr partition is read-only by design, so /usr/local/bin/ will be 
 Do `mkdir -p /opt/bin; mv ./kubectl /opt/bin/kubectl`, minikube still can't run as it always goes to /usr path to write.
 
 
+# kubeadm install
+kubeadm is designed to help you create Kubernetes cluster env on VMs or cloud hosted systems. It provides the minimum setup of Kubernetes cluster. Now I'm using Debian9.3 stretch in VirtualBox5.2
+
+First, install Docker-CE in Debian9.3 stretch if it is not installed. You can check by `sudo docker run hello-world`
+Follow official installation and check the part for Debian stretch version, the link is     https://docs.docker.com/engine/installation/linux/docker-ce/debian/#set-up-the-repository       
+Pay attention to the Docker version, do not install latest Docker-CE which Kubernetes does not support, install Docker-CE <= 17.03 for now (Dec 2017)    
+
+Then install kubeadm https://kubernetes.io/docs/setup/independent/install-kubeadm/ 
+```
+apt-get update && apt-get install -y apt-transport-https
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+apt-get update
+apt-get install -y kubelet kubeadm kubectl
+```
+
+On your desired Kubernetes cluster master, you can init a cluster   
+In case of error, go to check solution https://github.com/kubernetes/kubernetes/issues/53333  
+```
+ [ERROR Swap]: running with swap on is not supported. Please disable swap
+[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-p
+```
+
+try solution one or two:
+```
+# solution one
+iptables -F
+swapoff -a
+free -m
+kubeadm reset
+
+kubeadm init
+```
+
+```
+# solution two
+# delete the nodes if you have.
+kubeadm reset
+# add "Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"" to /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+systemctl daemon-reload
+systemctl restart kubelet
+
+kubeadm init
+```
+
+Once init successfully finish, copy the message and you will need to use it to add other nodes into this cluster.
+```
+Your Kubernetes master has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+You can now join any number of machines by running the following on each node
+as root:
+
+  kubeadm join --token cf016f.b7fd1ad86da928cf 10.0.2.15:6443 --discovery-token-ca-cert-hash sha256:e7bd6e7561fda671554625787e8a71be7818a4f071d91b9bf78ec815556b8023
+```
+
+Fail to add node into Kubernetes cluster
+In another VM login as root and add it into cluster
+```
+$ kubeadm join --token cf016f.b7fd1ad86da928cf 10.0.2.15:6443 --discovery-token-ca-cert-hash sha256:e7bd6e7561fda671554625787e8a71be7818a4f071d91b9bf78ec815556b8023
+
+Failed to request cluster info, will try again: [Get https://10.0.2.15:6443/api/v1/namespaces/kube-public/configmaps/cluster-info: dial tcp 10.0.2.15:6443: getsockopt: connection refused]
+```
 
 
 
