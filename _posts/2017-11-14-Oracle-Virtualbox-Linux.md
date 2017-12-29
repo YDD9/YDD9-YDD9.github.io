@@ -3,7 +3,7 @@ Linux
 
 # Start with virtual box
 
-To play with linux virtual machine, you can choose to use VMplayer or VirtualBox.
+To play with linux virtual machine, you can choose to use VMplayer or VirtualBox or HyperV on win10.
 VirtualBox from Oracle has a better licence.
 
 You can change VirtualBox [language](http://ccm.net/faq/40865-virtualbox-how-to-change-the-language-settings)
@@ -162,9 +162,16 @@ Media change: please insert the disc labeled
  'Debian GNU/Linux 7.0.0 _Wheezy_ - Official amd64 CD Binary-1 20130504-14:44'
 in the drive '/media/cdrom/' and press enter
 
+$ nano /etc/apt/sources.list 
+or
 $ vi /etc/apt/sources.list
 
-You might find a deb cdrom:[Debian GNU/Linux 7.0.0 _Wheezy_ - Official amd64 CD Binary-1 20130504-14:44]/ wheezy main line indicating a local CDROM as a package source. Comment it out by placing a # symbol at the beginning of the line and save the file.
+You might find a 
+deb cdrom:[Debian GNU/Linux 7.0.0 _Wheezy_ - Official amd64 CD Binary-1 20130504-14:44]/ wheezy main 
+line indicating a local CDROM as a package source. 
+
+Comment it out by placing a # symbol at the beginning of the line and save the file.
+Or place cursor at the beginning of the line and type dd to delete the line, :wq save and quit vi editor.
 ```
 
 To update the sources.list and config it as your own Debian distribution, here mine is stretch https://wiki.debian.org/SourcesList  
@@ -186,6 +193,52 @@ Then you can update Debian stretch
 apt-get update
 apt update
 ```
+
+# remote connection
+Now install ssh in Debian
+```
+root@Debian: $ apt-get install openssh-server
+# just for convevience
+root@Debian: $ apt-get install sudo
+```
+Then open CMD on your host win10 and login as a no root
+```
+# ssh -p 2222 node1@127.0.0.1
+node1 password: 
+```
+
+To enable root login with password https://linuxconfig.org/enable-ssh-root-login-on-debian-linux-server  
+you need to first configure SSH server. Open /etc/ssh/sshd_config and add the following line
+under `# PermitRootLogin prohibit-password`  
+```
+PermitRootLogin yes
+```
+Once you made the above change restart your SSH server:
+```
+$ /etc/init.d/ssh restart
+[ ok ] Restarting ssh (via systemctl): ssh.service.
+
+$ or try systemctl
+systemctl restart sshd.service
+```
+
+config SSH key password: two ways
+ONE WAY,   
+copy your public key to a remote host with the command ssh-copy-id
+```
+ssh-copy-id -i ~/.ssh/id_rsa.pub $remote_user@$remote_host
+```
+This allows connection for remote_user only, if you have root(not good practice) and other users, repeat the command.
+
+
+ssh-copy-id -i ~/.ssh/id_rsa.pub $remote_user@$remote_host
+If you want to connect with paired key/password to mitigate middle man attack risk, https://www.debian.org/devel/passwordlessssh you need to generate key/pass `id_rsa.pub`/ `id_rsa` on Debian/win10 by `ssh-keygen -t rsa` and find them under `~/.ssh/id_rsa` in Debian, `C:\Users\ydd9\.ssh` in win10. Next, add the contents of the public key file into the file ~/.ssh/authorized_keys on the remote site (the file should be mode 600) for each users you would like to use.   
+Note that once you've set this up, if an intruder breaks into your account/site, they are given access to the site you are allowed in without a password, too! For this reason, this should never be done from root.   
+
+Below steps will force all users can't access with password, use with caution.
+Even after config SSH KEY PASS, it still asks pass, then check https://askubuntu.com/questions/346857/how-do-i-force-ssh-to-only-allow-uses-with-a-key-to-log-in to config sshd_config and set `PasswordAuthentication no` then restart sshd.service     
+
+In win10 if connection doesn't work, try the key/pass generated from linux and check the 'C:\Users\ydd9\.ssh\know_host' file if there's duplications entries
 
 install Virtualbox in Debian stretch, command `sudo apt-get install virtualbox` won't work as https://wiki.debian.org/VirtualBox explains, you must do following ofr virtualbox 5.1
 ```
