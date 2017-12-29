@@ -194,7 +194,7 @@ apt-get update
 apt update
 ```
 
-# remote connection
+### remote connection in case of NAT(default network settings in VirtualBox)
 Now install ssh in Debian
 ```
 root@Debian: $ apt-get install openssh-server
@@ -206,6 +206,31 @@ Then open CMD on your host win10 and login as a no root
 # ssh -p 2222 node1@127.0.0.1
 node1 password: 
 ```
+
+### remote connection in case of host-only network(switch first in VirtualBox when config multi nodes kubernetes cluster)
+```
+# reboot and login as root
+# append desired IP hostanme in config file /etc/hosts
+192.168.99.20   kubemaster.test.com kubemaster
+192.168.99.21   kubeslave1.test.com kubeslave1
+
+# assign this host a name
+$ hostnamectl set-hostname kubemaster
+$ ip a
+...
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:f0:e9:6d brd ff:ff:ff:ff:ff:ff
+    inet 192.168.99.100/24 brd 192.168.99.255 scope global dynamic enp0s3
+       valid_lft 1119sec preferred_lft 1119sec
+    inet6 fe80::a00:27ff:fef0:e96d/64 scope link
+       valid_lft forever preferred_lft forever
+...
+```
+To connect it remotely from host
+```
+# ssh user@192.168.99.100
+```
+
 
 To enable root login with password https://linuxconfig.org/enable-ssh-root-login-on-debian-linux-server  
 you need to first configure SSH server. Open /etc/ssh/sshd_config and add the following line
@@ -239,6 +264,7 @@ Below steps will force all users can't access with password, use with caution.
 Even after config SSH KEY PASS, it still asks pass, then check https://askubuntu.com/questions/346857/how-do-i-force-ssh-to-only-allow-uses-with-a-key-to-log-in to config sshd_config and set `PasswordAuthentication no` then restart sshd.service     
 
 In win10 if connection doesn't work, try the key/pass generated from linux and check the 'C:\Users\ydd9\.ssh\know_host' file if there's duplications entries
+
 
 install Virtualbox in Debian stretch, command `sudo apt-get install virtualbox` won't work as https://wiki.debian.org/VirtualBox explains, you must do following ofr virtualbox 5.1
 ```
