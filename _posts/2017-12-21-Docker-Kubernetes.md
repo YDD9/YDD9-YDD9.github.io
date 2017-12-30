@@ -276,10 +276,35 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
   https://kubernetes.io/docs/concepts/cluster-administration/addons/
  ... 
  
+# config the cluster info, if you check the file
 $ mkdir -p $HOME/.kube
 $ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
+# or for admin 
+$ export KUBECONFIG=/etc/kubernetes/admin.conf
 
+$ nano /etc/kubernetes/admin.conf
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN5RENDQWJDZ0F3SUJBZ0lCQUR$
+    server: https://192.168.0.40:6443
+  name: kubernetes
+contexts:
+- context:
+    cluster: kubernetes
+    user: kubernetes-admin
+  name: kubernetes-admin@kubernetes
+current-context: kubernetes-admin@kubernetes
+kind: Config
+preferences: {}
+users:
+- name: kubernetes-admin
+  user:
+    client-certificate-data: LSO ...
+    client-key-data: LS...
+...    
+    
 $ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documentation/kube-flannel.yml
 tation/kube-flannel.yml
 clusterrole "flannel" created
@@ -320,6 +345,18 @@ $ kubectl get nodes
 NAME         STATUS    ROLES     AGE       VERSION
 kubemaster   Ready     <none>    32m       v1.9.0
 kubeslave1   Ready     master    37m       v1.9.0
+
+$ kubectl get pods --all-namespaces
+NAMESPACE     NAME                                 READY     STATUS              RESTARTS   AGE
+kube-system   etcd-kubeslave1                      1/1       Running             0          3m
+kube-system   kube-apiserver-kubeslave1            1/1       Running             0          3m
+kube-system   kube-controller-manager-kubeslave1   1/1       Running             0          4m
+kube-system   kube-dns-6f4fd4bdf-7xjzn             0/3       ContainerCreating   0          4m
+kube-system   kube-flannel-ds-pzd8h                2/2       Running             0          28s
+kube-system   kube-flannel-ds-s8bgm                1/2       CrashLoopBackOff    3          1m
+kube-system   kube-proxy-6z5zt                     1/1       Running             0          28s
+kube-system   kube-proxy-lbdd9                     1/1       Running             0          4m
+kube-system   kube-scheduler-kubeslave1            1/1       Running             0          3m
 ```
 
 Do not check `nslookup kubemaster` if using kubeadm, it seems even worse if you change '/etc/resolv.conf' !
