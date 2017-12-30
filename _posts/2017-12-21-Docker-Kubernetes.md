@@ -207,6 +207,7 @@ $ kubeadm init --apiserver-advertise-address 192.168.0.39
 https://www.virtualbox.org/manual/ch06.html   
 
 Table 6.1. Overview
+
 |  | VM ↔ Host | VM1 ↔ VM2 | VM → Internet | VM ← Internet |
 |:--:|-----------|-----------|---------------|--------------|
 |Host-only | + | + | – | –
@@ -258,9 +259,9 @@ $ kubeadm init --apiserver-advertise-address=192.168.0.39 --pod-network-cidr=192
 Your Kubernetes master has initialized successfully!
 ```
 
-Then check similar issues https://github.com/kubernetes/minikube/issues/1546, as currently VirtualBox is not using NAT config but Bridged config, we could simply setup cluster and install flannel
+Then check similar issues https://github.com/kubernetes/minikube/issues/1546, as currently VirtualBox is not using NAT config but Bridged config, we could simply setup cluster and install flannel (this working one I have switch my node and master)
 ```
-$ kubeadm init --apiserver-advertise-address=192.168.0.39
+$ kubeadm init --pod-network-cidr=192.168.0.0/16
 ...
 Your Kubernetes master has initialized successfully!
 
