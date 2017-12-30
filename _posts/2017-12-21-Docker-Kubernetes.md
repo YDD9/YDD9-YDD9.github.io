@@ -165,6 +165,15 @@ You can now join any number of machines by running the following on each node
 as root:
 
   kubeadm join --token cf016f.b7fd1ad86da928cf 10.0.2.15:6443 --discovery-token-ca-cert-hash sha256:e7bd6e7561fda671554625787e8a71be7818a4f071d91b9bf78ec815556b8023
+  
+$ mkdir -p $HOME/.kube
+$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+$ sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+To verify if this kubernetes cluster has the cluster master running
+```
+kubectl -n kube-public get cm
 ```
 
 Fail to add node into Kubernetes cluster
@@ -174,6 +183,52 @@ $ kubeadm join --token cf016f.b7fd1ad86da928cf 10.0.2.15:6443 --discovery-token-
 
 Failed to request cluster info, will try again: [Get https://10.0.2.15:6443/api/v1/namespaces/kube-public/configmaps/cluster-info: dial tcp 10.0.2.15:6443: getsockopt: connection refused]
 ```
+As we are using VMs, and the network config is NAT, so the master default network address and node address will be the same 10.0.2.15
+This can't work for node to discover cluster master. https://github.com/kubernetes/kubernetes/issues/33562  
+```
+$ kubeadm init --help
+Usage:
+  kubeadm init [flags]
+
+Flags:
+      --apiserver-advertise-address string      The IP address the API Server will advertise it's listening on. Specify '0.0.0.0' to use the address of the default network interface.
+
+      --apiserver-bind-port int32               Port for the API Server to bind to. (default 6443)
+
+$ kubeadm init --apiserver-advertise-address '10.244.0.111' --pod-network-cidr=10.244.0.0/16
+[init]   
+
+...
+```
+The init process take 1-2 minutes is okay, if longer means it gets stuck like my case. The only explaination would be the IPs and Virtualbox network config as NAT. It's not a good idea to use NAT(need port forwarding to access host) or Host-only(no internet access), the best is to use Bridged network config for all VMs. Login to each VM and type `ip a` to find their IP 192.168.0.39-40 for host to connect.
+```
+$ kubeadm init --apiserver-advertise-address 192.168.0.39
+```
+https://www.virtualbox.org/manual/ch06.html   
+
+Table 6.1. Overview
+
+  | VM ↔ Host | VM1 ↔ VM2 | VM → Internet | VM ← Internet
+--|-----------|-----------|---------------|--------------
+Host-only | + | + | – | –
+Internal | – | + | – | –
+Bridged | + | + | + | +
+NAT | – | – | + | Port forwarding
+NAT Network | – | + | + | Port forwarding
 
 
+Install Flannel for pod networking   
+```
+# double check if the given commands after cluster setup is executed !!!!
+# Set /proc/sys/net/bridge/bridge-nf-call-iptables to 1 by running
+$ sysctl net.bridge.bridge-nf-call-iptables=1 
+# to pass bridged IPv4 # traffic to iptables’ chains. This is a requirement for some CNI plugins to work.
 
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documentation/kube-flannel.yml
+# You notice already that kubeadm init has already flag --pod-network-cidr=<ip range>
+```
+This 
+
+
+https://www.mirantis.com/blog/how-install-kubernetes-kubeadm/   similar example to deploy a website.    
+https://www.profiq.com/kubernetes-cluster-setup-using-virtual-machines/  similar example to deploy cluster with 3 nodes.   
