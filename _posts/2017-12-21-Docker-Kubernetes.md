@@ -218,15 +218,19 @@ Table 6.1. Overview
 
 Install Flannel for pod networking   
 ```
+# You must pass flag to init: kubeadm init has already flag --pod-network-cidr=<ip range>
+$ kubeadm init has already flag --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=192.168.0.39
+
 # double check if the given commands after cluster setup is executed !!!!
 # Set /proc/sys/net/bridge/bridge-nf-call-iptables to 1 by running
 $ sysctl net.bridge.bridge-nf-call-iptables=1 
 # to pass bridged IPv4 # traffic to iptables’ chains. This is a requirement for some CNI plugins to work.
 
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documentation/kube-flannel.yml
-# You notice already that kubeadm init has already flag --pod-network-cidr=<ip range>
+$ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documentation/kube-flannel.yml
+The connection to the server 192.168.0.39:6443 was refused - did you specify the right host or port?
 ```
-This error is difficult to find, first check network.  
+
+This connection error is difficult to find, first check network.  
 ```
 # ip of the machine
 $ hostname -i
@@ -249,15 +253,80 @@ Non-authoritative answer:
 Name:   kuebmaster.test.com
 Address: 69.172.200.109
 
-$ nslookup kubemaster
-can not find
-# similar https://superuser.com/questions/708904/why-does-nslookup-return-error-cant-find-host
 
 $ kubeadm init --apiserver-advertise-address=192.168.0.39 --pod-network-cidr=192.168.0.0/16
 Your Kubernetes master has initialized successfully!
-
 ```
 
+Then check similar issues https://github.com/kubernetes/minikube/issues/1546, as currently VirtualBox is not using NAT config but Bridged config, we could simply setup cluster and install flannel
+```
+$ kubeadm init --apiserver-advertise-address=192.168.0.39
+...
+Your Kubernetes master has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+ ... 
+ 
+$ mkdir -p $HOME/.kube
+$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+$ sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+$ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documentation/kube-flannel.yml
+tation/kube-flannel.yml
+clusterrole "flannel" created
+clusterrolebinding "flannel" created
+serviceaccount "flannel" created
+configmap "kube-flannel-cfg" created
+daemonset "kube-flannel-ds" created
+
+$ kubectl cluster-info
+Kubernetes master is running at https://192.168.0.40:6443
+KubeDNS is running at https://192.168.0.40:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+```
+
+Now connect to another node and add it to the cluster
+```
+$ kubeadm join --token b256d0.634136851e9fc44e 192.168.0.40:6443 --discov ery-token-ca-cert-hash sha256:3dfbc5d49cf27805661b37ed68a3a8a67d0b2c390e2b30bd14cc360c5341f113
+[preflight] Running pre-flight checks.
+        [WARNING FileExisting-crictl]: crictl not found in system path
+[preflight] Starting the kubelet service
+[discovery] Trying to connect to API Server "192.168.0.40:6443"
+[discovery] Created cluster-info discovery client, requesting info from "https://192.168.0.40:6443" [discovery] Requesting info from "https://192.168.0.40:6443" again to validate TLS against the pinned public key
+[discovery] Cluster info signature and contents are valid and TLS certificate validates against pinned roots, will use API Server "192.168.0.40:6443"
+[discovery] Successfully established connection with API Server "192.168.0.40:6443"
+
+This node has joined the cluster:
+* Certificate signing request was sent to master and a response
+  was received.
+* The Kubelet was informed of the new secure connection details.
+
+Run 'kubectl get nodes' on the master to see this node join the cluster.
+```
+
+Switch back to cluster master and verify newly added node
+```
+$ kubectl get nodes
+NAME         STATUS    ROLES     AGE       VERSION
+kubemaster   Ready     <none>    32m       v1.9.0
+kubeslave1   Ready     master    37m       v1.9.0
+```
+
+Do not check `nslookup kubemaster` if using kubeadm, it seems even worse if you change '/etc/resolv.conf' !
+```
+$ nslookup kubemaster
+can not find
+# similar https://superuser.com/questions/708904/why-does-nslookup-return-error-cant-find-host
+```
 As hostname kubemaster is our hack way to give a DNS name in /etc/hosts file, it bypass the DNS server if your /etc/nsswitch.conf is not changed(http://bencane.com/2013/10/29/managing-dns-locally-with-etchosts/). To make `nslookup kubemaster` also work,
 just append test.com after search in /ect/resolv.conf file, as described by https://www.shellhacks.com/setup-dns-resolution-resolvconf-example/
 ```
