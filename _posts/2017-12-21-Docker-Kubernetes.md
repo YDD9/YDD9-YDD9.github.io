@@ -310,7 +310,7 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 $ mkdir -p $HOME/.kube
 $ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 $ sudo chown $(id -u):$(id -g) $HOME/.kube/config
-# or for admin 
+# or to change permanently append below in ~/.profile 
 $ export KUBECONFIG=/etc/kubernetes/admin.conf
 
 $ nano /etc/kubernetes/admin.conf
