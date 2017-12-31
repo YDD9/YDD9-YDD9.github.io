@@ -103,6 +103,21 @@ Do `mkdir -p /opt/bin; mv ./kubectl /opt/bin/kubectl`, minikube still can't run 
 # kubeadm install
 kubeadm is designed to help you create Kubernetes cluster env on VMs or cloud hosted systems. It provides the minimum setup of Kubernetes cluster. Now I'm using Debian9.3 stretch in VirtualBox5.2
 
+Environment checking: your nodes' MAC address and network adaptor.
+In case you need to add route in your PC, you can check https://www.cyberciti.biz/faq/linux-route-add/
+```
+$ apt-get install net-tools
+$ route -n
+
+# temporarily add
+# Route all traffic via 192.168.1.254 gateway connected via eth0 network interface:
+$ route add default gw 192.168.1.254 eth0
+
+# permenatly add
+$ nano /etc/rc.local
+# append your route:  /sbin/ip route add 192.168.1.0/24 dev eth0
+```
+
 First, install Docker-CE in Debian9.3 stretch if it is not installed. You can check by `sudo docker run hello-world`
 Follow official installation and check the part for Debian stretch version, the link is     https://docs.docker.com/engine/installation/linux/docker-ce/debian/#set-up-the-repository       
 Pay attention to the Docker version, do not install latest Docker-CE which Kubernetes does not support, install Docker-CE <= 17.03 for now (Dec 2017)    
