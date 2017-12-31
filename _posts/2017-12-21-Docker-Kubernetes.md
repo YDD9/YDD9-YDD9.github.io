@@ -125,9 +125,9 @@ In case of error, go to check solution https://github.com/kubernetes/kubernetes/
 [preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-p
 ```
 
-try solution one or two:
+try solutions:
 ```
-# solution one
+# solution one, needs to do again after reboot
 iptables -F
 swapoff -a
 free -m
@@ -137,7 +137,7 @@ kubeadm init
 ```
 
 ```
-# solution two
+# solution two, needs to do again after reboot
 # delete the nodes if you have.
 kubeadm reset
 # add "Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"" to /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
@@ -145,6 +145,21 @@ systemctl daemon-reload
 systemctl restart kubelet
 
 kubeadm init
+```
+
+```
+# solution three, PERMENANT
+# https://serverfault.com/questions/684771/best-way-to-disable-swap-in-linux
+
+# immediately disable swap.
+$ swapoff -a 
+
+# remove or comment any swap entry in /etc/fstab
+$ nano /etc/fstab
+
+$ reboot 
+# If the swap is gone, good. If not, for some reason, you had to remove the swap partition. 
+# Repeat above two septs, then use fdisk or parted to remove the (now unused) swap partition. Reboot
 ```
 
 Once init successfully finish, copy the message and you will need to use it to add other nodes into this cluster.
