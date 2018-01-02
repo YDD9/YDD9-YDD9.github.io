@@ -152,11 +152,15 @@ ssh -p 2222 -A -v -i 'c:\user\ydd9\.ssh\id_rsa' core@10.255.100.167
 ```
 
 # CoreOS add user   
-https://coreos.com/os/docs/latest/adding-users.html   be carefull about the Container Linux Config file you see, its format is not the same as cloud-config.yml  
+https://coreos.com/os/docs/latest/adding-users.html   
+Be carefull about the Container Linux Config file you see, its format is not the same as cloud-config.yml  
 1. add user when create the VM  
 
 2. add user by command  
-The "*" creates a user that cannot login with a password but can log in via SSH key. -U creates a group for the user, -G adds the user to the existing sudo group and -m creates a home directory. If you'd like to add a password for the user, run:
+The "*" creates a user that cannot login with a password but can log in via SSH key. 
+-U creates a group for the user, -G adds the user to the existing sudo group and -m creates a home directory.
+If you'd like to add a password for the user, run:
+
 ```
 $ sudo useradd -p "*" -U -m user1 -G sudo
 
@@ -165,6 +169,7 @@ New password:
 Re-enter new password:
 passwd: password changed.
 ```
+
 
 # Debian OS
 http://www.brianlinkletter.com/installing-debian-linux-in-a-virtualbox-virtual-machine/  
