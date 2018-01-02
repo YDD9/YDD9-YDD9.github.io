@@ -1,3 +1,20 @@
+---
+layout: post
+title:  "Postgresql"
+date:   2017-12-13 14:58:39 +0100
+comments: true 
+categories: Postgresql
+---
+
+
+- [work with command line with](#work-with-command-line-with)
+- [Login with cmd](#login-with-cmd)
+- [backup your database:](#backup-your-database)
+- [import from dump via cmd](#import-from-dump-via-cmd)
+- [import from dump via pgAdmin SQL](#import-from-dump-via-pgadmin-sql)
+- [Auth issues](#auth-issues)
+
+
 # work with command line with   
 add env path C:\Program Files\PostgreSQL\9.6\bin   
 for linux download `sudo apt-get install postgresql-client`   
