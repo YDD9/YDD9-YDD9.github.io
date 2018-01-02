@@ -1,3 +1,12 @@
+---
+layout: post
+title:  "shell"
+date:   2017-12-19 14:58:39 +0100
+comments: true 
+categories: shell
+---
+
+
 
 grep can be used together with regex, put regex inside single quote.   
 https://www.cyberciti.biz/faq/searching-multiple-words-string-using-grep/    
