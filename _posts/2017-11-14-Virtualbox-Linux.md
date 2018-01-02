@@ -14,9 +14,9 @@ Linux in VirtualBox
 - [CoreOS linux inside VirtualBox](#coreos-linux-inside-virtualbox)
 - [SSH explained](#ssh-explained)
 - [CoreOS add user](#coreos-add-user)
-- [Debian OS](#debian-os)
-        - [remote connection in case of NAT(default network settings in VirtualBox)](#remote-connection-in-case-of-natdefault-network-settings-in-virtualbox)
-        - [remote connection in case of host-only network(switch first in VirtualBox when config multi nodes kubernetes cluster)](#remote-connection-in-case-of-host-only-networkswitch-first-in-virtualbox-when-config-multi-nodes-kubernetes-cluster)
+- [Debian OS](#debian-os)   
+        - [remote connection in case of NAT(default network settings in VirtualBox)](#remote-connection-in-case-of-natdefault-network-settings-in-virtualbox)    
+        - [remote connection in case of host-only network(switch first in VirtualBox when config multi nodes kubernetes cluster)](#remote-connection-in-case-of-host-only-networkswitch-first-in-virtualbox-when-config-multi-nodes-kubernetes-cluster)   
 
 # Start with virtual box
 
