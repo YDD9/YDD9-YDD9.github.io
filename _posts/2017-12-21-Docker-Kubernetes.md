@@ -380,7 +380,8 @@ https://www.profiq.com/kubernetes-cluster-setup-using-virtual-machines/  similar
 
   Ubuntu/Debian: edit your /etc/default/docker file with the -g option: DOCKER_OPTS="-dns 8.8.8.8 -dns 8.8.4.4 -g /mnt"
 
-  Fedora/Centos: edit /etc/sysconfig/docker, and add the -g option in the other_args variable: ex. other_args="-g /var/lib/testdir". If there's more than one option, make sure you enclose them in " ". After a restart, (service docker restart) Docker should use the new directory.
+  Fedora/Centos: edit /etc/sysconfig/docker, and add the -g option in the other_args variable: ex. other_args="-g /var/lib/testdir". If   there's more than one option, make sure you enclose them in " ". After a restart, (service docker restart) Docker should use the new 
+  directory.
 
   Using a symlink is another method to change image storage.
 
@@ -393,13 +394,15 @@ https://www.profiq.com/kubernetes-cluster-setup-using-virtual-machines/  similar
   ```
   sudo mkdir -p /etc/systemd/system/docker.service.d
   ```  
-  Now create a file called `/etc/systemd/system/docker.service.d/http-proxy.conf` that adds the HTTP_PROXY environment         variable:
+  Now create a file called `/etc/systemd/system/docker.service.d/http-proxy.conf` 
+  that adds the HTTP_PROXY environment variable:
   ```
   [Service]
   Environment="HTTP_PROXY=http://proxy.example.com:80/"
   ```
   and/or create a file called `/etc/systemd/system/docker.service.d/https-proxy.conf` that adds the HTTPS_PROXY environment  
-  If you have internal Docker registries that you need to contact without proxying you can specify them via the               NO_PROXY environment variable:
+  If you have internal Docker registries that you need to contact without proxying you can specify them via the NO_PROXY 
+  environment variable:
   ```
   Environment="HTTP_PROXY=http://proxy.example.com:80/"
   Environment="NO_PROXY=localhost,127.0.0.0/8,docker-registry.somecorporation.com"
@@ -415,10 +418,10 @@ https://www.profiq.com/kubernetes-cluster-setup-using-virtual-machines/  similar
   `$ sudo systemctl restart docker`
 
 4. [How to mount host directory in docker container?](https://stackoverflow.com/questions/23439126/how-to-mount-host-directory-in-docker-container)   
-to mount the the current directory (source) with /test_container (target) we are going to use:
-```
+  to mount the the current directory (source) with /test_container (target) we are going to use:
+  ```
   docker run -it --mount src="$(pwd)",target=/test_container,type=bind k3_s3
-```
+  ```
 
 5. Dockerfile to create your own image
   ```
