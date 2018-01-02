@@ -1,5 +1,22 @@
-Linux
+---
+layout: post
+title:  "VirutalBox Linux"
+date:   2017-11-14 14:58:39 +0100
+comments: true 
+categories: VirtualBox Linux
+---
 
+
+Linux in VirtualBox
+
+- [Start with virtual box](#start-with-virtual-box)
+- [Linux file read](#linux-file-read)
+- [CoreOS linux inside VirtualBox](#coreos-linux-inside-virtualbox)
+- [SSH explained](#ssh-explained)
+- [CoreOS add user](#coreos-add-user)
+- [Debian OS](#debian-os)
+        - [remote connection in case of NAT(default network settings in VirtualBox)](#remote-connection-in-case-of-natdefault-network-settings-in-virtualbox)
+        - [remote connection in case of host-only network(switch first in VirtualBox when config multi nodes kubernetes cluster)](#remote-connection-in-case-of-host-only-networkswitch-first-in-virtualbox-when-config-multi-nodes-kubernetes-cluster)
 
 # Start with virtual box
 
@@ -309,7 +326,3 @@ This computer doesn't have VT-X/AMD-v enabled. Enabling it in the BIOS is mandat
 ```
 
 You mostly have activate VT-x/AMD-v in your virtualbox settings, but it does not work, most because similar issue https://github.com/docker/machine/issues/4271 and http://wiki.osdev.org/VirtualBox
-
-
-
-
