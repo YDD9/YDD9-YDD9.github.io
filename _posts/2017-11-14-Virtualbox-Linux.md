@@ -15,8 +15,9 @@ Linux in VirtualBox
 - [SSH explained](#ssh-explained)
 - [CoreOS add user](#coreos-add-user)
 - [Debian OS](#debian-os)   
-        - [remote connection in case of NAT(default network settings in VirtualBox)](#remote-connection-in-case-of-natdefault-network-settings-in-virtualbox)    
-        - [remote connection in case of host-only network(switch first in VirtualBox when config multi nodes kubernetes cluster)](#remote-connection-in-case-of-host-only-networkswitch-first-in-virtualbox-when-config-multi-nodes-kubernetes-cluster)   
+        - [remote connection Bridge](#remote-connection-bridge)    
+        - [(Optional) remote connection NAT](#optional-remote-connection-nat)   
+        - [(Optional) Remote connection host-only](#optional-remote-connection-host-only)   
 
 # Start with virtual box
 
@@ -211,7 +212,12 @@ apt-get update
 apt update
 ```
 
-### remote connection in case of NAT(default network settings in VirtualBox)
+### remote connection Bridge
+(network settings in VirtualBox is Bridge)
+This is by my test the best, you will have internet, host <===> VM all traffic allowed.
+
+### (Optional) remote connection NAT
+(network settings in VirtualBox is NAT, needs port forwarding when host to VM)
 Now install ssh in Debian
 ```
 root@Debian: $ apt-get install openssh-server
@@ -224,7 +230,8 @@ Then open CMD on your host win10 and login as a no root
 node1 password: 
 ```
 
-### remote connection in case of host-only network(switch first in VirtualBox when config multi nodes kubernetes cluster)
+### (Optional) Remote connection host-only 
+(network settings in VirtualBox is host-only, no internet for VMs.)
 ```
 # reboot and login as root
 # append desired IP hostanme in config file /etc/hosts
