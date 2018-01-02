@@ -1,3 +1,12 @@
+---
+layout: post
+title:  "Spark Python"
+date:   2017-12-07 14:58:39 +0100
+comments: true  
+categories: Spark Python 
+---
+
+
 # Basica tutorial to setup environment on linux   
 https://www.datacamp.com/community/tutorials/apache-spark-python   
    
