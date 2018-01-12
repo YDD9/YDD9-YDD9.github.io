@@ -18,7 +18,7 @@ categories: Python
 - [write DataFrame into csv file](#write-dataframe-into-csv-file)
 - [change nan to None](#change-nan-to-None)
 - [select row](#select-row)
-
+- [sort](#sort)
 
 
 
@@ -190,3 +190,13 @@ one  foo  6  12
 ```
 	
 In fact, df[df['colume_name']==some_value] also works
+
+
+# sort
+in case we need to sort based on values inside one or two columns, `df.sort_values(by=['col1','col2'], ascending=[True, False])` is very handy.
+https://www.w3resource.com/python-exercises/pandas/python-pandas-data-frame-exercise-16.php
+
+in case we need to re-organize the DataFrame index(row) names `df.sort_index(axis=0, ascending=True)`;
+or to re-organize the DataFrame column names `df.sort_index(axis=1, ascending=False)` can do the work.
+https://stackoverflow.com/questions/11067027/python-pandas-re-ordering-columns-in-a-dataframe-based-on-column-name
+
