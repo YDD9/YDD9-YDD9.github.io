@@ -277,16 +277,21 @@ systemctl restart sshd.service
 ```
 
 config SSH key password: two ways
-ONE WAY,   
+Before start, make sure `apt-get install openssh-server` is installed.
+
+ONE WAY</br>
 copy your public key to a remote host with the command ssh-copy-id
 ```
 ssh-copy-id -i ~/.ssh/id_rsa.pub $remote_user@$remote_host
 ```
-This allows connection for remote_user only, if you have root(not good practice) and other users, repeat the command.
+This allows connection for remote_user only, if you create remote accesses for root(not good practice) and other users, repeat the command.
 
+THE OTHER WAY</br>
+It's more manually copy and paste, but you get a good understand what you're doing.
+If you want to connect with paired key/password to mitigate middle man attack risk, https://www.debian.org/devel/passwordlessssh you need to generate key/pass `id_rsa.pub` / `id_rsa` on Debian by `ssh-keygen -t rsa` and find them under `~/.ssh/id_rsa`. </br>
+Same command `ssh-keygen -t rsa` can be run on windows, generated key / pass are saved under `C:\Users\ydd9\.ssh` in win10. 
 
-ssh-copy-id -i ~/.ssh/id_rsa.pub $remote_user@$remote_host
-If you want to connect with paired key/password to mitigate middle man attack risk, https://www.debian.org/devel/passwordlessssh you need to generate key/pass `id_rsa.pub`/ `id_rsa` on Debian/win10 by `ssh-keygen -t rsa` and find them under `~/.ssh/id_rsa` in Debian, `C:\Users\ydd9\.ssh` in win10. Next, add the contents of the public key file into the file ~/.ssh/authorized_keys on the remote site (the file should be mode 600) for each users you would like to use.   
+Next, add the contents of the public key file into the file `~/.ssh/authorized_keys` on the remote (the file should be mode 600) for each users you would like to use.   
 Note that once you've set this up, if an intruder breaks into your account/site, they are given access to the site you are allowed in without a password, too! For this reason, this should never be done from root.   
 
 Below steps will force all users can't access with password, use with caution.
@@ -295,7 +300,8 @@ Even after config SSH KEY PASS, it still asks pass, then check https://askubuntu
 In win10 if connection doesn't work, try the key/pass generated from linux and check the 'C:\Users\ydd9\.ssh\know_host' file if there's duplications entries
 
 
-install Virtualbox in Debian stretch, command `sudo apt-get install virtualbox` won't work as https://wiki.debian.org/VirtualBox explains, you must do following ofr virtualbox 5.1
+# (Optional) install Virtualbox in Debian stretch
+command `sudo apt-get install virtualbox` won't work as https://wiki.debian.org/VirtualBox explains, you must do following ofr virtualbox 5.1
 ```
 # Add virtualbox.list to /etc/apt/sources.list.d
 deb http://download.virtualbox.org/virtualbox/debian stretch contrib
