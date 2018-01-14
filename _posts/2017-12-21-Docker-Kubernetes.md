@@ -73,9 +73,18 @@ $ nano /etc/rc.local
 # append your route:  /sbin/ip route add 192.168.1.0/24 dev eth0
 ```
 
-First, install Docker-CE in Debian9.3 stretch if it is not installed. You can check by `sudo docker run hello-world`
-Follow official installation and check the part for Debian stretch version, the link is     https://docs.docker.com/engine/installation/linux/docker-ce/debian/#set-up-the-repository       
+First, install Docker-CE in Debian9.3 stretch if it is not installed. You can check by `sudo docker run hello-world`</br>
+Follow official installation and check the part for Debian stretch version, the link is     https://docs.docker.com/engine/installation/linux/docker-ce/debian/#set-up-the-repository</br>
+
 Pay attention to the Docker version, do not install latest Docker-CE which Kubernetes does not support, install Docker-CE <= 17.03 for now (Dec 2017)    
+
+Post-Docker installation</br>
+To avoid always do `sudo docker ...`, we need to put docker group into sudo users, [manual](https://docs.docker.com/engine/installation/linux/linux-postinstall/#manage-docker-as-a-non-root-user)
+```
+ sudo groupadd docker
+ sudo usermod -aG docker $USER
+```
+
 
 Then install kubeadm https://kubernetes.io/docs/setup/independent/install-kubeadm/ 
 ```
