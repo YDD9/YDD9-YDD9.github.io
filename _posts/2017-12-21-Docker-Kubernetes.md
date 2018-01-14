@@ -224,6 +224,17 @@ $ sysctl net.bridge.bridge-nf-call-iptables=1
 $ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documentation/kube-flannel.yml
 The connection to the server 192.168.0.39:6443 was refused - did you specify the right host or port?
 ```
+Verify `kubectl get po --all-namespaces` you see all states running, you can also check file `/etc/cni/net.d/10-flannel.conf` is created
+```
+{                            
+  "name": "cbr0",            
+  "type": "flannel",         
+  "delegate": {              
+    "isDefaultGateway": true 
+  }                          
+}                            
+```
+
 
 This connection error is difficult to find, first check network.  
 ```
