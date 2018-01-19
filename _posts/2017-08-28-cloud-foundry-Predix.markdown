@@ -16,6 +16,7 @@ categories: Cloud Foundry Predix
 - [Python app with multiple .py files but only one as entry point](#python-app-with-multiple-py-files-but-only-one-as-entry-point)
 - [Python app in cloud for different space](#python-app-in-cloud-for-different-space)
 - [Push Python app in Predix-Analytics-Framework CI/CD](#push-python-app-in-predix-analytics-framework-cicd)
+- [Access Predix Postgres service from local PgAdmin](#Access-Predix-Postgres-service-from-local-PgAdmin)
 
 
 # cf-uaac installation
@@ -161,3 +162,30 @@ cf push -f <manifest.yml for myspace> -p <dist for myspace>
 ```
 # Push Python app in Predix-Analytics-Framework CI/CD
 https://forum.predix.io/articles/25018/how-to-analytics-framework-workflow-automation-usi.html
+
+
+# Access Predix Postgres service from local PgAdmin
+Below example is done on postgres, the same should be applicable for all similar services.
+https://github.com/briangann/predix-chisel-postgres
+
+Install chisel inside your space and linked to Postgres
+```
+#create predix postgres instance
+cf create-service <postgres-db-service-name> <my-db-plan> <my-db-name>
+#for example : cf create-service postgres shared-nr postgres-chisel
+
+#clone repo & deploy the app
+git clone https://github.com/briangann/predix-chisel-postgres.git
+cd predix-chisel-postgres/app/
+cf push --no-start
+
+#start and bind chisel service to your existing Postgres database instance
+cf start predix-chisel-postgres
+cf bind-service <postgres-db-service-name> <my-db-name>
+#for example : cf bind-service predix-chisel-postgres postgres-chisel
+cf restage predix-chisel-postgres
+```
+download [chisel](https://github.com/jpillora/chisel) and run it as client, remove `--proxy http://myproxy.com:80` if you don't have proxy.
+```
+chisel_windows_amd64.exe client -v --proxy http://myproxy.com:80 --keepalive 3s https://predix-chisel-postgres-dipteral-ksi.run.asv-pr.ice.predix.io 5000:10.131.54.5:5432
+```
