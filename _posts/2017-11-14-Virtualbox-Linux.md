@@ -276,8 +276,18 @@ $ or try systemctl
 systemctl restart sshd.service
 ```
 
-config SSH key password: two ways
-Before start, make sure `apt-get install openssh-server` is installed.
+config SSH key password: two ways, and both ways start by generating SSH public key and private key
+Before start, make sure `apt-get install openssh-server` is installed on remote.
+### generate Secure Shell public and private key
+https://www.debian.org/devel/passwordlessssh you need to generate key/pass `id_rsa.pub` / `id_rsa` on Debian with 
+```
+ssh-keygen -t rsa
+# or you want have your email inside
+ssh-keygen -t rsa -C "your_email@example.com"
+``` 
+and verify the created files under `~/.ssh/id_rsa` in Linux. </br>
+
+Same command `ssh-keygen -t rsa` can be run on windows, generated key / pass are saved under `C:\Users\ydd9\.ssh` in win10.
 
 ONE WAY</br>
 copy your public key to a remote host with the command ssh-copy-id
@@ -287,17 +297,20 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub $remote_user@$remote_host
 This allows connection for remote_user only, if you create remote accesses for root(not good practice) and other users, repeat the command.
 
 THE OTHER WAY</br>
-It's more manually copy and paste, but you get a good understand what you're doing.
-If you want to connect with paired key/password to mitigate middle man attack risk, https://www.debian.org/devel/passwordlessssh you need to generate key/pass `id_rsa.pub` / `id_rsa` on Debian by `ssh-keygen -t rsa` and find them under `~/.ssh/id_rsa`. </br>
-Same command `ssh-keygen -t rsa` can be run on windows, generated key / pass are saved under `C:\Users\ydd9\.ssh` in win10. 
+It's manually copy and paste, but you get a good understand what you're doing.
 
-Next, add the contents of the public key file into the file `~/.ssh/authorized_keys` on the remote (the file should be mode 600) for each users you would like to use.   
+Add the contents of the public key file into the file `~/.ssh/authorized_keys` on the remote (the file should be mode 600) for each users you would like to use.   
 Note that once you've set this up, if an intruder breaks into your account/site, they are given access to the site you are allowed in without a password, too! For this reason, this should never be done from root.   
 
 Below steps will force all users can't access with password, use with caution.
 Even after config SSH KEY PASS, it still asks pass, then check https://askubuntu.com/questions/346857/how-do-i-force-ssh-to-only-allow-uses-with-a-key-to-log-in to config sshd_config and set `PasswordAuthentication no` then restart sshd.service     
 
-In win10 if connection doesn't work, try the key/pass generated from linux and check the 'C:\Users\ydd9\.ssh\know_host' file if there's duplications entries
+
+If connection doesn't work with such warning:
+```
+WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
+```
+try the key/pass generated from linux and check the 'C:\Users\ydd9\.ssh\know_host' file in windows10, `nano ~/.ssh/known_hosts` in Linux. if there's old entries with same remote IP, just delete those.
 
 
 # (Optional) install Virtualbox in Debian stretch
