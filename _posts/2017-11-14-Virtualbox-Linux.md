@@ -18,6 +18,8 @@ Linux in VirtualBox
         - [remote connection Bridge](#remote-connection-bridge)    
         - [(Optional) remote connection NAT](#optional-remote-connection-nat)   
         - [(Optional) Remote connection host-only](#optional-remote-connection-host-only)   
+- [Share host folder](#share-host-folder)
+
 
 # Start with virtual box
 
@@ -357,3 +359,21 @@ This computer doesn't have VT-X/AMD-v enabled. Enabling it in the BIOS is mandat
 ```
 
 You mostly have activate VT-x/AMD-v in your virtualbox settings, but it does not work, most because similar issue https://github.com/docker/machine/issues/4271 and http://wiki.osdev.org/VirtualBox
+
+
+# Share host folder
+Create a shared folder in WIN10;
+VB device --> [Insert guest addition CD images](https://www.howtogeek.com/189974/how-to-share-your-computers-files-with-a-virtual-machine/);
+Follow these [steps](https://virtualboxes.org/doc/installing-guest-additions-on-ubuntu/) to install the Guest Additions on your virtual machine:
+
+Login to Debian;</br>
+Click on Applications/System/Terminal (or on Applications/Terminal, if you are using the 6.06.1 Dapper Drake release);</br>
+Update your APT database with sudo apt-get update, and typing your password, if requested;</br>
+Install the latest security updates with sudo apt-get upgrade;</br>
+Install required packages with sudo apt-get install build-essential module-assistant;</br>
+Configure your system for building kernel modules by running sudo m-a prepare;</br>
+Click on Install Guest Additions… from the Devices menu, then choose to browse the content of the CD when requested.
+Run sudo sh /media/cdrom/VBoxLinuxAdditions.run, and follow the instructions on screen.
+
+
+
