@@ -368,12 +368,12 @@ Follow these [steps](https://virtualboxes.org/doc/installing-guest-additions-on-
 
 * Login to Debian;</br>
 * Click on Applications/System/Terminal (or on Applications/Terminal, if you are using the 6.06.1 Dapper Drake release);</br>
-* Update your APT database with sudo apt-get update, and typing your password, if requested;</br>
-* Install the latest security updates with sudo apt-get upgrade;</br>
-* Install required packages with sudo apt-get install build-essential module-assistant;</br>
-* Configure your system for building kernel modules by running sudo m-a prepare;</br>
+* Update your APT database with `sudo apt-get update`, and typing your password, if requested;</br>
+* Install the latest security updates with `sudo apt-get upgrade`;</br>
+* Install required packages with `sudo apt-get install build-essential module-assistant`;</br>
+* Configure your system for building kernel modules by running `sudo m-a prepare`;</br>
 * Click on Install Guest Additions… from the Devices menu, then choose to browse the content of the CD when requested.
-Run sudo sh /media/cdrom/VBoxLinuxAdditions.run, and follow the instructions on screen.
+Run `sudo sh /media/cdrom/VBoxLinuxAdditions.run`, and follow the instructions on screen.
 
 
 
