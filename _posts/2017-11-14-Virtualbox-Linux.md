@@ -395,4 +395,12 @@ iface lo inet loopback
 allow-hotplug eth0
 iface eth0 inet dhcp
 ```
-Update the `iface eth0 inet dhcp` to `iface eth0 inet static`. 
+Update the `iface eth0 inet dhcp` to `iface eth0 inet static` and appending IP addr, netmask, gateway. 
+```
+# The primary network interface
+allow-hotplug eth0
+iface eth0 inet static
+      address 10.1.1.125
+      netmask 255.0.0.0
+      gateway 10.1.1.1
+```
