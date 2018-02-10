@@ -19,6 +19,7 @@ Linux in VirtualBox
         - [(Optional) remote connection NAT](#optional-remote-connection-nat)   
         - [(Optional) Remote connection host-only](#optional-remote-connection-host-only)   
 - [Share host folder](#share-host-folder)
+- [Linux network](#linux-network)
 
 
 # Start with virtual box
@@ -376,4 +377,22 @@ Follow these [steps](https://virtualboxes.org/doc/installing-guest-additions-on-
 Run `sudo sh /media/cdrom/VBoxLinuxAdditions.run`, and follow the instructions on screen.
 
 
+# Linux network
+https://wiki.debian.org/NetworkConfiguration
+Note: The Linux bridge supports only STP, no RSTP (Rapid Spanning Tree). Therefore it supports only the old STP Costs, not the new RSTP Costs (see Spanning_Tree_Protocol). This is usually fine with Cisco Switches, but eg. Juniper switches use the RSTP costs and therefore this may lead to different spanning tree calculations and loop problems. This can be fixed by settings the costs manually, either on the switch or on the server. Setting the cost on the switch is preferred as Linux switches back to the default costs whenever an interface does down/up.
 
+https://linuxconfig.org/how-to-setup-a-static-ip-address-on-debian-linux
+**Enable Static IP**
+By default you will find the following configuration within the /etc/network/interfaces network config file:
+```
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug eth0
+iface eth0 inet dhcp
+```
+Update the `iface eth0 inet dhcp` to `iface eth0 inet static`. 
