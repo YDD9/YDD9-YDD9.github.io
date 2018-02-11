@@ -518,6 +518,10 @@ https://www.cyberciti.biz/faq/linux-rename-file/
 # 56) Linux common commands
 http://mp.weixin.qq.com/s/NKfnIcbNB-k21RorSVlddw
 
+# 57) iptables
+https://www.digitalocean.com/community/tutorials/how-to-list-and-delete-iptables-firewall-rules
+https://www.howtogeek.com/177621/the-beginners-guide-to-iptables-the-linux-firewall/
+
 
 # other links
 http://mp.weixin.qq.com/s/Lvu8IL6zv9PzDb2oSte3pA
