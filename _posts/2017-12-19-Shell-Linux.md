@@ -489,6 +489,9 @@ For e.g. display all lines from Apache log file if HTTP error code is 500
 awk '$9 == 500 { print $0}' /var/log/httpd/access.log
 ```
 
+# 54) How to find the total number of folders in Linux
+http://mp.weixin.qq.com/s/ltvNiHcyH1_5mljtLPsI4g
+
 # centOS yum install conflicts
 [yum update or yum install fails with package conflict:](https://access.redhat.com/solutions/# 158883)
 Install the yum-utils package:
@@ -508,3 +511,13 @@ Run yum command:
 yum clean all
 yum update
 ```  
+
+# 55) How to rename a file or many files
+https://www.cyberciti.biz/faq/linux-rename-file/
+
+
+# other links
+http://mp.weixin.qq.com/s/Lvu8IL6zv9PzDb2oSte3pA
+`mount | column –t mount |column –t :`  output as a table
+
+
