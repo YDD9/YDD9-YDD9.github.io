@@ -515,6 +515,9 @@ yum update
 # 55) How to rename a file or many files
 https://www.cyberciti.biz/faq/linux-rename-file/
 
+# 56) Linux common commands
+http://mp.weixin.qq.com/s/NKfnIcbNB-k21RorSVlddw
+
 
 # other links
 http://mp.weixin.qq.com/s/Lvu8IL6zv9PzDb2oSte3pA
