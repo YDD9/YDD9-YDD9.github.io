@@ -59,7 +59,13 @@ categories: shell
 - [51) commond seq https://www.lifewire.com/uses-of-linux-seq-command-4011324](#51-commond-seq-httpswwwlifewirecomuses-of-linux-seq-command-4011324)
 - [52) Linux List The Open Ports And The Process That Owns Them](#52-linux-list-the-open-ports-and-the-process-that-owns-them)
 - [53) How to use awk](#53-how-to-use-awk)
+- [54) How to find the total number of folders in Linux](#54-how-to-find-the-total-number-of-folders-in-linux)
 - [centOS yum install conflicts](#centos-yum-install-conflicts)
+- [55) How to rename a file or many files](#55-how-to-rename-a-file-or-many-files)
+- [56) Linux common commands](#56-linux-common-commands)
+- [57) iptables](#57-iptables)
+- [58) How to count words in a file](#58-how-to-count-words-in-a-file)
+- [other links](#other-links)
 
 
 # 1) What is Linux?
@@ -522,6 +528,16 @@ http://mp.weixin.qq.com/s/NKfnIcbNB-k21RorSVlddw
 https://www.digitalocean.com/community/tutorials/how-to-list-and-delete-iptables-firewall-rules
 https://www.howtogeek.com/177621/the-beginners-guide-to-iptables-the-linux-firewall/
 
+# 58) How to count words in a file
+https://www.computerhope.com/unix/uwc.htm
+```
+$ wc myfile.txt
+87 157 1505 myfile.txt
+# lines words chars
+
+$ ls -1 | wc -l
+# count the number of folders and files in current dir
+```
 
 # other links
 http://mp.weixin.qq.com/s/Lvu8IL6zv9PzDb2oSte3pA
