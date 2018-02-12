@@ -536,7 +536,21 @@ $ wc myfile.txt
 # lines words chars
 
 $ ls -1 | wc -l
-# count the number of folders and files in current dir
+# count the number of unhidden folders and files in current dir
+
+$ ls -al | wc -l
+# count the number of hidden+unhidden folders and files
+
+$ tree | tail -1 
+$ tree a | tail -1
+without hidden and with hidden resursively
+
+# below two seems not correct!!!
+$ find . -type f | wc -l
+# Recursively count normal folders(exclude hidden)
+
+$ find . -type d | wc -l
+# hidden folders
 ```
 
 # other links
