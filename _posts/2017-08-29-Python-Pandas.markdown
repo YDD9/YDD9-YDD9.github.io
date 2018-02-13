@@ -119,10 +119,31 @@ pd.concat([df_data, df_new_data], axis=1)
   <type 'NoneType'>
   ```
   
-  Nan in Pandas is not [None, null, nan], it's a special type. Avoid using Nan==None or if Nan.
+  NaN in Pandas is not [None, null, nan], it's a special type. Avoid using NaN==None or if NaN.
   ```
   pd.DataFrame.isnull()
   ```
+  
+  ```
+  import json
+  import pandas as pd
+  import numpy as np
+  
+  dataJson = json.loads('{"tags":[{"name":"datamissing","datapoints":[[1481479200000,0,3],[1481482800000,null,3]]}]}')
+  df = pd.DataFrame(dataJson['tags'][0]['datapoints'])
+  print df
+	None
+		       0    1  2
+	0  1481479200000  0.0  3
+	1  1481482800000  NaN  3
+  values = df[1]
+  print np.where(np.isnan(values),None,values)
+  	[0.0 None]
+  ```
+  
+  https://www.oreilly.com/learning/handling-missing-data
+  
+  https://chartio.com/resources/tutorials/how-to-check-if-any-value-is-nan-in-a-pandas-dataframe/
   
     
 # select row
