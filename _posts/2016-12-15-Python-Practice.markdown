@@ -28,6 +28,7 @@ categories: Python
 [HTTP requests](#requests)  
 [Ignore exception and run next](#runnext)   
 [List comprehension](#listcomprehension)   
+[Python load data](#loaddata)
 
 
 ## Vitual Environments <a name="virtualenv"></a>    
@@ -836,6 +837,11 @@ row = [1,2,3,4,5,None]
 # output None as xx, if else must before 'for'
 [x if x is not None else '__' for x in row]
 ```
+
+## Python load data <a name="loaddata"></a>    
+https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Cheat+Sheets/Importing_Data_Python_Cheat_Sheet.pdf
+
+
 
 
 
