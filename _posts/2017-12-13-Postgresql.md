@@ -13,6 +13,7 @@ categories: Postgresql
 - [import from dump via cmd](#import-from-dump-via-cmd)
 - [import from dump via pgAdmin SQL](#import-from-dump-via-pgadmin-sql)
 - [Auth issues](#auth-issues)
+- [Docker postgres](#docker-postgres)
 
 
 # work with command line with   
@@ -83,3 +84,39 @@ The problem is still your pg_hba.conf file (/etc/postgresql/9.1/main/pg_hba.conf
 
 Should be   
 `local   all             postgres                                md5`
+
+# Docker postgres
+[example](https://ryaneschinger.com/blog/dockerized-postgresql-development-environment/)
+postgres docker images: https://hub.docker.com/_/postgres/
+
+Use a dockerized persistant volume to store data
+```
+docker create -v /var/lib/postgresql/data --name postgres-data busybox
+```
+the path should be the same as:
+Dockerfile for postgres:10.2-alpine
+ENV PGDATA /var/lib/postgresql/data
+
+start postgres instance
+```
+docker run --name Mypostgres -e POSTGRES_PASSWORD=postgres -d --volumes-from postgres-data postgres:10.2-alpine
+```
+
+expose the port to host
+```
+docker run --name Mypostgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres  -d --volumes-from postgres-data postgres:10.2-alpine
+```
+
+expose to psql
+```
+docker run -it --rm --link Mypostgres:postgres postgres:10.2-alpine psql -h postgres -U postgres
+
+# or
+docker run -it --link Mypostgres:postgres --rm postgres:10.2-alpine sh -c 'exec psql -h "$POSTGRES_PORT_5432_TCP_ADDR" -p "$POSTGRES_PORT_5432_TCP_PORT" -U postgres'
+```
+
+expose to an app
+```
+docker run --name some-app --link some-postgres:postgres -d application-that-uses-postgres
+```
+
