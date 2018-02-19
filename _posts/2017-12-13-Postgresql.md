@@ -102,9 +102,9 @@ start postgres instance
 docker run --name Mypostgres -e POSTGRES_PASSWORD=postgres -d --volumes-from postgres-data postgres:10.2-alpine
 ```
 
-expose the port to host
+expose the port to host(Linux VM in virtualbox)
 ```
-docker run --name Mypostgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres  -d --volumes-from postgres-data postgres:10.2-alpine
+docker run --name Mypostgres -p 5433:5432 -e POSTGRES_PASSWORD=postgres  -d --volumes-from postgres-data postgres:10.2-alpine
 ```
 
 expose to psql
@@ -120,3 +120,23 @@ expose to an app
 docker run --name some-app --link some-postgres:postgres -d application-that-uses-postgres
 ```
 
+expost to pgadmin4 docker
+```
+# install pgadmin4 docker
+docker pull dpage/pgadmin4
+docker run -p 80:80 \
+-e "PGADMIN_DEFAULT_EMAIL=user@domain.com" \
+-e "PGADMIN_DEFAULT_PASSWORD=SuperSecret" \
+-d dpage/pgadmin4
+```
+
+Open browser in Linux VM `localhost:80` and then login with email and pass, finally add the server connection, use network interface enp0s3 IP:5433 from the Linux VM.
+
+If your Docker host is a Linux VM by virtualbox NAT, then you want access pgadmin4 from host PC:
+```
+ssh -N -L localhost:8888:localhost:80 user@127.0.1.1
+```
+
+remote_host: 127.0.1.1 special loopback IP!!!
+ssh -N -L localhost:8888:localhost:8889 user@remote_host
+From <https://github.com/YDD9/YDD9.github.io/blob/master/_posts/2017-12-07-Spark-Python3-Linux.md> 
