@@ -65,6 +65,9 @@ categories: shell
 - [56) Linux common commands](#56-linux-common-commands)
 - [57) iptables](#57-iptables)
 - [58) How to count words in a file](#58-how-to-count-words-in-a-file)
+- [59) In OSI network model, during the TCP establish and close process, when time_wait happens?](#59-in-osi-network-model-during-the-tcp-establish-and-close-process-when-timewait-happens)
+- [60) What is cross site script attack and how to avoid ?](#60-what-is-cross-site-script-attack-and-how-to-avoid)
+- [61) How do I find all txt files in following 3 levels containing specific text on Linux?](#61-how-do-i-find-all-txt-files-in-following-3-levels-containing-specific-text-on-linux)
 - [other links](#other-links)
 
 
@@ -209,7 +212,7 @@ chmod 754 myfile
 
 # 23) In Linux, what names are assigned to the different serial ports?
 
-Serial ports are identified as /dev/ttyS0 to /dev/ttyS7. These are the equivalent names of COM1 to COM8 in Windows.    Linux uses ttySx for a serial port device name. 
+Serial ports are identified as /dev/ttyS0 to /dev/ttyS7. These are the equivalent names of COM1 to COM8 in Windows.    Linux uses ttySx for a serial port device name.
 
 https://www.cyberciti.biz/faq/find-out-linux-serial-ports-with-setserial/
 
@@ -330,8 +333,8 @@ $ egrep -w 'word1|word2' /path/to/file
 Pass the -n option to precede each line of output with the number of the line in the text file from which it was obtained:
 $ grep -n 'root' /etc/passwd
 
-grep can be used together with regex, put regex inside single quote.   
-https://www.cyberciti.biz/faq/searching-multiple-words-string-using-grep/    
+grep can be used together with regex, put regex inside single quote.
+https://www.cyberciti.biz/faq/searching-multiple-words-string-using-grep/
 
 ```
 grep 'word1\|word2\|word3' /path/to/file
@@ -360,12 +363,12 @@ You can use parentheses to group commands. For example, if you want to send the 
 
 # 46) How do you execute more than one command or program from a single command line entry?
 
-You can combine several commands by separating each command or program using a semicolon symbol. For example, you can issue such a series of commands in a single entry: 
+You can combine several commands by separating each command or program using a semicolon symbol. For example, you can issue such a series of commands in a single entry:
 
  A ; B  – Run A and then B, regardless of the success or failure of A
  A && B  – Run B only if A succeeded
  A || B  – Run B only if A failed
-# 47) Write a command that will look for files with an extension “c”, and has the occurrence of the string “apple” in it. 
+# 47) Write a command that will look for files with an extension “c”, and has the occurrence of the string “apple” in it.
 
 1
 
@@ -392,7 +395,7 @@ http://man7.org/linux/man-pages/man1/ls.1.html
 
 -a --all, do no ignore *.txt
 
--l, using a long listing format. 
+-l, using a long listing format.
 
 
 
@@ -421,7 +424,7 @@ Flag g: apply replacement to all match, not only the first.
 | xargs: get the output from preceding expression and feed into the next command.
 
 
-https://unix.stackexchange.com/questions/15308/how-to-use-find-command-to-search-for-multiple-extensions 
+https://unix.stackexchange.com/questions/15308/how-to-use-find-command-to-search-for-multiple-extensions
 
 find ./ -type f \( -iname \*.yml-o -iname \*.yaml\)
 find ./ \( -iname "*.yml" -o -iname "*.yaml" \)
@@ -434,7 +437,7 @@ Both \*.jpg "*.jpg" work
 Very important to have white space before and after \(
 
 
-use non case sensitive -iregex 
+use non case sensitive -iregex
 
 find ./ -iregex '.*\.\(yaml\|yml\)$'
 
@@ -469,7 +472,7 @@ https://www.cyberciti.biz/tips/linux-display-open-ports-owner.html
 
 list all
 
-sudo lsof -i 
+sudo lsof -i
 
 list for a specific port `sudo lsof -i :<port>`
 
@@ -479,8 +482,8 @@ old method `sudo netstat -tulpn`
 
 # 53) How to use awk
 
-awk can be used to filter as well  
-https://www.cyberciti.biz/faq/bash-scripting-using-awk/   
+awk can be used to filter as well
+https://www.cyberciti.biz/faq/bash-scripting-using-awk/
 ```
 awk '{ print }' /etc/passwd
 
@@ -489,8 +492,8 @@ awk '{ print $0 }' /etc/passwd
 awk -F':' '{ print $1 }' /etc/passwd
 
 # Pattern Matching
-# You can only print line of the file if pattern matched. 
-For e.g. display all lines from Apache log file if HTTP error code is 500 
+# You can only print line of the file if pattern matched.
+For e.g. display all lines from Apache log file if HTTP error code is 500
 (9th field logs status error code for each http request):
 awk '$9 == 500 { print $0}' /var/log/httpd/access.log
 ```
@@ -501,22 +504,22 @@ http://mp.weixin.qq.com/s/ltvNiHcyH1_5mljtLPsI4g
 # centOS yum install conflicts
 [yum update or yum install fails with package conflict:](https://access.redhat.com/solutions/# 158883)
 Install the yum-utils package:
-`yum install yum-utils`    
+`yum install yum-utils`
 
 The package-cleanup --dupes lists all duplicate packages:
-`package-cleanup --dupes`  
+`package-cleanup --dupes`
 
 The package-cleanup --cleandupes removes the duplicates (it asks for a confirmation to remove all duplicates unless the -y switch is given):
-`package-cleanup --cleandupes`   
+`package-cleanup --cleandupes`
 
 Edit /etc/yum.conf, set the following line:
-`exactarch=1`    
+`exactarch=1`
 
 Run yum command:
 ```
 yum clean all
 yum update
-```  
+```
 
 # 55) How to rename a file or many files
 https://www.cyberciti.biz/faq/linux-rename-file/
@@ -541,7 +544,7 @@ $ ls -1 | wc -l
 $ ls -al | wc -l
 # count the number of hidden+unhidden folders and files
 
-$ tree | tail -1 
+$ tree | tail -1
 $ tree a | tail -1
 without hidden and with hidden resursively
 
@@ -553,8 +556,27 @@ $ find . -type d | wc -l
 # hidden folders
 ```
 
+26 example to use find</br>
+http://mp.weixin.qq.com/s/URPQSJs8XJtPeSphdkZPLQ</br>
+or</br>
+http://www.oracle.com/technetwork/articles/calish-find-087766.html</br>
+
+
+# 59) In OSI network model, during the TCP establish and close process, when time_wait happens?
+http://blog.csdn.net/u013777351/article/details/48323447
+
+# 60) What is cross site script attack and how to avoid ?
+[XSS](http://blog.csdn.net/ghsau/article/details/17027893) 2 ways of attack and 2 ways [to prevent](https://www.cnblogs.com/TankXiao/archive/2012/03/21/2337194.html)
+
+# 61) [How do I find all txt files in following 3 levels containing specific text on Linux?](https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux)
+```
+ find ./ -maxdepth 3 -type f -name "*.txt" -exec grep "cryptography" --color {} +
+```
+
 # other links
-http://mp.weixin.qq.com/s/Lvu8IL6zv9PzDb2oSte3pA
-`mount | column –t mount |column –t :`  output as a table
+http://mp.weixin.qq.com/s/Lvu8IL6zv9PzDb2oSte3pA</br>
+`mount | column –t mount |column –t :`  output as a table</br>
 
-
+http://mp.weixin.qq.com/s/mhThaOjuy16IRqL4SRSzBQ</br>
+http://blog.51cto.com/hequan/2056571</br>
+more questions and answers</br>
