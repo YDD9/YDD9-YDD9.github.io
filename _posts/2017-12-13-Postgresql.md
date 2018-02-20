@@ -136,7 +136,7 @@ If your Docker host is a Linux VM by virtualbox NAT, then you want access pgadmi
 ```
 ssh -N -L localhost:8888:localhost:80 user@127.0.1.1
 ```
-
-remote_host: 127.0.1.1 special loopback IP!!!
-ssh -N -L localhost:8888:localhost:8889 user@remote_host
-From <https://github.com/YDD9/YDD9.github.io/blob/master/_posts/2017-12-07-Spark-Python3-Linux.md> 
+![port forward with NAT network](https://raw.githubusercontent.com/YDD9/YDD9.github.io/master/images/VirtualBoxPortForwarding.png)
+remote_host: 127.0.1.1 special loopback IP!!!</br>
+ssh -N -L localhost:8888:localhost:8889 user@remote_host</br>
+From <https://github.com/YDD9/YDD9.github.io/blob/master/_posts/2017-12-07-Spark-Python3-Linux.md> </br>
