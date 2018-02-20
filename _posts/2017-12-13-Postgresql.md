@@ -86,8 +86,10 @@ Should be
 `local   all             postgres                                md5`
 
 # Docker postgres
-[example](https://ryaneschinger.com/blog/dockerized-postgresql-development-environment/)
+[blog example use volume container as volume](https://ryaneschinger.com/blog/dockerized-postgresql-development-environment/)
 postgres docker images: https://hub.docker.com/_/postgres/
+
+[official example using volume](https://docs.docker.com/storage/volumes/#create-and-manage-volumes)
 
 Use a dockerized persistant volume to store data
 ```
@@ -120,9 +122,9 @@ expose to an app
 docker run --name some-app --link some-postgres:postgres -d application-that-uses-postgres
 ```
 
-expost to pgadmin4 docker
+expose to pgadmin4 docker
 ```
-# install pgadmin4 docker
+# first install pgadmin4 docker
 docker pull dpage/pgadmin4
 docker run -p 80:80 \
 -e "PGADMIN_DEFAULT_EMAIL=user@domain.com" \
