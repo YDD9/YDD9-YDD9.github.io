@@ -7,28 +7,28 @@ categories: Python
 ---
 
 # Table of contents
-[Vitual Environments](#virtualenv)
-[Python brew mac](#Pythonbrew)
-[conda & Anaconda distribution](#conda)
-[Pycharm use virtualenv](#Pycharmvirtual)
-[PythonVScode](#VScode)
-[Date time](#datetime)
-[Division](#division)
-[Function arguments](#argparser)
-[Python installer](#pythoninstaller)
-[function \_\_init\_\_](#init)
-[Python objects and values](#objectsvalues)
-[Python string encoding and manipulation](#enconding)
-[function lambda filter map reduce](#lambda)
-[Logs](#logs)
-[Proxy](#proxy)
-[import error and dynamic import](#importerror)
-[Regular expression](#regularexpression)
-[Execute cmd command with subprocess](#subprocess)
-[HTTP requests](#requests)
-[Ignore exception and run next](#runnext)
-[List comprehension](#listcomprehension)
-[Python load data](#loaddata)
+[Vitual Environments](#virtualenv)</br>
+[Python brew mac](#Pythonbrew)</br>
+[conda & Anaconda distribution](#conda)</br>
+[Pycharm use virtualenv](#Pycharmvirtual)</br>
+[PythonVScode](#VScode)</br>
+[Date time](#datetime)</br>
+[Division](#division)</br>
+[Function arguments](#argparser)</br>
+[Python installer](#pythoninstaller)</br>
+[function \_\_init\_\_](#init)</br>
+[Python objects and values](#objectsvalues)</br>
+[Python string encoding and manipulation](#enconding)</br>
+[function lambda filter map reduce](#lambda)</br>
+[Logs](#logs)</br>
+[Proxy](#proxy)</br>
+[import error and dynamic import](#importerror)</br>
+[Regular expression](#regularexpression)</br>
+[Execute cmd command with subprocess](#subprocess)</br>
+[HTTP requests](#requests)</br>
+[Ignore exception and run next](#runnext)</br>
+[List comprehension](#listcomprehension)</br>
+[Python load data](#loaddata)</br>
 
 ## Vitual Environments <a name="virtualenv"></a>
 [page link](http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvironments-ref)
