@@ -2,37 +2,36 @@
 layout: post
 title:  "Python Practice"
 date:   2016-12-16 14:58:39 +0100
-comments: true  
+comments: true
 categories: Python
 ---
 
-# Table of contents   
-[Vitual Environments](#virtualenv)  
-[Python brew mac](#Pythonbrew)  
-[conda & Anaconda distribution](#conda)  
-[Pycharm use virtualenv](#Pycharmvirtual)  
-[PythonVScode](#VScode)  
-[Date time](#datetime)  
-[Division](#division)  
-[Function arguments](#argparser)  
-[Python installer](#pythoninstaller)  
-[function \_\_init\_\_](#init)  
-[Python objects and values](#objectsvalues)  
-[Python string encoding](#enconding)  
-[function lambda filter map reduce](#lambda)  
-[Logs](#logs)  
-[Proxy](#proxy)  
-[import error](#importerror)    
-[Regular expression](#regularexpression)  
-[Execute cmd command with subprocess](#subprocess)  
-[HTTP requests](#requests)  
-[Ignore exception and run next](#runnext)   
-[List comprehension](#listcomprehension)   
+# Table of contents
+[Vitual Environments](#virtualenv)
+[Python brew mac](#Pythonbrew)
+[conda & Anaconda distribution](#conda)
+[Pycharm use virtualenv](#Pycharmvirtual)
+[PythonVScode](#VScode)
+[Date time](#datetime)
+[Division](#division)
+[Function arguments](#argparser)
+[Python installer](#pythoninstaller)
+[function \_\_init\_\_](#init)
+[Python objects and values](#objectsvalues)
+[Python string encoding and manipulation](#enconding)
+[function lambda filter map reduce](#lambda)
+[Logs](#logs)
+[Proxy](#proxy)
+[import error and dynamic import](#importerror)
+[Regular expression](#regularexpression)
+[Execute cmd command with subprocess](#subprocess)
+[HTTP requests](#requests)
+[Ignore exception and run next](#runnext)
+[List comprehension](#listcomprehension)
 [Python load data](#loaddata)
 
-
-## Vitual Environments <a name="virtualenv"></a>    
-[page link](http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvironments-ref)   
+## Vitual Environments <a name="virtualenv"></a>
+[page link](http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvironments-ref)
 A Virtual Environment is a tool to keep the dependencies required by different projects in separate places, by creating virtual Python environments for them. It solves the “Project X depends on version 1.x but, Project Y needs 4.x” dilemma, and keeps your global site-packages directory clean and manageable.
 
 For example, you can work on a project which requires Django 1.10 while also maintaining a project which requires Django 1.8.
@@ -100,7 +99,7 @@ After a while, though, you might end up with a lot of virtual environments litte
 
 ## Python brew mac <a name="Pythonbrew"></a>
 
-[page link](http://superuser.com/questions/915810/pip-not-working-on-hombrew-python-2-7-install)  
+[page link](http://superuser.com/questions/915810/pip-not-working-on-hombrew-python-2-7-install)
 Generally, homebrew will install a formula into /usr/local/Cellar/formula and then place a link at /usr/local/bin/formula.
 
 To make use of your installed formulae, make sure /usr/local/bin is in your $PATH. Show your $PATH by typing
@@ -162,7 +161,7 @@ link from /usr/local/Cellar/python/2.7.9/bin/python to /usr/bin/python
 
 ln -s /usr/local/Cellar/python/2.7.9/bin/python /usr/bin/python
 
-This is necessary for all python scripts beginning with #!/usr/bin/python. Especialy easy_install will fail, if link is not there.  
+This is necessary for all python scripts beginning with #!/usr/bin/python. Especialy easy_install will fail, if link is not there.
 
 
 Other Notes
@@ -185,13 +184,13 @@ Lastly, remember to **exclude the virtual environment folder from source control
 
 ## conda & Anaconda distribution <a name="conda"></a>
 
-Honestly, above installation is complicated and fails easily. At the beginning I didn't choose conda is because homebrew - conda together gives warnings, although I didn't notice anything wrong. To overcome possible conflicts, just temporarily disable the conda path in your file ~/.bash-profile when brew doesn't work.  
+Honestly, above installation is complicated and fails easily. At the beginning I didn't choose conda is because homebrew - conda together gives warnings, although I didn't notice anything wrong. To overcome possible conflicts, just temporarily disable the conda path in your file ~/.bash-profile when brew doesn't work.
 
-After I read this article [Conda: Myths and Misconceptions](https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/) I'm certain that I should use Anaconda distribution and Conda to manage env as well as all in/external libs.  
+After I read this article [Conda: Myths and Misconceptions](https://jakevdp.github.io/blog/2016/08/25/conda-myths-and-misconceptions/) I'm certain that I should use Anaconda distribution and Conda to manage env as well as all in/external libs.
 
 [conda env manage doc.](https://conda.io/docs/using/envs.html).
 
-[an example guide through](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/)  
+[an example guide through](https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/)
 
 ### check current using env and all available envs
 
@@ -237,7 +236,7 @@ conda env export > environment.yml
 conda env create -f environment.yml
 ```
 
-[PYTHON PACKAGES AND ENVIRONMENTS WITH CONDA](https://www.continuum.io/blog/developer-blog/python-packages-and-environments-conda)   
+[PYTHON PACKAGES AND ENVIRONMENTS WITH CONDA](https://www.continuum.io/blog/developer-blog/python-packages-and-environments-conda)
 
 ## Pycharm use virtualenv <a name="Pycharmvirtual"> </a>
 
@@ -250,19 +249,19 @@ Enter ~/virtualenvs/<your virtualenv name>/bin/python in the path. If you follow
 Click OK.
 
 
-## PythonVScode<a name="VScode"></a>  
+## PythonVScode<a name="VScode"></a>
 Using a light weight text editor with extension of Python debug is very pleasant.
 DonJayamanne Python extension is very good, it has autocomplete function as well, but you need to config it correctly.
 Here's a sample entry in the User Settings file that will enable Google App Engine autocomplete and intellisense:
-[doc link](https://github.com/DonJayamanne/pythonVSCode/wiki/Autocomplete-Intellisense)  
+[doc link](https://github.com/DonJayamanne/pythonVSCode/wiki/Autocomplete-Intellisense)
 ```
 # go to file->settings and type below in user settings, never touch the Master settings!!!
 "python.autoComplete.extraPaths": [
     "C:/Program Files (x86)/Google/google_appengine",
     "C:/Program Files (x86)/Google/google_appengine/lib" ]
-    
+
 # to locate your anaconda
-where anaconda 
+where anaconda
 conda info
 
 # to locate your specific pandas inside python
@@ -278,11 +277,11 @@ numpy.__path__
 ## Date time <a name="datetime"></a>
 
 ```
-from datetime import datetime  
-import time  
+from datetime import datetime
+import time
 import pandas as pd
 import calendar
-```  
+```
 
 Run have an idea of computation time, `time.time()` is useful.
 Conversion between epochtime, structure time and string I use below function to avoid issues of daylight saving, timezone.
@@ -333,43 +332,43 @@ td{
 HTML example
 http://www.w3schools.com/html/html_tables.asp
 
-Generate a list of timestamp  
+Generate a list of timestamp
 
 ```
 rng = pd.date_range('2016-08-01', periods= 10, freq='12H')
-rng.strftime('%Y-%m-%d')   
-array(['2016-08-01', '2016-08-01', '2016-08-02', '2016-08-02',  
-       '2016-08-03', '2016-08-03', '2016-08-04', '2016-08-04',  
-       '2016-08-05', '2016-08-05'],  
-      dtype='|S10')  
-```  
- 
-Check leap year:  
+rng.strftime('%Y-%m-%d')
+array(['2016-08-01', '2016-08-01', '2016-08-02', '2016-08-02',
+       '2016-08-03', '2016-08-03', '2016-08-04', '2016-08-04',
+       '2016-08-05', '2016-08-05'],
+      dtype='|S10')
+```
+
+Check leap year:
 
 ```
 calendar.isleap(datetime.now().timetuple().tm_year)
-```  
+```
 
 
-## Division <a name="division"></a>  
+## Division <a name="division"></a>
 By default, python2.7 division return only the rounded integer part. To force results into float try below
 
 ```
 >>> from __future__ import division
 >>> 2/3
 >>> 0.6666666666666666
-```  
+```
 
 
-## Function arguments <a name="argparser"></a>  
-two common one  
+## Function arguments <a name="argparser"></a>
+two common one
 
 ```
 import argparser
 import getopt
-```  
+```
 
-An example using only Unix style options:  
+An example using only Unix style options:
 
 ```
 >>> import getopt
@@ -381,7 +380,7 @@ An example using only Unix style options:
 [('-a', ''), ('-b', ''), ('-c', 'foo'), ('-d', 'bar')]
 >>> args
 ['a1', 'a2']
-```    
+```
 
 Using long option names is equally easy:
 
@@ -409,7 +408,7 @@ Using long option names is equally easy:
 >>> args
 ['a1', 'a2']
 
-```    
+```
 
 In a script, typical usage is something like this:
 
@@ -440,7 +439,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-```   
+```
 
 Note that an equivalent command line interface could be produced with less code and more informative help and error messages by using the argparse module:
 
@@ -453,41 +452,41 @@ if __name__ == '__main__':
     parser.add_argument('-v', dest='verbose', action='store_true')
     args = parser.parse_args()
     # ... do something with args.output ...
-    # ... do something with args.verbose ..    
-```  
+    # ... do something with args.verbose ..
+```
 
-Combining Positional and Optional arguments  
-Define firstly all positional arguments then start optional arguments.      
-You can have help / extra information and display them.   
-You can force argument type to int instead of default string.    
-You can provide a default value for the argument.    
+Combining Positional and Optional arguments
+Define firstly all positional arguments then start optional arguments.
+You can have help / extra information and display them.
+You can force argument type to int instead of default string.
+You can provide a default value for the argument.
 
 ```
 import argparse
 parser = argparse.ArgumentParser(description='A foo that bars',
-                                epilog="And that's how you'd foo a bar")  
-parser.print_help()                   
-parser.add_argument("square", type=int,  
+                                epilog="And that's how you'd foo a bar")
+parser.print_help()
+parser.add_argument("square", type=int,
                     help="display a square of a given number")
-parser.add_argument("-v", "--verbose", action="store_true",  
-                    help="increase output verbosity")  
-parser.add_argument('--example', nargs='?',    
-                    const=1, type=int)                     
-args = parser.parse_args()  
-answer = args.square**2  
-if args.verbose:  
-    print "the square of {} equals {}".format(args.square, answer)  
-else:  
-    print answer  
-    
+parser.add_argument("-v", "--verbose", action="store_true",
+                    help="increase output verbosity")
+parser.add_argument('--example', nargs='?',
+                    const=1, type=int)
+args = parser.parse_args()
+answer = args.square**2
+if args.verbose:
+    print "the square of {} equals {}".format(args.square, answer)
+else:
+    print answer
+
 print args
 print args.example
 print args.info
-```   
+```
 
-nargs='?' means 0-or-1 arguments  
-const=1 sets the default when there are 0 arguments  
-type=int converts the argument to int  
+nargs='?' means 0-or-1 arguments
+const=1 sets the default when there are 0 arguments
+type=int converts the argument to int
 
 #### When run the python command with arguments use the double quotation " instead of simple quotation'
 
@@ -497,12 +496,12 @@ $ python setup.py sdist
 ```
 This will create a dist sub-directory in your project, and will wrap-up all of your project’s source code files into a distribution file, a compressed archive file in the form of: `TowelStuff-0.1.tar.gz`
 
-The compressed archive format defaults to **.tar.gz** files on POSIX systems, and **.zip** files on Windows systems.  
-[Quick start](http://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/quickstart.html). 
-To change package format, you can add `--format=zip` in your cmd command, [available format](https://docs.python.org/2/distutils/builtdist.html).  
+The compressed archive format defaults to **.tar.gz** files on POSIX systems, and **.zip** files on Windows systems.
+[Quick start](http://the-hitchhikers-guide-to-packaging.readthedocs.io/en/latest/quickstart.html).
+To change package format, you can add `--format=zip` in your cmd command, [available format](https://docs.python.org/2/distutils/builtdist.html).
 [Detailed tutorial](https://wiki.python.org/moin/Distutils/Tutorial) to run with adding more files.
 
-### But now the dist should use new format wheel, .egg or .zip or .tar are all old way to package.  
+### But now the dist should use new format wheel, .egg or .zip or .tar are all old way to package.
 .whl file can be directly upload to PyPI and easily installed by any user, just run `pip install <your package>` Here is the [link](https://docs.python.org/2/distutils/builtdist.html) shows you how.
 ```
 $ python setup.py bdist_wheel
@@ -511,7 +510,7 @@ $ python setup.py bdist_wheel
 
 
 
-## function \_\_init\_\_ <a name="init"></a>  
+## function \_\_init\_\_ <a name="init"></a>
 
 __init__.py can be added into any directory that you want python to search your defined modules.
 Contents of the file can be either `from modules import class` or empty.
@@ -554,7 +553,7 @@ anymodule.py file can be considered as a module in python.
 ```
 from myPackages import myModule
 import myPackages.myModule
-```  
+```
 
 although __init__.py exists for each packages, but when run script.py directly, python doesn't know the existance of mymodules nor src. We can move script.py under Project. Or we can specify in the script.py that [...]/Project (where src located) is also `sys.path.insert(0, [...]/Project)`. Alternativly You could add the /Project path as PYTHONPATH in the advanced system settings or .bash_profile, but it's not a good practice especially you copy the current project and work with its copy, the copy could still import modules from original project and confuses you as module names are identical.
 
@@ -583,7 +582,7 @@ True
 ```
 >>> a = [1, 2, 3]
 >>> b = a
->>> a is b 
+>>> a is b
 True
 >>> b[0] = 42
 >>> a
@@ -598,7 +597,7 @@ True
 [42, 2, 3]
 ```
 
-## Python string encoding <a name="enconding"></a>  
+## Python string encoding and manipulation<a name="enconding"></a>
 
 
 when using json.dump or yaml.dump the text in file contains extra char such as !!Python/unicode or u, to eliminate them, using encoding option when dumping. [possible solution](https://stackoverflow.com/questions/39612778/suppress-python-unicode-in-yaml-output)
@@ -607,16 +606,61 @@ import yaml
 yaml.dump(manifestSample, f, default_flow_style=False, allow_unicode=True, encoding='utf8')
 ```
 
+To extract part of the dot seperated string `s = 'www.google.com'`</br>
+[Method 1 function find](https://stackoverflow.com/questions/2294493/how-to-get-the-position-of-a-character-in-python)
+```
+>>> l = s.find('.')
+>>> r = s.rfind('.')
+>>> s[l+1 : r]
+'google'
+```
+[Method 2 list comprehension]
+```
+>>> l = [i for i, chr in enumerate(s) if chr =='.']
+[3, 10]
+>>> s[l[0]+1 : l[1]]
+'google'
+```
+[Method 3 function rsplit]
+```
+>>> s.rsplit('.')
+['www', 'google', 'com']
+>>> s.rsplit('.', 1)
+['www.google', 'com']
+```
 
 ## function lambda filter reduce map <a name="lambda"></a>
 
 filter map reduce definitions by book [pythontips](http://book.pythontips.com/en/latest/map_filter.html)
 combined usage with lambda function [examples](https://www.python-course.eu/lambda.php)
 
-general reading for lambda    
-http://www.secnetix.de/olli/Python/lambda_functions.hawk
-https://stackoverflow.com/questions/890128/why-are-python-lambdas-useful
-https://pythonconquerstheuniverse.wordpress.com/2011/08/29/lambda_tutorial/
+general reading for lambda
+http://www.secnetix.de/olli/Python/lambda_functions.hawk</br>
+https://stackoverflow.com/questions/890128/why-are-python-lambdas-useful</br>
+https://pythonconquerstheuniverse.wordpress.com/2011/08/29/lambda_tutorial/</br>
+```
+>>> foo = [2, 18, 9, 22, 17, 24, 8, 12, 27]
+>>>
+>>> print filter(lambda x: x % 3 == 0, foo)
+[18, 9, 24, 12, 27]
+>>>
+>>> print map(lambda x: x * 2 + 10, foo)
+[14, 46, 28, 54, 44, 58, 26, 34, 64]
+>>>
+>>> print reduce(lambda x, y: x + y, foo)
+139
+
+>>> def make_incrementor (n): return lambda x: x + n
+>>>
+>>> f = make_incrementor(2)
+>>> g = make_incrementor(6)
+>>>
+>>> print f(42), g(42)
+44 48
+>>>
+>>> print make_incrementor(22)(33)
+55
+```
 
 for people don't like them, [list comprehension](https://www.python-course.eu/list_comprehension.php) is a good alternative
 
@@ -628,8 +672,39 @@ tricky part of `filter(None, [None, 1,2,3,0, None, 4,5])` will ignore not only N
 
 ## Logs <a name="logs"></a>
 
-Logging cookbook  
-https://docs.python.org/2.7/howto/logging-cookbook.html  
+Logging cookbook
+https://docs.python.org/2.7/howto/logging-cookbook.html
+```
+import logging
+import auxiliary_module
+
+# create logger with 'spam_application'
+logger = logging.getLogger('spam_application')
+logger.setLevel(logging.DEBUG)
+# create file handler which logs even debug messages
+fh = logging.FileHandler('spam.log')
+fh.setLevel(logging.DEBUG)
+# create console handler with a higher log level
+ch = logging.StreamHandler()
+ch.setLevel(logging.ERROR)
+# create formatter and add it to the handlers
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+fh.setFormatter(formatter)
+ch.setFormatter(formatter)
+# add the handlers to the logger
+logger.addHandler(fh)
+logger.addHandler(ch)
+
+logger.info('creating an instance of auxiliary_module.Auxiliary')
+a = auxiliary_module.Auxiliary()
+logger.info('created an instance of auxiliary_module.Auxiliary')
+logger.info('calling auxiliary_module.Auxiliary.do_something')
+a.do_something()
+logger.info('finished auxiliary_module.Auxiliary.do_something')
+logger.info('calling auxiliary_module.some_function()')
+auxiliary_module.some_function()
+logger.info('done with auxiliary_module.some_function()')
+```
 
 A typical approach is to have something like the following at the top of a file:
 
@@ -646,11 +721,11 @@ def add(x, y):
     return x + y
 ```
 
-Log with decorators  
-https://www.freshbooks.com/developers/blog/logging-actions-with-python-decorators-part-i-decorating-logged-functions  
+Log with decorators
+https://www.freshbooks.com/developers/blog/logging-actions-with-python-decorators-part-i-decorating-logged-functions
 
 
-## Proxy <a name='proxy'></a> 
+## Proxy <a name='proxy'></a>
 
 ```
 import os
@@ -668,11 +743,11 @@ os.environ['NO_PROXY'] = 'github.com, google.com'
 os.environ['no_proxy'] = 'github.com, google.com'
 ```
 
-## import error <a name='importerror'></a>  
+## import error and dynamic import <a name='importerror'></a>
 
 It's headache when you first run into the Python import error: No module named does exist.
-**First make sure all your python paths do not contain whitespace.** Then You can simply add your project into PYTHONPATH on Windows, for Mac you can play with $PYTHONPATH.  
-But adding too many paths into PYTHONPATH is not good, you increase the chances to have the same function name in different paths. Suppose you clone this project locally and work on the copy, only original path is added. When you run test on the copy, no import error occurs, because python still import functions from the origin, and that is not what you expect. It's hard to discover it untill you remember that a similar project with same module name exists in your PYTHONPATH. 
+**First make sure all your python paths do not contain whitespace.** Then You can simply add your project into PYTHONPATH on Windows, for Mac you can play with $PYTHONPATH.
+But adding too many paths into PYTHONPATH is not good, you increase the chances to have the same function name in different paths. Suppose you clone this project locally and work on the copy, only original path is added. When you run test on the copy, no import error occurs, because python still import functions from the origin, and that is not what you expect. It's hard to discover it untill you remember that a similar project with same module name exists in your PYTHONPATH.
 
 PYTHONPATH is key to installing and importing third-party packages. When an import command is passed, python looks for the module/package in a list of places.
 
@@ -686,14 +761,25 @@ sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 print sys.path
 ```
 
+When you receive a user uploaded module to use once your codes is finished, your codes needs to [dynamically
+load](https://www.blog.pythonlibrary.org/2012/07/31/advanced-python-how-to-dynamically-load-modules-or-classes/)
+the user module.
+```
+# Easy solution is to use Python magic function
+module = __import__(module_name)
+my_class = getattr(module, class_name)
+instance = my_class()
 
+# Another way is use module
+import imp
+```
 
 
 ## Regular expression <a name='regularexpression'></a>
 
 ```
 
-multiline_str = 
+multiline_str =
 'name                           requested state   instances   memory   disk   urls
 test-data-seed                 started           1/1         512M     1G     test-data-seed.run.aws02-pr.ice.predix.io
 test-rmd-datasource            started           1/1         512M     1G     test-rmd-datasource.run.aws02-pr.ice.predix.io
@@ -717,16 +803,16 @@ name = re.findall('^\S+', apps, re.M)  # flag re.Multilines search line by line,
 
 [Python re module](https://docs.python.org/2/library/re.html)
 
-`(?#...)`  
+`(?#...)`
 A comment; the contents of the parentheses are simply ignored.
 
-`(?=...)`  
+`(?=...)`
 Matches if ... matches next, but doesn’t consume any of the string. This is called a lookahead assertion. For example, Isaac (?=Asimov) will match 'Isaac ' only if it’s followed by 'Asimov'.
 
-`(?!...)`  
+`(?!...)`
 Matches if ... doesn’t match next. This is a negative lookahead assertion. For example, Isaac (?!Asimov) will match 'Isaac ' only if it’s not followed by 'Asimov'.
 
-`(?<=...)`  
+`(?<=...)`
 Matches if the current position in the string is preceded by a match for ... that ends at the current position. This is called a positive lookbehind assertion. (?<=abc)def will find a match in abcdef, since the lookbehind will back up 3 characters and check if the contained pattern matches. The contained pattern must only match strings of some fixed length, meaning that abc or a|b are allowed, but a* and a{3,4} are not. Group references are not supported even if they match strings of some fixed length. Note that patterns which start with positive lookbehind assertions will not match at the beginning of the string being searched; you will most likely want to use the search() function rather than the match() function:
 ```
 >>> import re
@@ -741,19 +827,19 @@ This example looks for a word following a hyphen:
 >>> m.group(0)
 'egg'
 ```
-`(?<!...)`  
+`(?<!...)`
 Matches if the current position in the string is not preceded by a match for .... This is called a negative lookbehind assertion. Similar to positive lookbehind assertions, the contained pattern must only match strings of some fixed length and shouldn’t contain group references. Patterns which start with negative lookbehind assertions may match at the beginning of the string being searched.
 
-[Tutorial](http://www.rexegg.com/regex-disambiguation.html) of lookahead, lookbehind 
+[Tutorial](http://www.rexegg.com/regex-disambiguation.html) of lookahead, lookbehind
 
-(?=USD) place your start point at the beginning of |USD, the search pattern put before or after itself, behavior is different.                 
-(?<=USD) place your start point at the end of USD|, and then start to match, the search pattern put before or after itself, behavior is different              
+(?=USD) place your start point at the beginning of |USD, the search pattern put before or after itself, behavior is different.
+(?<=USD) place your start point at the end of USD|, and then start to match, the search pattern put before or after itself, behavior is different
 check this https://regex101.com/ with example '100USD10' with r'100(?=USD)' get the number 100 before dollar; with r'(?<=USD)10' get the number 10 after USD.
 
 
-## Execute cmd command with subprocess <a name='subprocess'></a> 
+## Execute cmd command with subprocess <a name='subprocess'></a>
 
-To execute cmd command from Python environment, subprocess is the great helper.  
+To execute cmd command from Python environment, subprocess is the great helper.
 https://docs.python.org/2/library/subprocess.html
 
 
@@ -774,11 +860,11 @@ unicows.dll
 ```
 
 subprocess.call() execute the command and print out the screen and return a status 0 when successful.
-subprocess.check_output() execute the command and save the screen output as a byte string, you have to print it out. 
-###### PS: args must be put inside the list [] 
+subprocess.check_output() execute the command and save the screen output as a byte string, you have to print it out.
+###### PS: args must be put inside the list []
 
 
-if you like to live output message on screen, follow [steps](https://stackoverflow.com/questions/18421757/live-output-from-subprocess-command)   
+if you like to live output message on screen, follow [steps](https://stackoverflow.com/questions/18421757/live-output-from-subprocess-command)
 
 ```
 import subprocess
@@ -789,7 +875,7 @@ p = subprocess.Popen(["ls","-a"], stdout=subprocess.PIPE, stderr=subprocess.PIPE
 # output one char by char
 for c in iter(lambda: p.stdout.read(1), ''):
     sys.stdout.write(c)
-    
+
 # seperate standard output and error output
 stdout, stderr = p.communicate()
 
@@ -825,9 +911,25 @@ print(uaaresponse.text)
 
 
 ## Ignore exception and run next <a name="runnext"></a>
+[Official guide](https://docs.python.org/2/tutorial/errors.html)
 
-try/except will let you catch specific exceptions and ignore to continue to run. If you need to do_thing1, do_thing2 in an order but don't care of previous exceptions, you can have try/except for each do_thing. [link](http://stackoverflow.com/questions/3817748/python-ignore-exception-and-go-back-to-where-i-was)   
+try/except will let you catch specific exceptions and ignore to continue to run. If you need to do_thing1, do_thing2 in an order but don't care of previous exceptions, you can have try/except for each do_thing. [link](http://stackoverflow.com/questions/3817748/python-ignore-exception-and-go-back-to-where-i-was)
 
+[To print the exception message](https://stackoverflow.com/questions/1483429/how-to-print-an-error-in-python)
+```
+try:
+    do something
+    ...
+except Exception,e:
+    print str(e)
+# =====optional part below====
+except (RuntimeError, TypeError, NameError):
+    pass
+else:
+    raise IOError
+finally:
+    print "This is clean-up action message."
+```
 
 ## List comprehension <a name="listcomprehension"></a>
 ```
@@ -838,7 +940,7 @@ row = [1,2,3,4,5,None]
 [x if x is not None else '__' for x in row]
 ```
 
-## Python load data <a name="loaddata"></a>    
+## Python load data <a name="loaddata"></a>
 https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Cheat+Sheets/Importing_Data_Python_Cheat_Sheet.pdf
 
 
