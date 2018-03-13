@@ -85,4 +85,39 @@ Correct solution based on the electronics circuit which subtractor really does a
 https://stackoverflow.com/questions/3430651/subtracting-two-numbers-without-using-operator
 
 
+# max int for 32bits</br>
+http://sqlity.net/en/858/how-to-calculate-maxint/</br>
+**Signed Numbers**
+
+A signed integer allows to store positive and negative numbers, while an unsigned integer can only represent positive numbers.
+All signed integer data types use a single bit to indicate if the number is positive or negative. In a 32 bit integer like SQL Servers INT data type 31 bits are left to encode the actual number. That means we can store 2^31 different numbers. With zero being the smallest non negative number, the largest number for the INT data type is 2^31-1 = 2,147,483,647.</br>
+
+Python 8bit, first bit is the sign, the maximum possible number is then a sum of 2^0, 2^1,..., 2^6 with n=7, a1=2^0=1, q=2</br>
+https://en.wikipedia.org/wiki/Geometric_progression 
+`Sn = a1*(1-q**n)/(1-q)`
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\fn_cm&space;S_{n}=2^{0}&plus;2^{1}&plus;...&plus;2^{6}=2^{7}-1=127" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\fn_cm&space;S_{n}=2^{0}&plus;2^{1}&plus;...&plus;2^{6}=2^{7}-1=127" title="S_{n}=2^{0}+2^{1}+...+2^{6}=2^{7}-1=127" /></a></br>
+Binary in python, left most bit is reserved for the sign, so 8bit maximum 1,111,111 with binary marker `0b` (when type in python)
+```
+1<<0 = 2^0 = 0b1      # zero  0 after 1
+1<<1 = 2^1 = 0b10     # one   0 after 1
+1<<2 = 2^2 = 0b100    # two   0 after 1
+1<<3 = 2^3 = 0b1000   # three 0 after 1
+...
+1<<6 = 2^6 = 0b1000000
+
+sum of above in binary is simply move one bit further to left and minus 1:
+(1<<7)  -1 = 0b1111111
+# 127
+```
+Other ways to confirm.
+```
+2**7 -1
+# 127
+
+0b1111111
+# 127
+```
+
+
 
