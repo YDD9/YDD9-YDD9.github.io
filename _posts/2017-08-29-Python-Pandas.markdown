@@ -75,8 +75,49 @@ pd.concat([df_data, df_new_data], axis=1)
 
 
 # Drop duplicates   
-  drop a row
+  drop duplicates in the col
   ```
+  import pandas as pd
+  import numpy as np
+  df = pd.DataFrame({'A': 'foo bar foo bar foo bar foo foo'.split(),
+                   'B': 'one one two three two two one three'.split(),
+                   'C': np.arange(8), 'D': np.arange(8) * 2})
+		   
+  # Only consider certain columns for identifying duplicates, by default use all of the columns
+  
+  pd.DataFrame.drop_duplicates()
+  
+  # subset : column label or sequence of labels, optional.
+  
+  df.drop_duplicates(subset = ["A"])
+  
+  # keep : {‘first’, ‘last’, False}, default ‘first’
+  #first : Drop duplicates except for the first occurrence.
+  #last : Drop duplicates except for the last occurrence.
+  #False : Drop all duplicates.
+  
+  df.drop_duplicates(subset = ["A"], keep='last')
+  
+  # all above df is not modified
+  
+  # inplace : boolean, default False
+  # Whether to drop duplicates in place or to return a copy
+  
+  df.drop_duplicates(subset = ["A"], keep='last', inplace=True)   # df is modified.
+  ```
+
+  Check the status of duplicated
+  ```
+  df.duplicated(subset=['A'])
+  # show all duplication
+  df[ df.duplicated(subset=['A']) ]
+  
+  ```
+  
+
+
+  drop a row
+  ```  
   pd.DataFrame.drop([row_label_1, row_label_2])
   ```
 
