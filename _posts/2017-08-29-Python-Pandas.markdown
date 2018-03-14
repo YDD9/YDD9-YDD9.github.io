@@ -15,7 +15,7 @@ categories: Python
 - [Populate DataFrame with data](#populate-dataframe-with-data)
 - [Merge DataFrames into one](#merge-dataframes-into-one)
 - [Drop duplicates](#drop-duplicates)  
-- [write DataFrame into csv file](#write-dataframe-into-csv-file)
+- [write DataFrame into csv or excel file](#write-dataframe-into-csv-file)
 - [change nan to None](#change-nan-to-None)
 - [select row](#select-row)
 - [sort](#sort)
@@ -97,7 +97,8 @@ pd.concat([df_data, df_new_data], axis=1)
 
 
 
-# Write DataFrame into csv file
+# Write DataFrame into csv or excel file
+
     ```
     import os
     # if file does not exist write header 
@@ -107,6 +108,35 @@ pd.concat([df_data, df_new_data], axis=1)
         df.to_csv('filename.csv',mode = 'a',header=False)
     ```
 
+[excel writing ](http://xlsxwriter.readthedocs.io/working_with_pandas.html)
+this a very good website details writing options to excel
+```
+writer = pd.ExcelWriter("pandas_datetime.xlsx",
+                        engine='xlsxwriter',
+                        datetime_format='mmm d yyyy hh:mm:ss',
+                        date_format='mmmm dd yyyy')
+
+workbook  = writer.book
+worksheet = writer.sheets['Sheet1']
+
+# Add some cell formats.
+format1 = workbook.add_format({'num_format': '#,##0.00'})
+format2 = workbook.add_format({'num_format': '0%'})
+
+# Set the column width and format.
+worksheet.set_column('B:B', 18, format1)
+
+# Set the format but not the column width.
+worksheet.set_column('C:C', None, format2)
+
+df4 = pd.DataFrame()
+df4.to_excel(writer, sheet_name='Sheet1',
+             startrow=7, startcol=4, header=False, index=False)
+```
+
+```
+
+```
 
 # Change nan to None 
   [links](https://stackoverflow.com/questions/14162723/replacing-pandas-or-numpy-nan-with-a-none-to-use-with-mysqldb)
