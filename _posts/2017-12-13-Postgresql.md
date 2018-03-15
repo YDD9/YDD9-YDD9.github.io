@@ -14,6 +14,7 @@ categories: Postgresql
 - [import from dump via pgAdmin SQL](#import-from-dump-via-pgadmin-sql)
 - [Auth issues](#auth-issues)
 - [Docker postgres](#docker-postgres)
+- [Replace text](#replace-text)
 
 
 # work with command line with   
@@ -142,3 +143,39 @@ ssh -N -L localhost:8888:localhost:80 user@127.0.1.1
 remote_host: 127.0.1.1 special loopback IP!!!</br>
 ssh -N -L localhost:8888:localhost:8889 user@remote_host</br>
 From <https://github.com/YDD9/YDD9.github.io/blob/master/_posts/2017-12-07-Spark-Python3-Linux.md> </br>
+
+
+# [Replace text](https://stackoverflow.com/questions/5060526/postgresql-replace-all-instances-of-a-string-within-text-field)
+
+You want to use postgresql's `replace` function:
+```
+replace(string text, from text, to text)
+```
+
+for instance :
+```
+# simply replace inside a string
+replace( 'abcdefabcdef', 'cd', 'XX')
+
+# text from a column in a table
+UPDATE <table> SET <field> = replace(<field>, 'small', 'big')
+```
+
+`regexp_replace ` function is better in controller what text to be replaced.</br>
+```
+regexp_replace(string text, pattern text, replacement text [,flags text])
+
+regexp_replace('Thomas', '.[mN]a.', 'M')
+```
+flags i and g for case-insensitive and global matching, respectively. </br>
+\m and \M to match the beginning and the end of a word.</br>
+```
+SELECT regexp_replace('Cat bobcat cat cats catfish', 'cat', 'dog');
+-->                    Cat bobdog cat cats catfish
+
+SELECT regexp_replace('Cat bobcat cat cats catfish', '\mcat\M', 'dog', 'gi');
+-->                    dog bobcat dog cats catfish
+
+UPDATE <table> SET <field> = regexp_replace(<field>, '\mcat\M', 'dog', 'gi');
+
+```
