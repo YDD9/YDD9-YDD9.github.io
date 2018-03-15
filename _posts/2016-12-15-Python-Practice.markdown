@@ -29,6 +29,9 @@ categories: Python
 [Ignore exception and run next](#runnext)</br>
 [List comprehension](#listcomprehension)</br>
 [Python load data](#loaddata)</br>
+[Python sort list of tuple](#sortlistoftuple)</br>
+
+
 
 ## Vitual Environments <a name="virtualenv"></a>
 [page link](http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvironments-ref)
@@ -944,7 +947,20 @@ row = [1,2,3,4,5,None]
 https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Cheat+Sheets/Importing_Data_Python_Cheat_Sheet.pdf
 
 
+## Python sort list of tuple <a name="sortlistoftuple"></a>
+[Sort a list based on the 2nd element of each tuple/sublist](https://stackoverflow.com/questions/3121979/how-to-sort-list-tuple-of-lists-tuples)
+```
+data = [[1,2,3], [4,5,6], [7,8,9]]
+data = [(1,2,3), (4,5,6), (7,8,9)]
 
+sorted_by_second = sorted(data, key=lambda tup: tup[1])
+# or
+data.sort(key=lambda tup: tup[1])  # sorts in place
+```
 
+[Sort a list based on the 2nd and 3rd element of each tuple/sublist](https://stackoverflow.com/questions/9376384/sort-a-list-of-tuples-depending-on-two-elements)
+```
+sorted(unsorted, key=lambda element: (element[1], element[2]))
 
+```
 
