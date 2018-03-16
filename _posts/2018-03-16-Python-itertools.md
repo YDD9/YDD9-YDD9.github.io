@@ -1,3 +1,6 @@
+If you're working with large lists and/or memory is a concern, using the itertools module is an even better option.
+
+
 Python2
 https://www.saltycrane.com/blog/2008/04/how-to-use-pythons-enumerate-and-zip-to/
 ```
