@@ -72,3 +72,27 @@ class Event(collections.UserDict):
         value = super().__getitem__(key)
         return f"[{self.__class__.__name__}]: {value}"
 ```
+
+
+# deque.extend() and deque.append()
+extend() will flatten the list, split the string
+append() will simply add the data into the queue
+```
+>>> a = deque()
+>>>
+>>> a.append('fasfdf')
+>>> a
+deque(['fasfdf'])
+>>> a.extend('fasfdf')
+>>> a
+deque(['fasfdf', 'f', 'a', 's', 'f', 'd', 'f'])
+>>> a.append('fasfdf')
+>>> a
+deque(['fasfdf', 'f', 'a', 's', 'f', 'd', 'f', 'fasfdf'])
+>>> a.extend(['fasfdf'])
+>>> a
+deque(['fasfdf', 'f', 'a', 's', 'f', 'd', 'f', 'fasfdf', 'fasfdf'])
+>>> a.extend(['fasfdf', 'dfd'])
+>>> a
+deque(['fasfdf', 'f', 'a', 's', 'f', 'd', 'f', 'fasfdf', 'fasfdf', 'fasfdf', 'dfd'])
+```
