@@ -76,8 +76,12 @@ class Event(collections.UserDict):
 
 # deque.extend() and deque.append()
 extend() will flatten the list, split the string
-append() will simply add the data into the queue
+deque('abc') will split the string as well
+but append() will not, it simply add the data into the queue
 ```
+>>>a = deque('adfds')
+>>> a
+deque(['a', 'd', 'f', 'd', 's'])
 >>> a = deque()
 >>>
 >>> a.append('fasfdf')
