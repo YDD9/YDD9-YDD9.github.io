@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "Python itertools"
+date:   2017-12-07 00:17:39 +0100
+comments: true  
+categories: Python itertools
+---
+
 If you're working with large lists and/or memory is a concern, using the itertools module is an even better option.
 
 
