@@ -6,8 +6,8 @@ https://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-pa
 export PATH=$PATH:~/opt/bin
 export PATH=~/opt/bin:$PATH
 ```
-depending on whether you want to add ~/opt/bin at the end (to be searched after all other directories, in case there is a program by the same name in multiple directories) or at the beginning (to be searched before all other directories).
-You can add multiple entries at the same time. PATH=$PATH:~/opt/bin:~/opt/node/bin or variations on the ordering work just fine.
+depending on whether you want to add `~/opt/bin` at the end (to be searched after all other directories, in case there is a program by the same name in multiple directories) or at the beginning (to be searched before all other directories).
+You can add multiple entries at the same time. `PATH=$PATH:~/opt/bin:~/opt/node/bin` or variations on the ordering work just fine.
 
 You don't need export if the variable is already in the environment.
 
