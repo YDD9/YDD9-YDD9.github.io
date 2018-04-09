@@ -9,6 +9,8 @@ https://stackoverflow.com/questions/26901368/saml-adfs-node-js-implementation-gu
 
 https://stormpath.com/blog/what-the-heck-is-oauth
 
+http://blog.scottlogic.com/2015/11/19/oauth2-with-saml2.html
+
 https://stackoverflow.com/questions/43291638/single-sign-on-authentication-vs-authorization
 
 
