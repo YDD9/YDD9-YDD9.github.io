@@ -59,3 +59,31 @@ def factorial(n, acc=1):
     return acc
   return factorial(n-1, n*acc)
 ```
+
+# encode
+
+## percent-encoding used in html, url, restAPI payload
+https://www.obkb.com/dcljr/chars.html
+
+`%5D` % following by two digits HEX number
+```
+>>> import urllib
+>>> urllib.quote('5vxK]Ek1K^6%')
+'5vxK%5DEk1K%5E6%25'
+```
+
+## string decode
+```
+>>> '5D'.decode('HEX')
+']'
+```
+
+## uni code utf-8
+http://pgbovine.net/unicode-python.htm
+Now forget everything you've learned about ASCII strings. We'll now learn about Unicode strings, which can represent any possible character in any language, not just ASCII characters that appear directly on your keyboard. If you want to develop software that works internationally (especially on the Web), then you need to understand Unicode.
+```
+>>> unicode('\x80abc', errors='replace')
+u'\ufffdabc'
+>>> unicode('\x80abc', errors='ignore')
+u'abc'
+```
