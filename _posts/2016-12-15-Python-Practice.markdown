@@ -7,29 +7,29 @@ categories: Python
 ---
 
 # Table of contents
-[Vitual Environments](#virtualenv)</br>
-[Python brew mac](#Pythonbrew)</br>
-[conda & Anaconda distribution](#conda)</br>
-[Pycharm use virtualenv](#Pycharmvirtual)</br>
-[PythonVScode](#VScode)</br>
-[Date time](#datetime)</br>
-[Division](#division)</br>
-[Function arguments](#argparser)</br>
-[Python installer](#pythoninstaller)</br>
-[function \_\_init\_\_](#init)</br>
-[Python objects and values](#objectsvalues)</br>
-[Python string encoding and manipulation](#enconding)</br>
-[function lambda filter map reduce](#lambda)</br>
-[Logs](#logs)</br>
-[Proxy](#proxy)</br>
-[import error and dynamic import](#importerror)</br>
-[Regular expression](#regularexpression)</br>
-[Execute cmd command with subprocess](#subprocess)</br>
-[HTTP requests](#requests)</br>
-[Ignore exception and run next](#runnext)</br>
-[List comprehension](#listcomprehension)</br>
-[Python load data](#loaddata)</br>
-[Python sort list of tuple](#sortlistoftuple)</br>
+[Vitual Environments](#virtualenv)<br/>
+[Python brew mac](#Pythonbrew)<br/>
+[conda & Anaconda distribution](#conda)<br/>
+[Pycharm use virtualenv](#Pycharmvirtual)<br/>
+[PythonVScode](#VScode)<br/>
+[Date time](#datetime)<br/>
+[Division](#division)<br/>
+[Function arguments](#argparser)<br/>
+[Python installer](#pythoninstaller)<br/>
+[function \_\_init\_\_](#init)<br/>
+[Python objects and values](#objectsvalues)<br/>
+[Python string encoding and manipulation](#enconding)<br/>
+[function lambda filter map reduce](#lambda)<br/>
+[Logs](#logs)<br/>
+[Proxy](#proxy)<br/>
+[import error and dynamic import](#importerror)<br/>
+[Regular expression](#regularexpression)<br/>
+[Execute cmd command with subprocess](#subprocess)<br/>
+[HTTP requests](#requests)<br/>
+[Ignore exception and run next](#runnext)<br/>
+[List comprehension](#listcomprehension)<br/>
+[Python load data](#loaddata)<br/>
+[Python sort list of tuple](#sortlistoftuple)<br/>
 
 
 
@@ -287,8 +287,11 @@ import calendar
 ```
 
 Run have an idea of computation time, `time.time()` is useful.
-Conversion between epochtime, structure time and string I use below function to avoid issues of daylight saving, timezone.
+Conversion between **epochtime**, structure time and string I use below function to avoid issues of daylight saving, timezone.
 ![My helpful screenshot]({{ site.url }}/images/Datetime.jpg)
+
+**epochtime** can be in `[s]` or `[ms]`, it means the total seconds or milliseconds from 1970/01/01 till now.
+You can also calculate with excel `2018/04/18 - DATE(1970,1,1) * 24 * 60 * 60 * 1000 [ms]`, using [epochtime website](https://www.epochconverter.com/) you can verify your conversion.
 
 <style>
 table{
