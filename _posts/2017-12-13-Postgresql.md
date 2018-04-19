@@ -15,6 +15,7 @@ categories: Postgresql
 - [Auth issues](#auth-issues)
 - [Docker postgres](#docker-postgres)
 - [Replace text](#replace-text)
+- [Query pattern match](#patter-match)  
 
 
 # work with command line with   
@@ -178,4 +179,20 @@ SELECT regexp_replace('Cat bobcat cat cats catfish', '\mcat\M', 'dog', 'gi');
 
 UPDATE <table> SET <field> = regexp_replace(<field>, '\mcat\M', 'dog', 'gi');
 
+```
+
+# Query pattern match
+[SIMILAR TO Regular Expressions](https://www.postgresql.org/docs/8.3/static/functions-matching.html)
+
+LIKE pattern matches always cover the entire string. To match a sequence anywhere within a string, the pattern must therefore **start and end with a percent sign**.
+
+the SIMILAR TO operator succeeds only if its pattern matches the entire string; this is unlike common regular expression practice, wherein the pattern can match any part of the string. Also like LIKE, SIMILAR TO uses _ and % as wildcard characters denoting any single character and any string, respectively (these are comparable to . and .* in POSIX regular expressions).
+
+```
+string SIMILAR TO pattern [ESCAPE escape-character]
+string NOT SIMILAR TO pattern [ESCAPE escape-character]
+
+select * from schema.table
+-- where 'B1_AB_C50XYZ' like '%' || signal_name || '%';
+where signal_name similar to 'B[1-4]_AB_C[0-9]+XYZ'
 ```
