@@ -286,6 +286,8 @@ import pandas as pd
 import calendar
 ```
 
+https://www.techatbloomberg.com/blog/work-dates-time-python/
+
 Run have an idea of computation time, `time.time()` is useful.
 Conversion between **epochtime**, structure time and string I use below function to avoid issues of daylight saving, timezone.
 ![My helpful screenshot]({{ site.url }}/images/Datetime.jpg)
