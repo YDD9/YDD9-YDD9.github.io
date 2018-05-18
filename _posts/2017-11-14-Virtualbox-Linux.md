@@ -20,6 +20,7 @@ Linux in VirtualBox
         - [(Optional) Remote connection host-only](#optional-remote-connection-host-only)   
 - [Share host folder](#share-host-folder)
 - [Linux network](#linux-network)
+- [Linux desktop resize](#linux-desktop-resize)
 
 
 # Start with virtual box
@@ -406,4 +407,23 @@ iface eth0 inet static
       address 10.1.1.125
       netmask 255.0.0.0
       gateway 10.1.1.1
+```
+
+# Linux desktop resize
+
+[I have VirtualBox instance of Centos 5. The screen size is quite small (800*600) and I'd like to increase it to 1280*1080.](https://unix.stackexchange.com/questions/25236/increasing-screen-size-resolution-on-a-virtualbox-instance-of-centos?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
+
+A maximum resolution of 800x600 suggests that your X server inside the virtual machine is using the SVGA driver. SVGA is the highest resolution for which there is standard support; beyond that, you need a driver.
+
+VirtualBox emulates a graphics adapter that is specific to VirtualBox, it does not emulate a previously existing hardware component like most other subsystems. The guest additions include a driver for that adapter. Insert the guest additions CD from the VirtualBox device menu, then run the installation program. Log out, restart the X server (send Ctrl+Alt+Backspace from the VirtualBox menu), and you should have a screen resolution that matches your VirtualBox window. If you find that you still need manual tweaking of your xorg.conf, the manual has some pointers.
+
+There's a limit to how high you can get, due to the amount of memory you've allocated to the graphics adapter in the VirtualBox configuration. 8MB will give you up to 1600x1200 in 32 colors. Going beyond that is mostly useful if you use 3D.
+
+[This is tested and working](https://unix.stackexchange.com/questions/18435/how-to-install-virtualbox-guest-additions-on-centos-via-command-line-only?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa), should also work for anybody else trying to install VirtualBox Guest Additions on a CentOS (x86_64) virtual server in command line mode.
+```
+# yum update
+# yum install dkms gcc make kernel-devel bzip2 binutils patch libgomp glibc-headers glibc-devel kernel-headers
+# mkdir -p /media/cdrom
+# mount /dev/scd0 /media/cdrom
+# sh /media/cdrom/VBoxLinuxAdditions.run
 ```
