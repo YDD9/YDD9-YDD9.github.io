@@ -380,6 +380,8 @@ Run `sudo sh /media/cdrom/VBoxLinuxAdditions.run`, and follow the instructions o
 This is the scenario that you run Windows as your host operating system and Ubuntu in a VirtualBox, and that you want to access a specific Windows folder from Ubuntu.     
 http://www.giannistsakiris.com/2008/04/09/virtualbox-access-windows-host-shared-folders-from-ubuntu-guest/
 
+In  VBox settings, give a name eg. `Public` to a shared folder on win10 `c:\temp`, then in linux `mount -t vboxsf Public /media/windows-share`, make sure you create the `/media/windows-share` folder in linux and has rights to access.
+
 
 # Linux network
 https://wiki.debian.org/NetworkConfiguration
