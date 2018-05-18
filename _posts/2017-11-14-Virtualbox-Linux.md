@@ -155,6 +155,23 @@ Make sure that your keys are present in ~/.ssh/authorized_keys and try running y
 ssh -p 2222 -A -v -i 'c:\user\ydd9\.ssh\id_rsa' core@10.255.100.167
 ```
 
+[Add Your Public Key to the Linux Machine](https://www.codeproject.com/Articles/497728/HowplustoplusUseplusSSHplustoplusAccessplusaplusLi)
+
+use the `echo` command to create the new `authorized_keys` file in `~/.ssh`, and insert the Public key for our Windows machine. The syntax of our echo command is as
+```
+echo YourPublicKey >> authorized_keys
+```
+
+Or your host is Linux and you have `ssh-copy-ed` installed
+```
+# ssh-copy-id demo@127.0.1.1
+```
+
+Or your Linux does not have `ssh-copy-ed`:
+```
+cat ~/.ssh/id_rsa.pub | ssh demo@198.51.100.0 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+```
+
 # CoreOS add user   
 https://coreos.com/os/docs/latest/adding-users.html   
 Be carefull about the Container Linux Config file you see, its format is not the same as cloud-config.yml  
