@@ -161,6 +161,8 @@ use the `echo` command to create the new `authorized_keys` file in `~/.ssh`, and
 ```
 echo YourPublicKey >> authorized_keys
 ```
+YourPublicKey eg:
+ssh-rsa AAAAB3NzaC1yc2EAAAAD-PVKxPOhbnAIeDJvXQECvH6gFCW2RU2IuwuvYep/v9IBH9C0DnD6w4p47Q/MFiH+1qFZTfLcMsvu8QeB-65Rg5elvMJfW4QPAC990hx0MbeVJC6gi/zfEab8DHuEAkeVkrFDCMDrXeL5S4ykDuztgTZ2ZznwKfJv5s5/4dRIfS3mnY7cc4WRq6pvdetAmwdxJ ydd9@JSDSDSLFDS
 
 Or your host is Linux and you have `ssh-copy-ed` installed
 ```
