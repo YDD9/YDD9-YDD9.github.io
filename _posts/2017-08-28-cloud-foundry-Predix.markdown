@@ -9,7 +9,8 @@ categories: Cloud Foundry Predix
 
 - [Table of Contents](#table-of-contents)
 - [cf-uaac installation](#cf-uaac-installation)
-- [cf-uaac troubleshoot](#cf-uaac-troubleshoot)
+- [cf-uaac troubleshoot](#cf-uaac-troubleshoot)   
+- [clean up space](#clean-up-space)   
 - [push Python app in cloud with specific buildpack and Python version](#push-python-app-in-cloud-with-specific-buildpack-and-python-version)
 - [Python app in cloud with Flask](#python-app-in-cloud-with-flask)
 - [Python app with own libraries](#python-app-with-own-libraries)
@@ -70,6 +71,26 @@ uaac target --ca-cert "C:\Users\YDD9\Downloads\cmder\vendor\git-for-windows\usr\
   
 The idea is to find the path of your ca-bundle.crt file(normally in your gitbash path or similar bash path) and force UAAC command to use it.  
   
+  
+# clean up space  
+Delete all apps in a space<br/>
+```
+for i in $(cf a | tail -n+5 | awk '{print $1}'); do cf delete ${i} -f; done
+```
+
+Delete all services in a space<br/>
+```
+for i in $(cf s | tail -n+5 | awk '{print $1}'); do cf delete-service ${i} -f; done
+```
+
+Delete all routes in a space<br/>
+```
+cf routes | tail -n+4 | while read a b c; do cf delete-route "$c" --hostname "$b" -f; done
+
+# below needs to be tested
+cf routes | tail -n+4 | awk '{system("cf delete-route " $3" --hostname "$2" -f")}'
+cf routes | tail -n+4 | awk '{print $3" --hostname "$2" -f"}' | xargs cf delete-route 
+```
 
 # push Python app in cloud with specific buildpack and Python version
  1. Check available buildpacks `cf buildpacks`  
