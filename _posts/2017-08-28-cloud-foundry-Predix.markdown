@@ -86,10 +86,12 @@ for i in $(cf s | tail -n+5 | awk '{print $1}'); do cf delete-service ${i} -f; d
 Delete all routes in a space<br/>
 ```
 cf routes | tail -n+4 | while read a b c; do cf delete-route "$c" --hostname "$b" -f; done
-
-# below needs to be tested
+# or
 cf routes | tail -n+4 | awk '{system("cf delete-route " $3" --hostname "$2" -f")}'
-cf routes | tail -n+4 | awk '{print $3" --hostname "$2" -f"}' | xargs cf delete-route 
+
+# or to be tested
+# https://www.howtoforge.com/tutorial/linux-xargs-command/
+cf routes | tail -n+4 | awk '{print $3" --hostname "$2" -f"}' | xargs -n 4 cf delete-route 
 ```
 
 # push Python app in cloud with specific buildpack and Python version
