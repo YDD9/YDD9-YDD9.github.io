@@ -12,7 +12,7 @@ categories: Conda Python
 
 - [Conda Config](#Conda-Config)  
 - [Create a virtual environment for development](#Create-a-virtual-environment-for-development)
-
+- [SDK debug in a virtual environment](#SDK-debug-in-a-virtual-environment)
 
 
 # Conda Config<a name="Conda-Config"></a>
@@ -117,3 +117,11 @@ Windows: activate snowflakes
 Windows: deactivate   
 
 
+# SDK debug in a virtual environment<a name="SDK-debug-in-a-virtual-environment"></a>
+[In case of VScode](https://medium.com/@kylehayes/using-a-python-virtualenv-environment-with-vscode-b5f057f44c6a)<br/>
+You can verify the setting by hitting `Command/Ctrl +`, to open settings. The right panel will show you two tabs: **User Settings**, and **Workspace Settings**. <br/>
+Click Workspace Settings. This will show you a simple JSON document with one of the attributes labeled as “python.pythonPath”. This is path should say something along the lines as:
+```
+${workspaceFolder}/env/bin/python
+```
+[In case of Pycharm](https://ohadp.com/pycharm-debug-inside-a-pip-in-a-virtual-env-97aa98eac77f)
