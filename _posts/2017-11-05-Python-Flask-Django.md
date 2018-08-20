@@ -87,3 +87,7 @@ u'\ufffdabc'
 >>> unicode('\x80abc', errors='ignore')
 u'abc'
 ```
+
+# JSON Web Tokens (JWT) with flask
+
+https://codeburst.io/jwt-authorization-in-flask-c63c1acf4eeb
