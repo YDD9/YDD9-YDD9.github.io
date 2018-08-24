@@ -7,8 +7,9 @@ categories: Postgresql
 ---
 
 
-- [work with command line with](#work-with-command-line-with)
+- [work with command line](#work-with-command-line)
 - [Login with cmd](#login-with-cmd)
+- [work with python](#work-with-python)
 - [backup your database:](#backup-your-database)
 - [import from dump via cmd](#import-from-dump-via-cmd)
 - [import from dump via pgAdmin SQL](#import-from-dump-via-pgadmin-sql)
@@ -18,7 +19,7 @@ categories: Postgresql
 - [Query pattern match](#patter-match)  
 
 
-# work with command line with   
+# work with command line   
 add env path C:\Program Files\PostgreSQL\9.6\bin   
 for linux download `sudo apt-get install postgresql-client`   
 
@@ -28,6 +29,70 @@ https://code.i-harness.com/en/q/756e5a
 # psql -U postgres -h <your IPv4> -W
 postgres# \c <database name>
 ```
+
+# work with python
+```
+import psycopg2
+import os
+
+# Connect to an existing database
+try:
+    conn = psycopg2.connect("dbname='postgres' user='xxx' host='127.0.0.1' port='5432' password='xxx'")
+except:
+    print("I am unable to connect to the database")
+
+# Open a cursor to perform database operations
+cur = conn.cursor()
+
+# Execute a command: this creates a new table
+cur.execute("""CREATE TABLE IF NOT EXISTS schema.table
+(
+    id serial PRIMARY KEY,
+    analytic_name character varying COLLATE pg_catalog."default" NOT NULL,
+    analytic bytea NOT NULL,
+    CONSTRAINT analytics_storage_analytic_name_key UNIQUE (analytic_name)
+);""")
+
+# Pass binary to fill a query placeholders and let Psycopg perform
+# the correct conversion (no more SQL injections!)
+# http://initd.org/psycopg/docs/usage.html#binary-adaptation
+filename = 'test.zip'
+file_dir = os.path.join('temp', filename)
+analytic_binary = open(file_dir, 'rb').read()
+try:
+    cur.execute("INSERT INTO schema.table (analytic_name, analytic) VALUES (%s, %s) ON CONFLICT DO NOTHING", (filename, psycopg2.Binary(analytic_binary),))
+except Exception as e:
+    print(e)
+    # https://stackoverflow.com/questions/2979369/databaseerror-current-transaction-is-aborted-commands-ignored-until-end-of-tra
+    conn.rollback() # go to the normal status and ignore this transaction exception
+
+
+# Query the database and obtain binary as Python objects
+# http://www.postgresqltutorial.com/postgresql-python/blob/
+try:
+    # cur.execute("SELECT COUNT(*) FROM common.analytics_storage;")
+    cur.execute("SELECT analytic_name FROM schema.table;")
+    names = cur.fetchall()
+except Exception as e:
+    print(e)
+    conn.rollback()
+
+for i in names:
+    cur.execute("""SELECT analytic FROM schema.table
+                   WHERE analytic_name=%s""",
+                (i[0],))
+    analytic_binary = cur.fetchone()[0]
+    des_dir = os.path.join('temp',i[0])
+    open(des_dir, 'wb').write(analytic_binary)
+
+# Make the changes to the database persistent
+conn.commit()
+
+# Close communication with the database
+cur.close()
+conn.close()
+```
+
 
 # backup your database WITHOUT login as above:   
 https://www.postgresql.org/docs/9.1/static/backup-dump.html   
