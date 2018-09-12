@@ -57,6 +57,8 @@ conda config --set channel_priority false
 The most common ways are to either use 
 ```
 conda create --name <env_name> <packages to install optional>
+# https://medium.freecodecamp.org/why-you-need-python-environments-and-how-to-manage-them-with-conda-85f155f4353c
+conda create -n my_virtual_env python==2.7
 # or 
 conda env create -f environment.yml
 ```   
@@ -79,6 +81,15 @@ conda env export -n myenv -f myenv.yml
 activate myenv
 conda env export > environment.yml
 ```
+
+To install requirements.txt
+```
+conda install --yes --file requirements.txt
+# any package fails, will quit. Work around:
+
+while read requirement; do conda install --yes $requirement; done < requirements.txt
+```
+
 
 To remove an environment:  
 ```
