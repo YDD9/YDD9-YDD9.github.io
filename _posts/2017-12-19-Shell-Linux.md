@@ -68,6 +68,9 @@ categories: shell
 - [59) In OSI network model, during the TCP establish and close process, when time_wait happens?](#59-in-osi-network-model-during-the-tcp-establish-and-close-process-when-timewait-happens)
 - [60) What is cross site script attack and how to avoid ?](#60-what-is-cross-site-script-attack-and-how-to-avoid)
 - [61) How do I find all txt files in following 3 levels containing specific text on Linux?](#61-how-do-i-find-all-txt-files-in-following-3-levels-containing-specific-text-on-linux)
+- [62) How to find current shell script dir ?](#62-how-to-find-current-shell-script-dir)
+- [63) How to convert string to upper case ?](#63-how-to-convert-string-to-upper-case)
+- [64) How to replace substring ?](#64-how-to-replace-substring)
 - [other links](#other-links)
 
 
@@ -571,6 +574,26 @@ http://blog.csdn.net/u013777351/article/details/48323447
 # 61) [How do I find all txt files in following 3 levels containing specific text on Linux?](https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux)
 ```
  find ./ -maxdepth 3 -type f -name "*.txt" -exec grep "cryptography" --color {} +
+```
+
+# 62) How to find current shell script dir ?
+```
+https://www.ostricher.com/2014/10/the-right-way-to-get-the-directory-of-a-bash-script/
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+```
+
+# 63) How to convert string to upper case ?
+```
+$ tr a-z A-Z
+thegeekstuff
+THEGEEKSTUFF
+```
+
+# 64) How to replace substring ?
+```
+https://www.thegeekstuff.com/2012/12/linux-tr-command/
+tr '{}' '()' < inputfile > outputfile
+echo "This is for testing" | tr [:space:] '\t'
 ```
 
 # other links
