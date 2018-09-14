@@ -9,6 +9,7 @@ categories: Python backend and web test automation
 # Table of contents  
 1. [Environment setup](#setup)  
 2. [Django app](#firstDjangoApp)
+3. [Unit test introduction](#unittestintroduction)
 
 
 ## Environment setup <a name=setup></a>
@@ -70,5 +71,9 @@ Django encourages you to structure your code into apps: the theory is that one p
 [book link](http://chimera.labs.oreilly.com/books/1234000000754/ch03.html#_unit_tests_and_how_they_differ_from_functional_tests)
 
 
-
-
+## Unit test introduction <a name="unittestintroduction"></a>
+```
+from unittest.mock import patch, Mock
+```
+[Basic Usage](https://semaphoreci.com/community/tutorials/getting-started-with-mocking-in-python), you can also read a more advanced usage example.<br/>
+[Another approach](https://medium.com/@yeraydiazdiaz/what-the-mock-cheatsheet-mocking-in-python-6a71db997832)
