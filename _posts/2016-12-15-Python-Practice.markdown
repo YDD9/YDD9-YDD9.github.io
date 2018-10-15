@@ -276,6 +276,8 @@ numpy.__path__
 # ~\\AppData\\Local\\Continuum\\Anaconda2\\lib\\site-packages\\numpy
 ```
 
+it's also recommand to install [gremlins](https://github.com/nhoizey/vscode-gremlins) plugin to display non-breaking space &nbsp etc.. those invisible characters.
+
 
 ## Date time <a name="datetime"></a>
 
