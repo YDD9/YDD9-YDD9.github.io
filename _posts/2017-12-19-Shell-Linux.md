@@ -567,21 +567,29 @@ http://www.oracle.com/technetwork/articles/calish-find-087766.html</br>
 
 
 # 59) In OSI network model during the TCP establish and close process when time_wait happens?
+
 http://blog.csdn.net/u013777351/article/details/48323447
 
+
 # 60) What is cross site script attack and how to avoid?
+
 [XSS](http://blog.csdn.net/ghsau/article/details/17027893) 2 ways of attack and 2 ways [to prevent](https://www.cnblogs.com/TankXiao/archive/2012/03/21/2337194.html)
 
+
 # 61) [How do I find all txt files in following 3 levels containing specific text on Linux?](https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux)
+
 ```
  find ./ -maxdepth 3 -type f -name "*.txt" -exec grep "cryptography" --color {} +
 ```
 
+
 # 62) How to find current shell script dir?
+
 ```
 https://www.ostricher.com/2014/10/the-right-way-to-get-the-directory-of-a-bash-script/
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ```
+
 
 # 63) How to convert string to upper case?
 
@@ -591,6 +599,7 @@ thegeekstuff
 THEGEEKSTUFF
 ```
 
+
 # 64) How to replace substring?
 
 ```
@@ -598,6 +607,7 @@ https://www.thegeekstuff.com/2012/12/linux-tr-command/
 tr '{}' '()' < inputfile > outputfile
 echo "This is for testing" | tr [:space:] '\t'
 ```
+
 
 # 65) How to send email?
 
@@ -609,6 +619,7 @@ echo 'THIS IS THE BODY' | mail -s 'This is the subject' -c cc@hotmail.com xxx@gm
 # via sendmail command to handle file.html
 /usr/sbin/sendmail -t < %s" % /etc/file.html
 ```
+
 
 example of file.html which provides hyperlink, in paragraph break, formatted block of text, email Cc/Bcc.
 ```
@@ -645,6 +656,7 @@ Content-Type: text/html; charset='us-ascii'
 ```
 
 # other links
+
 http://mp.weixin.qq.com/s/Lvu8IL6zv9PzDb2oSte3pA</br>
 `mount | column –t mount |column –t :`  output as a table</br>
 
