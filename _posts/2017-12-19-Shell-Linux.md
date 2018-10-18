@@ -72,6 +72,8 @@ categories: shell
 - [63) How to convert string to upper case?](#63-how-to-convert-string-to-upper-case)
 - [64) How to replace substring?](#64-how-to-replace-substring)
 - [65) How to send email?](#65-how-to-send-email)
+- [66) How to run wireshark?](#66-how-to-run-wireshark)
+- [67) How to manage user and group?](#67-how-to-manage-user-and-group)
 - [other links](#other-links)
 
 
@@ -484,6 +486,7 @@ check a pid source `ls -l /proc/<pid>/exe`
 
 old method `sudo netstat -tulpn`
 
+
 # 53) How to use awk
 
 awk can be used to filter as well
@@ -505,7 +508,7 @@ awk '$9 == 500 { print $0}' /var/log/httpd/access.log
 # 54) How to find the total number of folders in Linux
 http://mp.weixin.qq.com/s/ltvNiHcyH1_5mljtLPsI4g
 
-# centOS yum install conflicts
+** centOS yum install conflicts
 [yum update or yum install fails with package conflict:](https://access.redhat.com/solutions/# 158883)
 Install the yum-utils package:
 `yum install yum-utils`
@@ -654,6 +657,42 @@ Content-Type: text/html; charset='us-ascii'
    </body>
 </html>
 ```
+
+
+# 66) How to run wireshark?
+
+on linux server where you don't have GUI, so you need to install terminal wireshar: tshark<br/>
+first time you run tshark, you will meet not enough permission issue that you can't listen traffic on interface.<br/>
+run with root it's dangerous and should avoid too. so only run partially with root previlige<br/>
+
+https://askubuntu.com/questions/796072/wireshark-does-not-show-any-interface-to-capture-packets/796080<br/>
+`sudo dpkg-reconfigure wireshark-common`<br/>
+YES to the question, then add your user to newly created wireshark group with this<br/>
+`sudo adduser $USER wireshark`<br/>
+finally log out, and log back in and you should be able to capture packets.<br/>
+[manual steps to do it in details](https://sathisharthars.com/2014/06/04/running-wireshark-with-non-root-user-in-kali-linux/)<br/>
+
+
+# 67) How to manage user and group?
+
+https://www.howtogeek.com/50787/add-a-user-to-a-group-or-second-group-on-linux/<br/>
+```
+sudo groupadd examplegroup
+usermod -a -G examplegroup exampleusername
+
+id exampleusername
+
+usermod -g groupname username
+# Note the -g here. When you use a lowercase g, you assign a primary group.
+# When you use an uppercase -G , as above, you assign a new secondary group.
+
+useradd -G ftp jsmith
+passwd jsmith
+
+# view all groups
+getent group
+```
+
 
 # other links
 
