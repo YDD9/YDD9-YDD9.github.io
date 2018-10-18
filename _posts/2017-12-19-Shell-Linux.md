@@ -65,12 +65,13 @@ categories: shell
 - [56) Linux common commands](#56-linux-common-commands)
 - [57) iptables](#57-iptables)
 - [58) How to count words in a file](#58-how-to-count-words-in-a-file)
-- [59) In OSI network model, during the TCP establish and close process, when time_wait happens?](#59-in-osi-network-model-during-the-tcp-establish-and-close-process-when-timewait-happens)
-- [60) What is cross site script attack and how to avoid ?](#60-what-is-cross-site-script-attack-and-how-to-avoid)
+- [59) In OSI network model during the TCP establish and close process when time_wait happens?](#59-in-osi-network-model-during-the-tcp-establish-and-close-process-when-time-wait-happens)
+- [60) What is cross site script attack and how to avoid?](#60-what-is-cross-site-script-attack-and-how-to-avoid)
 - [61) How do I find all txt files in following 3 levels containing specific text on Linux?](#61-how-do-i-find-all-txt-files-in-following-3-levels-containing-specific-text-on-linux)
-- [62) How to find current shell script dir ?](#62-how-to-find-current-shell-script-dir)
-- [63) How to convert string to upper case ?](#63-how-to-convert-string-to-upper-case)
-- [64) How to replace substring ?](#64-how-to-replace-substring)
+- [62) How to find current shell script dir?](#62-how-to-find-current-shell-script-dir)
+- [63) How to convert string to upper case?](#63-how-to-convert-string-to-upper-case)
+- [64) How to replace substring?](#64-how-to-replace-substring)
+- [65) How to send email?](#65-how-to-send-email)
 - [other links](#other-links)
 
 
@@ -103,7 +104,7 @@ A swap space is a certain amount of space used by Linux to temporarily hold some
 Open source allows you to distribute your software, including source codes freely to anyone who is interested. People would then be able to add features and even debug and correct errors that are in the source code. They can even make it run better, and then redistribute these enhanced source code freely again. This eventually benefits everyone in the community.
 
 
-8 ) What are the basic components of Linux?
+# 8 ) What are the basic components of Linux?
 
 Just like any other typical operating system, Linux has all of these components: kernel, shells and GUIs, system utilities, and application program. What makes Linux advantageous over other operating system is that every aspect comes with additional features and all codes for these are downloadable for free.
 
@@ -565,10 +566,10 @@ or</br>
 http://www.oracle.com/technetwork/articles/calish-find-087766.html</br>
 
 
-# 59) In OSI network model, during the TCP establish and close process, when time_wait happens?
+# 59) In OSI network model during the TCP establish and close process when time_wait happens?
 http://blog.csdn.net/u013777351/article/details/48323447
 
-# 60) What is cross site script attack and how to avoid ?
+# 60) What is cross site script attack and how to avoid?
 [XSS](http://blog.csdn.net/ghsau/article/details/17027893) 2 ways of attack and 2 ways [to prevent](https://www.cnblogs.com/TankXiao/archive/2012/03/21/2337194.html)
 
 # 61) [How do I find all txt files in following 3 levels containing specific text on Linux?](https://stackoverflow.com/questions/16956810/how-do-i-find-all-files-containing-specific-text-on-linux)
@@ -576,24 +577,71 @@ http://blog.csdn.net/u013777351/article/details/48323447
  find ./ -maxdepth 3 -type f -name "*.txt" -exec grep "cryptography" --color {} +
 ```
 
-# 62) How to find current shell script dir ?
+# 62) How to find current shell script dir?
 ```
 https://www.ostricher.com/2014/10/the-right-way-to-get-the-directory-of-a-bash-script/
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ```
 
-# 63) How to convert string to upper case ?
+# 63) How to convert string to upper case?
+
 ```
 $ tr a-z A-Z
 thegeekstuff
 THEGEEKSTUFF
 ```
 
-# 64) How to replace substring ?
+# 64) How to replace substring?
+
 ```
 https://www.thegeekstuff.com/2012/12/linux-tr-command/
 tr '{}' '()' < inputfile > outputfile
 echo "This is for testing" | tr [:space:] '\t'
+```
+
+# 65) How to send email?
+
+```
+# via mail command provided by mailx
+mail -s 'This is the subject' xxx@gmail.com < /etc/file.txt
+echo 'THIS IS THE BODY' | mail -s 'This is the subject' -c cc@hotmail.com xxx@gmail.com
+
+# via sendmail command to handle file.html
+/usr/sbin/sendmail -t < %s" % /etc/file.html
+```
+
+example of file.html which provides hyperlink, in paragraph break, formatted block of text, email Cc/Bcc.
+```
+To: xxx@gmail.com
+Cc: ccuser@hotmail.com
+Bcc:
+Subject: This is the subject
+Content-Type: text/html; charset='us-ascii'
+
+<!DOCTYPE html>
+<html>
+   <body>
+      <p>
+         open <a href="www.google.com">google</a> and search<br>
+         open <a href="www.outlook.com">hotmail</a> and email<br>
+      </p>
+      <p>
+         json_payload:
+         <pre>
+{
+  "site": [
+    {
+      "search": "google"
+    },
+    {
+      "email": "hotmail"
+    }
+  ]
+}
+         </pre>
+      </p>
+   </body>
+</html>
 ```
 
 # other links
