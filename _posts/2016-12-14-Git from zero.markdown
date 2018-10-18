@@ -22,6 +22,7 @@ Now you have git downloaded and ready to start.
 10. [Checkout a remote branch](#remotebranch)
 11. [git diff merge tool](#diffmergetool)
 12. [git submodules](#gitsubmodules)
+13. [git merge master update into branch](#mergeMasterBranch)
 
 
 
@@ -456,7 +457,22 @@ git submodule update --init --recursive
 ```
 
 
+## git merge master update into branch <a name=mergeMasterBranch></a>
 
+```
+# https://stackoverflow.com/questions/16955980/git-merge-master-into-feature-branch
+# do not risk and use git rebase, keep use git merge
 
+git checkout feature1
+git merge master
+
+# safer option but create other chaos in later management:
+# based on new master create another branch dev and merge feature branch into dev.
+git checkout master
+git branch dev
+
+git checkout dev
+git merge feature1
+```
 
 
