@@ -139,6 +139,11 @@ Since OpenSSH 6.54, a new private/public key pair is available:
 ssh_host_ed25519_key   
 ssh_host_ed25519_key.pub   
 
+if on your local machine, key files exist already you should use them, otherwise create 
+```
+ssh-keygen -t rsa -b 2048
+```
+
 check ssh server    
 https://linuxconfig.org/how-to-install-start-and-connect-to-ssh-server-on-fedora-linux   
 ```
