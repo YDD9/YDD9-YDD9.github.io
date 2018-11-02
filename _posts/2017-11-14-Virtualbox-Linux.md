@@ -139,31 +139,20 @@ Since OpenSSH 6.54, a new private/public key pair is available:
 ssh_host_ed25519_key   
 ssh_host_ed25519_key.pub   
 
-if on your local machine, key files exist already you should use them, otherwise create 
+if on your local Windows machine, key files: `~/.ssh/id_rsa` and `~/.ssh/id_rsa.pub` exist already you can use them without creating again, otherwise create 
 ```
-ssh-keygen -t rsa -b 2048
-```
-
-check ssh server    
-https://linuxconfig.org/how-to-install-start-and-connect-to-ssh-server-on-fedora-linux   
-```
-$ systemctl start sshd
-$ netstat -ant | grep 22
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN 
-tcp6       0      0 :::22                   :::*                    LISTEN
+ssh-keygen -t rsa -b 2048 -C user@localMachineNameOrIp
 ```
 
-if ssh core@ip always asks password https://www.digitalocean.com/community/questions/coreos-ssh-asks-for-password  
-always doesn't connnect, you will see problem and a cloud-config.yaml https://github.com/coreos/bugs/issues/791:   
-Make sure that your keys are present in ~/.ssh/authorized_keys and try running your SSH client in verbose mode. 
-```
-ssh -p 2222 -A -v -i 'c:\user\ydd9\.ssh\id_rsa' core@10.255.100.167
-```
+Next you need either manually or via command to transfer your local machine public key file contents to remote linux.<br />
+[Add Your Public Key to the Linux Machine](https://www.codeproject.com/Articles/497728/HowplustoplusUseplusSSHplustoplusAccessplusaplusLi)<br />
 
-[Add Your Public Key to the Linux Machine](https://www.codeproject.com/Articles/497728/HowplustoplusUseplusSSHplustoplusAccessplusaplusLi)
-
-use the `echo` command to create the new `authorized_keys` file in `~/.ssh`, and insert the Public key for our Windows machine. The syntax of our echo command is as
+Append your local Windows machine's public key into Linux file `~/.ssh/authorized_keys` (create this file if not existing).<br />
 ```
+# create dir
+mkdir ~/.ssh && cd .ssh
+
+# append into file
 echo YourPublicKey >> authorized_keys
 ```
 YourPublicKey eg:
@@ -178,6 +167,25 @@ Or your Linux does not have `ssh-copy-ed`:
 ```
 cat ~/.ssh/id_rsa.pub | ssh demo@198.51.100.0 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 ```
+
+check remote linux ssh server is up and running<br />
+https://linuxconfig.org/how-to-install-start-and-connect-to-ssh-server-on-fedora-linux   
+```
+$ systemctl start sshd
+$ netstat -ant | grep 22
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN 
+tcp6       0      0 :::22                   :::*                    LISTEN
+```
+
+if ssh core@ip always asks password https://www.digitalocean.com/community/questions/coreos-ssh-asks-for-password  
+always doesn't connnect, you will see problem and a cloud-config.yaml https://github.com/coreos/bugs/issues/791:   
+Make sure that your local machine public key are present in remote linux `~/.ssh/authorized_keys` and try running your SSH client in verbose mode `-v`, specifying your private key file `-i filePath` <br />
+Next time your connection should be simply `ssh core@10.255.100.167` without any password worries.  
+```
+ssh -p 2222 -A -v -i 'c:\user\ydd9\.ssh\id_rsa' core@10.255.100.167
+```
+
+
 
 # CoreOS add user   
 https://coreos.com/os/docs/latest/adding-users.html   
