@@ -686,6 +686,7 @@ usermod -g groupname username
 # Note the -g here. When you use a lowercase g, you assign a primary group.
 # When you use an uppercase -G , as above, you assign a new secondary group.
 
+#Create a New User and Assign a Group in One Command
 useradd -G ftp jsmith
 passwd jsmith
 
