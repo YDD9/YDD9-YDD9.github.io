@@ -128,6 +128,15 @@ Windows: activate snowflakes
 Windows: deactivate   
 
 
+To pip install package into conda virtual env
+As pip install packages into where pip exists, when you create the conda virtual env, you should install the pip at creation<br />
+If pip is installed after conda virtual env is created, it won't work.<br />
+```
+conda create -n sciEnv numpy pip 
+conda activate sciEnv
+```
+
+
 # SDK debug in a virtual environment<a name="SDK-debug-in-a-virtual-environment"></a>
 [In case of VScode](https://medium.com/@kylehayes/using-a-python-virtualenv-environment-with-vscode-b5f057f44c6a)<br/>
 You can verify the setting by hitting `Command/Ctrl +`, to open settings. The right panel will show you two tabs: **User Settings**, and **Workspace Settings**. <br/>
