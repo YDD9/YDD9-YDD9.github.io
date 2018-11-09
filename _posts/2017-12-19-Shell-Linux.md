@@ -690,6 +690,11 @@ usermod -g groupname username
 useradd -G ftp jsmith
 passwd jsmith
 
+#Safely add an existing user to another group
+useradd -a -G ftp jsmith
+#or
+gpasswd -a jsmith ftp
+
 # view all groups
 getent group
 ```
