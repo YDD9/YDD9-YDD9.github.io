@@ -1,14 +1,12 @@
 ---
 layout: post
-title:  "Nodejs from zero!"
+title:  "Nodejs from zero"
 date:   2020-07-25 21:49:39 +0100
 comments: true  
 categories: web
 ---
 
-
 `Introduction to NodeJS` on edX from Microsoft:DEV283x
-
 
 # Table of contents
 1. [Install Nodejs in Ubuntu](#installnodejsinubuntu)
@@ -16,6 +14,7 @@ categories: web
 3. [Install MongoDB in Ubuntu](#installmongodbinubuntu)
 4. [Start MongoDB](#startmongodb)
 5. [Configuring npm](#configuringnpm)
+6. [require and module.exports](#requireandmoduleexports)
 
 
 
@@ -110,3 +109,38 @@ static -h
 ```
 This changes the permissions of the sub-folders used by npm and some other tools (lib/node_modules, bin, and share).
 
+## require and module.exports <a name="requireandmodule.exports"></a>
+Node provides a built-in module mechanism which works with the `require()` method and the `module.exports` global object. To demonstrate how `require` and `module.exports` work, let's say we have two files `account-service.js` and `utility.js`.
+
+The `utility.js` has some generic methods and objects which we use in many projects and applications. In this example, we will import those generic methods into `account-service.js`.
+
+Here's the code of `utility.js` in which we expose code to `account-service.js` (or any other program) by assigning it to a special global `module.exports`:
+```
+module.exports = function(numbersToSum) {
+  let sum = 0, 
+    i = 0, 
+    l = numbersToSum.length;
+    while (i < l) {
+        sum += numbersToSum[i++]
+    }
+    return sum
+}
+```
+The main program (account-service.js) imports the utility module and executes it to find out the total balance:
+```
+const sum = require('./utility.js')
+
+let checkingAccountBalance = 200
+let savingsAccountBalance = 1000
+let retirementAccountBalance = 20000
+
+let totalBalance=sum([checkingAccountBalance, savingsAccountBalance, retirementAccountBalance] )
+console.log(totalBalance)
+```
+The `account-service.js` can be run from the same folder where the file is located with node `account-service.js`. The code will import the `utility.js` as `const sum` and invoke `sum()`. Thus, the result will be output of the total balance.
+
+Using `require()` with local files
+To use `require()` with local files, specify the name string (the argument to `require()`) of the file you are trying to import. In general, start the name string with a . to specify that the file path is relative to the current folder of the node.js file or a .. to specify that the file path is relative to the parent directory of the current folder. For example, `const server = require('./boot/server.js')` imports a file named server.js which is in a folder named boot that is in the current folder relative to the code file in which we write `require()`.
+
+Using `require()` with npm or core modules/packages
+To use `require()` with an npm or core module/package, enter the module/package name as the name string. There should not be . or .. in the name string. For example, `const express = require('express')` imports a package named express. The package is in the node_modules folder in the root of the project if it's an installed npm package, and in the system folder if it's a core Node module (exact location depends on your OS and how you installed Node).
