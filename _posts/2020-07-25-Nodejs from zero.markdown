@@ -14,9 +14,9 @@ categories: web
 3. [Install MongoDB in Ubuntu](#installmongodbinubuntu)
 4. [Start MongoDB](#startmongodb)
 5. [Configuring npm](#configuringnpm)
-6. [require and module.exports](#requireandmoduleexports)
-
-
+6. [require and module.exports](#requireandmodule.exports)
+7. [Core module fs](#coremodulefs)
+8. [Understand Event Emitters](#understandeventemitters)
 
 ## Install Nodejs in Ubuntu <a name="installnodejsinubuntu"></a>
 For Ubuntu16.04.x, use snap to install and update: https://github.com/nodesource/distributions/blob/master/README.md#snapinstall
@@ -144,3 +144,155 @@ To use `require()` with local files, specify the name string (the argument to `r
 
 Using `require()` with npm or core modules/packages
 To use `require()` with an npm or core module/package, enter the module/package name as the name string. There should not be . or .. in the name string. For example, `const express = require('express')` imports a package named express. The package is in the node_modules folder in the root of the project if it's an installed npm package, and in the system folder if it's a core Node module (exact location depends on your OS and how you installed Node).
+
+## Core module fs <a name="coremodulefs"></a>
+* fs.readFile(): reads files asynchronously
+* fs.writeFile(): writes data to files asynchronously
+Reading from files is done via the core fs module. There are two sets of reading methods: asynchronous (recommended) and synchronous. In most cases, developers should use async methods, such as fs.readFile because this method won't block the event loop:
+```
+const fs = require('fs')
+const path = require('path')
+fs.readFile(path.join(__dirname, '/data/customers.csv'), {encoding: 'utf-8'}, function (error, data) {
+  if (error) return console.error(error)
+  console.log(data)
+})
+```
+To write to the file, execute the following:
+```
+const fs = require('fs')
+fs.writeFile('message.txt', 'Hello World!', function (error) {
+  if (error) return console.error(error)
+  console.log('Writing is done.')
+})
+```
+The path.join() method is used to create paths that are platform independent. On Windows paths are separated using a \, while on POSIX (Unix, macOS) paths are separated by a /. You can combine path.join with __dirname (equals to path.dirname())to use an absolute path instead of a relative one. From /Users/mjr executing `node example.js`.
+```
+console.log(__dirname);
+// print: /Users/mjr
+console.log(path.dirname(__filename));
+// print: /Users/mjr
+```
+
+# Understand Event Emitters <a name="understandeventemitters"></a>
+Node.js core API is based on asynchronous event-driven architecture in which certain kind of objects called emitters periodically emit events that cause listener objects to be called. Event emitters is a core module for Node developers to implement the observer pattern. The observer pattern has the following: an observer/listener, an event and an event emitter.
+
+The flow goes like this:
+
+  - A class is created with class
+  - A class inherits from the EventEmitter class using extends
+  - An instance of an object is created from the class with new
+  - An observer (a.k.a. event listener) is created with .on(eventName, eventHandler)
+  - An event is emitted with emit() and the event handler in the observer is executed
+
+simple.js:
+```
+const EventEmitter = require('events')
+
+class Job extends EventEmitter {}
+job = new Job()
+
+job.on('done', function(timeDone){
+  console.log('Job was pronounced done at', timeDone)
+})
+
+job.emit('done', new Date())
+job.removeAllListeners()  // remove  all observers
+```
+The result will be:
+`Job was pronounced done at xxxx
+`
+Multiple Event Triggers
+Events can be triggered/emitted multiple times. For example, in knock-knock.js the knock event is emitted multiple times.
+
+knock-knock.js:
+```
+const EventEmitter = require('events')
+
+class Emitter extends EventEmitter {}
+emitter = new Emitter()
+
+emitter.on('knock', function() {
+  console.log('Who\'s there?')
+})
+
+emitter.on('knock', function() {
+  console.log('Go away!')
+})
+
+emitter.emit('knock')
+emitter.emit('knock')
+```
+The result will be:
+```
+Who's there?
+Go away!
+Who's there?
+Go away!
+```
+Executing Observer Code Only once
+
+`emitter.once(eventName, eventHandler)` will execute observer code just once, no matter how many time this particular event was triggered.
+
+knock-knock-once.js:
+```
+const EventEmitter = require('events')
+
+class Emitter extends EventEmitter {}
+emitter = new Emitter()
+
+emitter.once('knock', function() {
+  console.log('Who\'s there?')
+})
+
+
+emitter.emit('knock')
+emitter.emit('knock')
+```
+The result will be:
+
+`Who's there?`
+
+Modular Events
+The observer pattern is often used to modularize code. A typical usage is to separate the event emitter class definition and the event emission into its own module but allow the observers to be defined in the main program. This allows us to customize the module behavior without changing the module code itself.
+
+In job.js, we use a generic job module that emits a done event after 700ms. However, in weekly.js, we can customize the event handler of the observer to do whatever we want once a done event is triggered.
+
+job.js:
+```
+const EventEmitter = require('events')
+class Job extends EventEmitter {
+  # constructor is given by es6(ECMAScript6 module) module, it is similar as __init__ in class definition in Python
+  constructor(ops) {
+    super(ops)
+    this.on('start', ()=>{ #(3)
+      this.process() # event listener will call process()
+    })
+  }
+  # after define the variables for class, now start to code the methods in the class. process.setTimeout is given in Nodejs
+  process() {
+     setTimeout(()=>{
+      // Emulate the delay of the job - async!
+      this.emit('done', { completedOn: new Date() }) $(4)
+    }, 700)
+  }
+}
+
+module.exports = Job
+```
+weekly.js:
+```
+var Job = require('./job.js')
+var job = new Job()
+
+job.on('done', function(details){
+  console.log('Weekly email job was completed at', #(2)
+    details.completedOn)
+})
+
+job.emit('start') #(1)
+```
+result of `node weekly.js` has 700ms delay after execution:
+
+`Weekly email job was completed at 2017-10-27T18:31:25.503z
+`
+When you run weekly.js, the custom logic pertaining to the done event will be executed from weekly.js. This way the creators of the job.js module can keep the module flexible. They don't have to hard code any logic for the done event in the module. Consumers of the module job.js, people who write weekly.js, have the power to customize the behavior for the done event, and not only for that event. Event emitters can have multiple events: in the middle, at the start, in the end, etc. They can be called (emitted or triggered) multiple times and with data (passed as the second argument to emit() as can be seen in job.js). Furthermore, there are methods to list or remove event listeners (observers) or to specify the execution of an event listener (observer) just once (.once() method).
