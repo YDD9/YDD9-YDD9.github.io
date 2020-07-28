@@ -17,6 +17,10 @@ categories: web
 6. [require and module.exports](#requireandmodule.exports)
 7. [Core module fs](#coremodulefs)
 8. [Understand Event Emitters](#understandeventemitters)
+9. [HTTP Client with Core http](#httpclientwithcorehttp)
+10. [HTTP server with core http](#httpserverwithcorehttp)
+11. [Introduction to npm](#introductiontonpm)
+12. [Package.json](#package.json)
 
 ## Install Nodejs in Ubuntu <a name="installnodejsinubuntu"></a>
 For Ubuntu16.04.x, use snap to install and update: https://github.com/nodesource/distributions/blob/master/README.md#snapinstall
@@ -296,3 +300,423 @@ result of `node weekly.js` has 700ms delay after execution:
 `Weekly email job was completed at 2017-10-27T18:31:25.503z
 `
 When you run weekly.js, the custom logic pertaining to the done event will be executed from weekly.js. This way the creators of the job.js module can keep the module flexible. They don't have to hard code any logic for the done event in the module. Consumers of the module job.js, people who write weekly.js, have the power to customize the behavior for the done event, and not only for that event. Event emitters can have multiple events: in the middle, at the start, in the end, etc. They can be called (emitted or triggered) multiple times and with data (passed as the second argument to emit() as can be seen in job.js). Furthermore, there are methods to list or remove event listeners (observers) or to specify the execution of an event listener (observer) just once (.once() method).
+
+## HTTP Client with Core http <a name="httpclientwithcorehttp"></a>
+In web development we often want to make HTTP requests to other services, and Node provides a core module http to make such requests. This module uses the event emitter pattern. The idea is that you get a small chunk of the overall response (usually a single line of the overall payload/body) during each data event. You can process the data right away (preferred for large data) or save it all together in a buffer variable for future use once all the data has been received (preferred for JSON).
+
+
+Take a look at the example in http-get-no-buff.js in which each new line (chunk) of the response is printed back to the terminal with console.log:
+
+http-get-no-buff.js:
+```
+const http = require('https')
+const url = 'http://nodeprogram.com'
+http.get(url, (response) => {
+  let c = 0
+  response.on('data', (chunk) => { 
+    c++
+    console.log(chunk.toString('utf8'))
+  })
+  response.on('end', () => {
+    console.log(`response has ended with ${c} chunk(s)`)
+  })
+}).on('error', (error) => {
+  console.error(`Got error: ${error.message}`)
+})
+```
+The result:
+```
+$ node http-get-no-buff.js
+<html>
+...
+...
+</html>
+response has ended with 6 chunk(s)
+```
+The result of running this script will be the home page HTML from http://nodeprogram.com. It might be hard to notice with a naked eye, but the result will be printed as the request is happening, not all at once in the end of the request.
+
+If you want to wait for the entire response, simply create a new variable as a buffer variable (rawData) and save the chunks (parts of the response, usually lines in the payload/body) into it (rawData).
+
+
+HTTP Client for JSON
+To process JSON, developers must get the entire response, otherwise the JSON format won't be valid. For this reason, we use the buffer variable rawData. When the response has ended, we parse the JSON. Take a look at the code in http-json-get.js:
+```
+const https = require('https')
+const url = 'https://gist.githubusercontent.com/azat-co/a3b93807d89fd5f98ba7829f0557e266/raw/43adc16c256ec52264c2d0bc0251369faf02a3e2/gistfile1.txt'
+https.get(url, (response) => {
+  let rawData = ''
+  let c = 0
+  response.on('data', (chunk) => { 
+    rawData += chunk 
+    ++c
+  })
+  response.on('end', () => {
+    try {
+      const parsedData = JSON.parse(rawData)
+      console.log(parsedData, c)
+    } catch (e) {
+      console.error(e.message) # error such as json parsing
+    }
+  })
+  response.on('error', (error)=>{
+    console.error('second error', error) # error such as 400 or 404 
+  })
+}).on('error', (error) => {
+  console.error(`Got error: ${error.message}`) # error such as wrong url, port close or no connection, error on the https.get level
+})
+```
+The result of running this script would be the parsed JSON object. The parsing needs to happen inside of the try/catch to handle any failures that may occur due to mal-formated JSON input.
+
+HTTP client POST request
+So far we have been using GET requests to receive data from a server. GET requests are able to be used to receive data but you can not send data with a GET request. In order to send a body of data with a request you must use a POST request. POST requests are generally used to upload data or to send data to be processed and returned.
+
+The http core module methods allow you to specify what type of request you want to make. To do so, first create an options object and set the method attribute to the desired request type (‘POST’, 'GET', etc.). Then, use the options object as the first argument when calling http.request().
+
+The following code from http-post.js uses an options object to specify that it is trying to make a POST request:
+```
+const http = require('https')
+const postData = JSON.stringify({ foo: 'bar' })
+
+const options = {
+  hostname: 'mockbin.com',
+  port: 80,
+  path: '/request?foo=bar&foo=baz',
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'Content-Length': Buffer.byteLength(postData)
+  }
+}
+
+const req = http.request(options, (res) => {
+  res.on('data', (chunk) => {
+    console.log(`BODY: ${chunk}`)
+  })
+  res.on('end', () => {
+    console.log('No more data in response.')
+  })
+})
+
+req.on('error', (e) => {
+  console.error(`problem with request: ${e.message}`)
+})
+
+req.write(postData) # start the post request
+req.end()           # end the post request
+```
+As a result, the script will send the data to the server (mockbin.com) in a POST request, and output the response of the request.
+
+## HTTP server with core http <a name="httpserverwithcorehttp"></a>
+Although Node.js can be used for a wide variety of tasks, it’s used primarily for building web applications. Node.js thrives in networking as a result of its asynchronous nature and built-in modules such as net and http. Node is great for building fast and efficient web servers.
+
+Here’s a quintessential Hello World example in which we create a server object, define the request handler (function with req and res arguments), pass some data back to the recipient, and start up the whole thing (server.js):
+```
+const http = require('http')
+const port = 3000
+http.createServer((req, res) => {
+  res.writeHead(200, {'Content-Type': 'text/plain'})
+  res.end('Hello World\n')
+}).listen(port)
+
+console.log(`Server running at http://localhost:${port}/`)
+```
+Let’s break it down a bit. The following loads the core http module for the server:
+```
+const http = require('http')
+```
+This snippet below creates a server with a callback function which contains the response handler code:
+```
+http.createServer((req, res) => {
+```
+To set the right header and status code, use the following:
+```
+  res.writeHead(200, {'Content-Type': 'text/plain'})
+```
+To output Hello World with the line end symbol, use:
+```
+  res.end('Hello World\n')
+```
+The req and res arguments have all the information about a given HTTP request and response respectively. In addition, req and res can be used as streams (see previous section).
+
+To make the server accept requests, use the following:
+```
+}).listen(3000)
+```
+In the terminal, navigate to the directory in which you have server.js and run the following command to start your server:
+```
+node server.js
+```
+Now that the server is running, you should be able to navigate to localhost:3000 in a browser and you should see Hello World. To shut down the server, enter Ctrl + c in the terminal.
+
+The callback function in the createServer method is called each time there's an incoming request to this server.
+
+You can also use curl to get the response from the server in the terminal. To do so, keep the terminal / command prompt window open to keep the server running. In another tab or window of your terminal / command prompt, run the following curl request:
+```
+curl -i http://localhost:3000
+```
+The curl request should return the header and content that is sent from the server.
+
+To have the server automatically restart and take the changes immediately, just install `npm i -g node-dev@latest` and start server `node-dev server.js`
+
+HTTP Server Request
+The HTTP server request object (do not confuse this with the client request object) has all the information about the incoming request to our server. Some examples include headers, URL, HTTP method names and of course the request body (payload). Here's the list of main properties:
+
+  * request.headers: Information about incoming requests headers such as Connection, Host, Authorization, etc (see list here)
+  * request.method: Information about the incoming requests methods such as GET, POST, PUT, DELETE, OPTIONS, HEAD, etc.
+  * request.url: Information about the incoming request URL, such as /accounts, /users, /messages, etc.
+All values are accessible in the request handler callback. For example, you can print the values like this:
+```
+const http = require('http')
+const port = 3000
+http.createServer((request, response) => {
+  console.log(request.headers)
+  console.log(request.method)
+  console.log(request.url)
+  response.writeHead(200, {'Content-Type': 'text/plain'})
+  response.end('Hello World\n')
+}).listen(port)
+```
+The result of this script will depend on what requests are coming. Each request will trigger the output of its headers, method, and the URL.
+
+Processing Incoming Request Body in the Server
+To process the request body, use the same event emitter pattern as with the request client. Listen to the data event and collect the incoming payload using a buffer variable (buff). Take a look at server-request-body.js:
+```
+const http = require('http')
+const port = 3000
+http.createServer((request, response) => {
+  console.log(request.headers)
+  console.log(request.method)
+  console.log(request.statusCode)
+  console.log(request.url)
+  if (request.method == 'POST') {
+    let buff = ''
+    request.on('data', function (chunk) {
+      buff += chunk  
+    })
+    request.on('end', function () {
+      console.log(`Body: ${buff}`)
+      response.end('\nAccepted body\n\n')
+    })
+  } else {
+    response.writeHead(200, {'Content-Type': 'text/plain'})
+    response.end('Hello World\n')
+  } 
+}).listen(port)
+```
+The result of this program (server-request-body.js) would be a server which accepts POST requests and prints the request body in the server logs.
+
+HTTP Response
+The HTTP response is what enables us to send data back to the clients from our Node servers.
+
+response.writeHead is a method that is used to set the status code and create HTTP headers. Two most common HTTP headers are Content-Type and Content-Length:
+```
+response.writeHead(200, {
+  'Content-Length': body.length,
+  'Content-Type': 'text/plain' })
+```
+The response itself is created with the write() method which adds data to the response. Another method is end() which finishes the response (which in turn will finish the incoming request). You can set the statusCode attribute to change the status code of the response (200, 400, 500, etc.).
+
+The following example demonstrates the various response methods:
+```
+const http = require('http')
+const port = 3000
+http.createServer((request, response) => {
+  response.writeHead(404, {
+    'Content-Length': body.length,
+    'Content-Type': 'text/plain' })
+  response.statusCode = 200
+  response.write('Hello')
+  response.end(' World\n')
+}).listen(port)
+
+console.log(`Server running at http://localhost:${port}/`)
+```
+
+## Introduction to npm <a name="introductiontonpm"></a>
+npm can be configured in multiple ways:
+
+  * flags
+  * environment variables
+  * .npmrc files
+  * npm config CLI
+The npm config CLI is the easiest way, so let's cover it and take a look at a few examples.
+
+To list current configs:
+```
+npm config list 
+npm config ls // list configs
+```
+To list global configs:
+```
+npm config --global list 
+npm config -g ls
+```
+There are many configurations. For example proxy or registry are the most common ones especially if you are working at a big company that has a corporate proxy and a private (self-hosted) npm registry.
+
+To set any config use use npm config set <key> <value>. For example, to set the registry value use:
+```
+npm config set registry "http://registry.npmjs.org/"
+```
+You can read an individual setting value. For example to read the registry value use npm config get registry:
+```
+npm config get registry
+```
+To remove the setting (config), there's a npm config delete <key> command. For example, to remove email:
+```
+npm config delete email
+```
+
+There are two ways to install a module via npm:
+
+1) Locally: most of your projects' dependencies which you import with require(), e.g., express, request, hapi. They go into the node_modules directory of your local project
+```
+npm install module-name
+npm i module-name
+```
+2) Globally: command-line tools only (mostly), e.g., mocha, grunt, slc. They go into /usr/local
+```
+npm install --global module-name
+npm i -g module-name
+```
+The i is just an alias to install. There's no difference. Use i to save time typing.
+
+Some frameworks offer CLI, but most of them belong to the local category. Don't try to install express with -g!
+
+The node_modules folder is where dependencies are stored. It's a local folder which must be in the root (first level sub-folder) of your project. node_modules is your friend because it allows for almost no conflicts between different versions of the same dependencies unlike Java, Ruby, Python which prefer global installation over Node's local. Node reduces conflicts because each conflicting dependency will be nested and this will avoid conflicts between different versions of the same dependencies.
+
+Installing Packages
+Here are the valid ways in which a Node developer can install an npm module.
+
+Basic installation:
+```
+npm install express
+```
+Exact version installation:
+```
+npm install express@4.2.0
+```
+Latest version installation, which can be useful when you already have this module but want to upgrade to the latest module:
+```
+npm install express@latest
+```
+Explicit save into into package.json dependencies (--save or -S) or devDependencies (--save-dev or -D):
+```
+npm install express --save
+npm install express -S
+npm install mocha --save-dev
+npm install mocha -D
+```
+In npm version 5, npm will automatically save so npm i express will be the same as npm i -S express. We recommend using the default behavior of npm version 5 which is to save package information into package.json.
+
+By default, npm will add ^ to the version when you use npm v5 or --save. The ^ symbol is dangerous for applications because it means go get the latest version if there's one. It's best to avoid ^. Using the exact flag will do just that:
+```
+npm install express --exact
+npm install express -E
+```
+You can combine flags and install more than one dependency in one command:
+```
+npm i react react-dom babel babel-core -ED
+```
+Lastly, when you will need to install a tool like npm itself (or upgrade it) you will use the global installation:
+```
+npm i -g npm@latest
+npm install grunt --global
+```
+If you see an error about permissions, you'll need to change the system folder which npm uses to the appropriate permissions or just use root access with sudo:
+```
+sudo npm install grunt -g
+```
+Semantic versioning consists of using three digits which have certain meaning. For example, in semver 4.2.0, 4 is major, 2 is minor and 0 is patch. Major is for major releases which most often break existing code. Minor are for small releases which can break some code but most often are okay. Patch is for small fixes which should not change the main interface and should not break your applications.
+
+The key word here is should because semantic versioning is not enforced. It's purely a human convention and not all modules and projects in the FOSS follow it.
+
+Listing and Removing Modules
+To list what modules are installed, run npm ls from your root project location (where you have package.json and node_modules). It will display a tree of dependencies of this current project.
+
+To list all globally installed modules, run `npm ls -g`.
+
+To remove an npm module use the rm command:
+```
+npm rm mysql
+```
+To remove a global module, apply the global flag:
+```
+npm rm mysql -g
+```
+
+## Package.json <a name="package.json"></a>
+The package.json is the project manifest file. It has all the meta data about the project such as the descriptions, license, location, dependencies, scripts to build, launch and run. Consider this example which has a few dependencies:
+```
+{
+  "name": "my-cool-app",
+  "version": "0.1.0",
+  "description": "A great new application",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~4.2.0",
+    "ws": "~0.4.25"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0"
+  }
+}
+```
+In most cases, it's easy to tell what modules are required and what are the main commands and files to execute just by looking at the package.json file.
+
+Package.json is required for npm modules.
+
+Main Properties
+Module packaging in Node is done using a package.json file. There are many options that can be configured:
+
+  * name
+  * version number
+  * dependencies
+  * license
+  * scripts
+  * etc
+
+Creating package.json
+To create a package.json file, run npm init command and answer the questions that appear:
+```
+$ npm init
+
+This utility will walk you through creating a package.json
+file.  It only covers the most common items, and tries to
+guess sane defaults.
+
+See `npm help json` for definitive documentation on these
+fields and exactly what they do.
+
+Use `npm install <pkg> --save` afterwards to install a package
+and save it as a dependency in the package.json file
+
+Press ^C at any time to quit
+name: (my-package-name)
+```
+If you are okay with the default answers to these questions, then you can skip the questions and answer yes to all of them automatically by using -y flag, as in `npm init -y`.
+
+Private Modules
+The private attribute prevents accidental publishing
+```
+{
+  "name" : "my-private-module",
+  "version": "0.0.1",
+  ...
+  "private": true,
+  ...
+}
+```
+When to use -g for global installations?
+Only use -g for command-line tools which you run from the Terminal /Command Prompt. They usually have bin in package.json:
+```
+{
+  "name": "stream-adventure",
+  "version": "4.0.4",
+  "description": "an educational stream adventure",
+  "bin": {
+    "stream-adventure": "bin/cmd.js"
+  },
+  "dependencies": {
+    ...
+```
+In other words, anything which you plan to import with require() must be local in node_modules NOT in global.
