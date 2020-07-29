@@ -31,7 +31,7 @@ $ sudo snap refresh node --channel=10
 
 Substituting `8` for the major version you want to install. Both LTS and Current versions of Node.js are available via snapcraft.
 
-The `--classic` argument is required here as Node.js needs full access to your system in order to be useful, therefore it needs snap’s "classic confinement". 
+The `--classic` argument is required here as Node.js needs full access to your system in order to be useful, therefore it needs snap's "classic confinement". 
 
 You can use the `refresh` command to switch to a new channel at any time. Once switched, snapd will update Node.js for the new channel you have selected.
 
@@ -370,7 +370,7 @@ The result of running this script would be the parsed JSON object. The parsing n
 HTTP client POST request
 So far we have been using GET requests to receive data from a server. GET requests are able to be used to receive data but you can not send data with a GET request. In order to send a body of data with a request you must use a POST request. POST requests are generally used to upload data or to send data to be processed and returned.
 
-The http core module methods allow you to specify what type of request you want to make. To do so, first create an options object and set the method attribute to the desired request type (‘POST’, 'GET', etc.). Then, use the options object as the first argument when calling http.request().
+The http core module methods allow you to specify what type of request you want to make. To do so, first create an options object and set the method attribute to the desired request type ('POST', 'GET', etc.). Then, use the options object as the first argument when calling http.request().
 
 The following code from http-post.js uses an options object to specify that it is trying to make a POST request:
 ```
@@ -407,9 +407,9 @@ req.end()           # end the post request
 As a result, the script will send the data to the server (mockbin.com) in a POST request, and output the response of the request.
 
 ## HTTP server with core http <a name="httpserverwithcorehttp"></a>
-Although Node.js can be used for a wide variety of tasks, it’s used primarily for building web applications. Node.js thrives in networking as a result of its asynchronous nature and built-in modules such as net and http. Node is great for building fast and efficient web servers.
+Although Node.js can be used for a wide variety of tasks, it's used primarily for building web applications. Node.js thrives in networking as a result of its asynchronous nature and built-in modules such as net and http. Node is great for building fast and efficient web servers.
 
-Here’s a quintessential Hello World example in which we create a server object, define the request handler (function with req and res arguments), pass some data back to the recipient, and start up the whole thing (server.js):
+Here's a quintessential Hello World example in which we create a server object, define the request handler (function with req and res arguments), pass some data back to the recipient, and start up the whole thing (server.js):
 ```
 const http = require('http')
 const port = 3000
@@ -420,7 +420,7 @@ http.createServer((req, res) => {
 
 console.log(`Server running at http://localhost:${port}/`)
 ```
-Let’s break it down a bit. The following loads the core http module for the server:
+Let's break it down a bit. The following loads the core http module for the server:
 ```
 const http = require('http')
 ```
